@@ -16,15 +16,12 @@ export default defineConfig({
         directory: 'guides'
       }
     }, {
-      label: 'Utilisation de UdonSharp',
-      items: [
-      // Each item here is one entry in the navigation menu.
-      {
-        label: 'Débuter sur UdonSharp',
-        link: 'usharp/start'
+      label: 'Avatars',
+      autogenerate: {
+        directory: 'avatars'
       }
-      ]
-    }]
+    }
+    ]
   }), markdoc()],
   // Process images with sharp: https://docs.astro.build/en/guides/assets/#using-sharp
   image: {
