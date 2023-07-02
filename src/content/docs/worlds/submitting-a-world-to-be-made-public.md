@@ -1,81 +1,75 @@
 ---
-title: "World Creation, Optimization, and Community Labs Tips"
-slug: "submitting-a-world-to-be-made-public"
-sidebar_position: -1
-hidden: false
-createdAt: "2018-12-29T00:05:06.003Z"
-updatedAt: "2023-04-21T14:54:14.165Z"
+title: "Conseils sur la création, l'optimisation et les laboratoires communautaires pour la création de mondes"
+description: "Guide pour soumettre un monde pour qu'il soit rendu public"
 ---
-Want to make your world public? You've come to the right place! You need to submit your world to **Community Labs**.
 
-There are a few things you should take into consideration before submitting your world to Community Labs. **Make sure you read all of this!** Failure to do so may result in your world being taken down, or never leaving Community Labs.
+Vous voulez rendre votre monde public ? Vous êtes au bon endroit ! Vous devez soumettre votre monde aux **Laboratoires communautaires**.
 
-You can submit your world to Community Labs on VRChat.com (Edit World Info -> Danger Zone -> World Visibility -> Publish) or whenever you upload a new version in Unity.
+Il y a quelques choses à prendre en compte avant de soumettre votre monde aux Laboratoires communautaires. **Assurez-vous de tout lire attentivement !** Ne pas le faire pourrait entraîner la suppression de votre monde, ou qu'il ne quitte jamais les Laboratoires communautaires.
 
-Publishing your world will make it immediately available to all users that opt-in for Community Labs. Eventually, your world will go public and become accessible to all users outside Community Labs! [Read more about Labs here.](https://docs.vrchat.com/docs/vrchat-community-labs)
+Vous pouvez soumettre votre monde aux Laboratoires communautaires sur VRChat.com (Modifier les infos du monde -> Zone dangereuse -> Visibilité du monde -> Publier) ou lorsque vous téléchargez une nouvelle version dans Unity.
 
-## Important Info
+La publication de votre monde le rendra immédiatement accessible à tous les utilisateurs qui optent pour les Laboratoires communautaires. À terme, votre monde deviendra public et accessible à tous les utilisateurs en dehors des Laboratoires communautaires ! [En savoir plus sur les Laboratoires ici](https://docs.vrchat.com/docs/vrchat-community-labs).
 
-- **You can only submit one world per user per seven days to Community Labs.** 
-- **You can update your world as often as you like.** Just push an update! It won't change the status of your world.
-- **If your world is already Public, you don't need to re-submit the world if you update it.** It should update automatically and you will not lose your Public status.
-- If your world or any content in the world (videos, avatars, images) violates the VRChat Terms of Service or the Community Guidelines, your ability to submit worlds to Community Labs will be suspended for a period of time. Repeated suspensions may result in in-app moderation action.
-- **Content Warnings are deprecated and not used at this time.** You cannot upload content to VRChat that violates our [Community Guidelines](https://vrchat.com/community-guidelines) or [Terms of Service](https://vrchat.com/legal). Doing so (even if you have checked off a content warning) will result in moderation action.
-- We do not approve worlds via Discord DMs, emails to VRChat, or any other channel.
-- If your world is _very large in filesize_, we may ask you to reduce the size of the world and remove it from Public in the meantime. **Try to keep your worlds under 200MB.**
+## Informations importantes
 
-## Avatar Worlds / All Avatar Pedestals in any World
+- **Vous ne pouvez soumettre qu'un seul monde par utilisateur tous les sept jours aux Laboratoires communautaires.**
+- **Vous pouvez mettre à jour votre monde aussi souvent que vous le souhaitez.** Faites simplement une mise à jour ! Cela n'affectera pas le statut de votre monde.
+- **Si votre monde est déjà public, vous n'avez pas besoin de le soumettre à nouveau si vous le mettez à jour.** Il sera mis à jour automatiquement et vous ne perdrez pas votre statut public.
+- Si votre monde ou tout contenu du monde (vidéos, avatars, images) enfreint les conditions d'utilisation de VRChat ou les directives de la communauté, votre capacité à soumettre des mondes aux Laboratoires communautaires sera suspendue pendant un certain temps. Des suspensions répétées peuvent entraîner des mesures de modération in-app.
+- **Les avertissements de contenu sont obsolètes et ne sont pas utilisés pour le moment.** Vous ne pouvez pas télécharger de contenu sur VRChat qui enfreint nos [directives de la communauté](https://vrchat.com/community-guidelines) ou nos [conditions d'utilisation](https://vrchat.com/legal). Le faire (même si vous avez coché un avertissement de contenu) entraînera des mesures de modération.
+- Nous n'approuvons pas les mondes via les messages privés Discord, les e-mails à VRChat ou tout autre canal.
+- Si votre monde a une taille de fichier **très importante**, nous pourrions vous demander de réduire la taille du monde et de le retirer de la mise en public en attendant. **Essayez de garder vos mondes en dessous de 200 Mo.**
 
-- **Avatars on pedestals are expected to be "reasonably optimized."** Check out our [Avatar Optimization Docs](/avatars/avatar-optimizing-tips) for more details.  
-  Avoid sharing very poor avatars. This applies to all worlds, not just avatar worlds. If avatars in your world have severe performance issues, your world may be removed from Public or Community Labs.
-- **If you upload a world with placeholder avatars and replace them with TOS-violating avatars after being made public, you will be suspended from submitting worlds for a month. You may be moderated in-app, depending on the offense severity.**
-- **If you have an avatar world, none of your avatars may violate TOS/Community Guidelines.**
-- Look into using [Cat's Blender Plugin](https://github.com/absolute-quantum/cats-blender-plugin) and Shotariya's Texture Combiner addons for Blender to optimize your models. 
+## Mondes d'avatars / Tous les socles d'avatars dans n'importe quel monde
 
-## Performance Tips
+- **Les avatars sur les socles doivent être "raisonnablement optimisés".** Consultez nos [conseils d'optimisation des avatars](/avatars/avatar-optimizing-tips) pour plus de détails. 
+  Évitez de partager des avatars de mauvaise qualité. Cela s'applique à tous les mondes, pas seulement aux mondes d'avatars. Si les avatars dans votre monde ont de graves problèmes de performances, votre monde peut être supprimé de la mise en public ou des Laboratoires communautaires.
+- **Si vous téléchargez un monde avec des avatars de substitution et que vous les remplacez par des avatars violant les conditions d'utilisation après la publication, vous serez suspendu de soumettre des mondes pendant un mois. Selon la gravité de l'infraction, vous pourriez être modéré in-app.**
+- **Si vous avez un monde d'avatars, aucun de vos avatars ne peut violer les conditions d'utilisation / directives de la communauté.**
+- Pensez à utiliser les modules complémentaires [Cat's Blender Plugin](https://github.com/absolute-quantum/cats-blender-plugin) et Shotariya's Texture Combiner pour Blender afin d'optimiser vos modèles.
 
-- **Aim for at least 45 FPS with a single VR user at the spawn.** If you do not have VR, have a friend test the world for you. Having a badly performing world will mean people don't spend time in your world, and you probably won't make it out of Labs very easily.
-- **Don't use shaders that are not VR-compatible.**Shaders must support single-pass stereo rendering. If you are looking for a good water shader, [check out Silent's Water Shader](https://gitlab.com/s-ilent/clear-water).
-- **Use mobile shaders on Android.** Most shaders will _work_ on Android but usually take more processing power to render. Stick to mobile shaders if you can.
-- **Be very careful with post-processing effects.** Some screen-space post-processing effects cause major issues for VR users. In particular, be careful with chromatic aberration, screen-space reflection, and screen-space ambient occlusion. 
-- **Bad things happen when you put more than 2 video players in a room.** It usually impacts performance negatively.
-- **Bad things also happen when you put more than 1 mirror in your room.**  Mirrors severely affect a world's performance. If you have 1 mirror in the room, make sure to set it to toggle.
-- **We** **_STRONGLY SUGGEST_** **not enabling mirrors by default.** Add a toggle that can be activated by players or activated automatically when players enter a certain area.
-- **Do NOT overuse real-time lights.** They are **very** expensive and can kill your world's performance if used incorrectly.
-- **Baking your lighting is exceedingly important and can give you huge performance gains.** 
+## Conseils de performance
 
-## General Tips
+- **Visez au moins 45 FPS avec un seul utilisateur VR au spawn.** Si vous n'avez pas de casque VR, demandez à un ami de tester le monde pour vous. Avoir un monde qui fonctionne mal signifie que les gens ne passeront pas de temps dans votre monde et il sera difficile de sortir des Laboratoires.
+- **N'utilisez pas de shaders qui ne sont pas compatibles VR.** Les shaders doivent prendre en charge le rendu stéréo à un seul passage. Si vous recherchez un bon shader pour l'eau, [essayez Silent's Water Shader](https://gitlab.com/s-ilent/clear-water).
+- **Utilisez des shaders pour mobile sur Android.** La plupart des shaders fonctionnent sur Android, mais ils demandent généralement plus de puissance de traitement pour le rendu. Utilisez des shaders pour mobile lorsque c'est possible.
+- **Faites très attention aux effets de post-traitement.** Certains effets de post-traitement de l'espace-écran causent de gros problèmes pour les utilisateurs VR. Soyez particulièrement prudent avec l'aberration chromatique, la réflexion de l'espace-écran et l'occlusion ambiante de l'espace-écran.
+- **De mauvaises choses se produisent lorsque vous mettez plus de 2 lecteurs vidéo dans une salle.** Cela affecte généralement négativement les performances.
+- **De mauvaises choses se produisent également lorsque vous mettez plus de 1 miroir dans votre salle.** Les miroirs affectent gravement les performances d'un monde. Si vous avez 1 miroir dans la salle, assurez-vous de le configurer pour qu'il puisse être activé ou désactivé.
+- **NOUS VOUS RECOMMANDONS FORTEMENT de ne pas activer les miroirs par défaut.** Ajoutez un bouton qui peut être activé par les joueurs ou activé automatiquement lorsque les joueurs entrent dans une certaine zone.
+- **N'utilisez PAS trop de lumières en temps réel.** Elles sont **très** coûteuses et peuvent affecter les performances de votre monde si elles sont mal utilisées.
+- **Le calcul de l'éclairage est extrêmement important et peut vous faire gagner énormément en performances.**
 
-- Test your world! It isn't uncommon for us to see worlds where you immediately drop out of the portal forever.
-- Test your world in VR, as well. Check to ensure your shaders are working properly and display properly in VR. If you don't have a VR headset, ask a friend to take a look around.
-- **_TEST YOUR LIGHTING!_** Lighting a world is very important and doing it properly is wildly important. Don't just test using Toon shaders as they do not represent lighting properly, use Standard or a PBR shader to see how lighting affects it. If you look blown-out, you probably have too many lights, your intensity is too high, or you need to look into using Tonemapping.
-- Want to make your world private again?  Edit your world on the website and you can set it to Private.
-- Avoid directly using `.blend` files. Exporting FBX files from Blender for use in VRChat usually causes fewer issues.
+## Conseils généraux
 
-If you have any questions about the process, [visit our forum](https://ask.vrchat.com/c/worlds/27) or email hello@vrchat.com with your question.  If you run an event or have a highly trafficked world in the app and need a world made public at a different time, please reach out to us via email at least 48 hours in advance.
+- Testez votre monde ! Il n'est pas rare de voir des mondes où vous tombez immédiatement hors du portail pour toujours.
+- Testez également votre monde en VR. Vérifiez que vos shaders fonctionnent correctement et s'affichent correctement en VR. Si vous n'avez pas de casque VR, demandez à un ami de jeter un coup d'œil.
+- **TESTEZ VOTRE ÉCLAIRAGE !** L'éclairage d'un monde est très important et le faire correctement est essentiel. Ne vous contentez pas de tester avec des shaders Toon car ils ne représentent pas correctement l'éclairage, utilisez plutôt des shaders Standard ou PBR pour voir comment l'éclairage est affecté. Si votre monde a l'air surexposé, vous avez probablement trop de lumières, votre intensité est trop élevée ou vous devez envisager d'utiliser le mappage tonal.
+- Vous voulez rendre votre monde privé à nouveau ? Modifiez votre monde sur le site web et vous pouvez le mettre en mode Privé.
+- Évitez d'utiliser directement des fichiers `.blend`. L'exportation de fichiers FBX depuis Blender pour les utiliser dans VRChat cause généralement moins de problèmes.
 
-## Submitting to Community Labs
+Si vous avez des questions sur le processus, [visitez notre forum](https://ask.vrchat.com/c/worlds/27) ou envoyez un e-mail à hello@vrchat.com avec votre question. Si vous organisez un événement ou avez un monde très fréquenté dans l'application et avez besoin d'un monde rendu public à un autre moment, veuillez nous contacter par e-mail au moins 48 heures à l'avance.
 
-Once you've read everything above, submit your new world to Community Labs! If you're curious about how Community Labs works, check out our [VRChat Community Labs](https://docs.vrchat.com/docs/vrchat-community-labs) documentation.
+## Soumission aux Laboratoires communautaires
 
-## Becoming a Game or Avatar World
+Une fois que vous avez tout lu ci-dessus, soumettez votre nouveau monde aux Laboratoires communautaires ! Si vous voulez en savoir plus sur le fonctionnement des Laboratoires communautaires, consultez notre [documentation sur les Laboratoires communautaires de VRChat](https://docs.vrchat.com/docs/vrchat-community-labs).
 
-If you want your world to be categorized as an Avatar World or Game World, just add the appropriate tag during upload.
+## Devenir un monde de jeu ou d'avatars
 
-> 🚧 Don't Abuse The World Rows
+Si vous voulez que votre monde soit catégorisé comme un monde d'avatars ou un monde de jeux, ajoutez simplement l'étiquette appropriée lors du téléchargement.
+
+> 🚧 N'abusez pas des rangées de mondes
 > 
-> These rules are in place to give **all** worlds a chance to be discovered. Utilizing "SEO-like" techniques is not permitted and will result in actions such as tag removal, or in repeated/worse cases, moderation of the author.
+> Ces règles sont mises en place pour donner à **tous** les mondes une chance d'être découverts. L'utilisation de techniques similaires au référencement n'est pas autorisée et entraînera des actions telles que la suppression d'étiquettes, ou dans des cas répétés/plus graves, la modération de l'auteur.
 > 
-> VRChat reserves the right to action users that abuse our systems to unfairly or misleadingly promote their own content.
+> VRChat se réserve le droit de prendre des mesures à l'encontre des utilisateurs qui abusent de nos systèmes pour promouvoir injustement ou de manière trompeuse leur propre contenu.
 
-### Avatar Worlds
+### Mondes d'avatars
 
-**An Avatar World is a world where gaining and sharing avatars is the** **_primary focus._** Finding an avatar in worlds tagged as Avatar Worlds should be quick and easy, and should not be an afterthought or "addition" to another clearly primary functionality of the world.
+**Un monde d'avatars est un monde où l'obtention et le partage d'avatars sont la** **_principale priorité._** Trouver un avatar dans les mondes étiquetés comme Mondes d'avatars devrait être rapide et facile, et ne devrait pas être une réflexion après coup ou une "addition" à une autre fonctionnalité clairement principale du monde.
 
-To categorize your world as an avatar world, add the tag `avatar`.
+Pour catégoriser votre monde comme un monde d'avatars, ajoutez l'étiquette `avatar`.
 
-### Game Worlds
+### Mondes de jeux
 
-**A Game World is a world where playing a game or set of games is the** **_primary focus._** Playing games in worlds tagged as Game Worlds should be quick and easy, and should not be an afterthought or "addition" to another clearly primary functionality of the world.
-
-To categorize your world as a game world, add the tag `game`.

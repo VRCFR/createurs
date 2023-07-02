@@ -1,56 +1,52 @@
 ---
 title: "SDK Prefabs"
-slug: "sdk-prefabs"
-hidden: false
-createdAt: "2022-03-03T00:33:18.460Z"
-updatedAt: "2022-03-03T00:38:28.712Z"
+description: "Voici une liste de préfabs disponibles dans nos SDK !"
 ---
-This is a list of prefabs available in our SDKs!
 
 ## VRCAvatarPedestal
-An example of how to create an avatar pedestal that you click on to wear a new avatar using Udon.
+Un exemple de création d'un piédestal d'avatar sur lequel vous cliquez pour porter un nouvel avatar en utilisant Udon.
 
-Found in `VRChat Examples > Prefabs > AvatarPedestal`.
+Trouvé dans `Exemples VRChat > Préfabs > AvatarPedestal`.
 
 ## VRCChair
-An example of how to create a chair that you click on to sit in using Udon.
+Un exemple de création d'une chaise sur laquelle vous cliquez pour vous asseoir en utilisant Udon.
 
-Found in `VRChat Examples > Prefabs > VRCChair`.
+Trouvé dans `Exemples VRChat > Préfabs > VRCChair`.
 
 ## VRCMirror
-An example of how to create the ever-popular Mirror using Udon.
+Un exemple de création du très populaire miroir en utilisant Udon.
 
-Found in `VRChat Examples > Prefabs > VRCMirror`.
+Trouvé dans `Exemples VRChat > Préfabs > VRCMirror`.
 
 ## VRCPortalMarker
-An example of how to use [VRC_PortalMarker](/worlds/components/vrc_portalmarker).
+Un exemple d'utilisation de [VRC_PortalMarker](/worlds/components/vrc_portalmarker).
 
-Found in `VRChat Examples > Prefabs > VRCPortalMarker`.
+Trouvé dans `Exemples VRChat > Préfabs > VRCPortalMarker`.
 
-This prefab **must** be at the root of your scene hierarchy for the portal's destination instance to be synced with other players.
+Ce préfab **doit** se trouver à la racine de la hiérarchie de votre scène pour que l'instance de destination du portail soit synchronisée avec les autres joueurs.
 
 ## VRCWorld
-An example of how to use [VRC_SceneDescriptor](/worlds/components/vrc_scenedescriptor) to define a VRChat World.
+Un exemple d'utilisation de [VRC_SceneDescriptor](/worlds/components/vrc_scenedescriptor) pour définir un monde VRChat.
 
-Found in  `VRChat examples > Prefabs > World`.
+Trouvé dans `Exemples VRChat > Préfabs > World`.
 
 ## VRCVideoSync
-An example of how to create an Udon-powered [Video Player](/worlds/udon/video-players/). 
+Un exemple de création d'un [Lecteur vidéo](/worlds/udon/video-players/) alimenté par Udon.
 
-Found in `VRChat Examples > Prefabs > Video Players`.
+Trouvé dans `Exemples VRChat > Préfabs > Lecteurs vidéo`.
 
-Two examples exist:
-- `UdonSyncPlayer (AVPro).prefab` - Uses AVPro, which permits watching livestreams.
-- `UdonSyncPlayer (Unity).prefab` - Uses Unity's built-in video player, which may be more stable in some situations.
+Deux exemples existent :
+- `UdonSyncPlayer (AVPro).prefab` - Utilise AVPro, ce qui permet de regarder des diffusions en direct.
+- `UdonSyncPlayer (Unity).prefab` - Utilise le lecteur vidéo intégré d'Unity, qui peut être plus stable dans certaines situations.
 
 ## Simple Pen System
-An example of how to create an Udon-powered pen for drawing in 3D space!
+Un exemple de création d'un stylo alimenté par Udon pour dessiner dans l'espace 3D !
 
-Documented here: [Simple Pen System](/worlds/examples/udon-example-scene/simple-pen-system)
+Documenté ici : [Simple Pen System](/worlds/examples/udon-example-scene/simple-pen-system)
 
-Found in `VRChat Examples > Prefabs > SimplePenSystem`.
+Trouvé dans `Exemples VRChat > Préfabs > SimplePenSystem`.
 
 ## Udon Variable Sync
-A self-documenting example on how Udon Variable Sync works! Drop it into your world and test it out to see how it works.
+Un exemple auto-documenté sur le fonctionnement de la synchronisation des variables Udon ! Placez-le dans votre monde et testez-le pour voir comment cela fonctionne.
 
-Found in `VRChat Examples > Prefabs > Udon Variable Sync`.
+Trouvé dans `Exemples VRChat > Préfabs > Udon Variable Sync`.

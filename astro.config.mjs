@@ -20,6 +20,11 @@ export default defineConfig({
       autogenerate: {
         directory: 'avatars'
       }
+    },{
+      label:'Mondes',
+      autogenerate:{
+        directory: 'worlds'
+      }
     }
     ]
   }), markdoc()],

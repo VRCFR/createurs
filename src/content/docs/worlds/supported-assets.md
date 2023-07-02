@@ -1,28 +1,24 @@
 ---
-title: "Supported Scripted Assets"
-slug: "supported-assets"
-hidden: false
-createdAt: "2017-08-06T01:53:56.686Z"
-updatedAt: "2023-02-24T00:48:47.712Z"
+title: "Ressources scriptées prises en charge"
+description: "Vous pouvez utiliser certaines ressources externes qui utilisent des scripts dans les mondes VRChat."
 ---
-You can use certain external assets that use scripts in VRChat worlds.
 
-To see a list of precise components permitted in VRChat worlds, please see [Whitelisted World Components](/worlds/whitelisted-world-components). Most of these components (except TextMeshPro) are unavailable on Quest.
+Pour voir la liste précise des composants autorisés dans les mondes VRChat, veuillez consulter [Composants mondiaux autorisés](/worlds/composants-mondiaux-autorises). La plupart de ces composants (à l'exception de TextMeshPro) ne sont pas disponibles sur Quest.
 
 ## TextMeshPro
-"TextMesh Pro is the ultimate text solution for Unity. It's the perfect replacement for Unity's UI Text & Text Mesh."
+"TextMesh Pro est la solution ultime de texte pour Unity. C'est le remplacement parfait pour le Texte UI et Text Mesh de Unity."
 
-As of Unity 2018, TextMesh Pro is a built-in component of Unity. We strongly recommend TextMeshPro over Unity's built-in text components, as it delivers high-quality text in any font size or screen size.
+Depuis Unity 2018, TextMesh Pro est un composant intégré à Unity. Nous recommandons vivement TextMeshPro par rapport aux composants de texte intégrés de Unity, car il offre un texte de haute qualité dans n'importe quelle taille de police ou taille d'écran.
 
 ## Post Processing Stack v2
-Import from Package Manager.
+Importez depuis le Gestionnaire de packages.
 
-We strongly suggest checking out [Silent's Post Processing guide](https://gitlab.com/s-ilent/SCSS/wikis/Other/Post-Processing) for more info and best practices.
+Nous vous suggérons vivement de consulter [le guide de Post Processing de Silent](https://gitlab.com/s-ilent/SCSS/wikis/Other/Post-Processing) pour plus d'informations et les meilleures pratiques.
 :::caution 
 
-Do not import the `Test` folder when importing post-processing. It will cause script errors which will prevent you from uploading the world.
+N'importe pas le dossier `Test` lors de l'importation de l'effet post-processing. Cela provoquera des erreurs de script qui vous empêcheront de télécharger le monde.
 :::
-"Post-processing is the process of applying full-screen filters and effects to a camera’s image buffer before it is displayed to screen. It can drastically improve the visuals of your product with little setup time."
+"Le post-processing est le processus qui consiste à appliquer des filtres et des effets plein écran à la mémoire tampon d'une caméra avant son affichage à l'écran. Il peut considérablement améliorer les visuels de votre produit avec peu de temps de configuration."
 
 ## [Final IK](https://assetstore.unity.com/packages/tools/animation/final-ik-14290)
-"The final Inverse Kinematics solution for the game developer."
+"La solution finale de cinématique inverse pour le développeur de jeux."

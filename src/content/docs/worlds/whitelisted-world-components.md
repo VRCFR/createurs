@@ -1,15 +1,15 @@
 ---
-title: "Whitelisted World Components"
-slug: "whitelisted-world-components"
-hidden: false
-createdAt: "2018-12-13T22:11:19.350Z"
-updatedAt: "2021-09-15T23:15:28.795Z"
+title: "Composants mondiaux autorisés"
+description: "Liste complète des scripts utilisables dans les mondes. Les composants qui ne figurent pas dans cette liste ne fonctionneront pas."
 ---
-The following is the complete list of scripts usable within worlds. Components that are not in this list will not work.
-:::caution Oculus Quest
 
-The Quest version of VRChat has some exceptions to this list. Check [here](/platforms/android/quest-content-limitations#components) for more info.
+Les composants suivants sont utilisables dans les mondes. Les composants qui ne figurent pas dans cette liste ne fonctionneront pas.
+
+:::caution[Oculus Quest]
+
+La version Quest de VRChat présente certaines exceptions à cette liste. Consultez [ici](/platforms/android/quest-content-limitations#components) pour plus d'informations.
 :::
+
 ## Unity Components
 - WindZone
 - VideoPlayer
@@ -97,7 +97,7 @@ The Quest version of VRChat has some exceptions to this list. Check [here](/plat
 - [ScaleConstraint](https://docs.unity3d.com/2019.4/Documentation/Manual/class-ScaleConstraint.html)
 
 ## VRChat Components
-- [*VRC_IKFollower*](https://docs.vrchat.com/docs/vrc_ikfollower) - Deprecated. Use [Constraints](https://docs.unity3d.com/2019.4/Documentation/Manual/Constraints.html) instead! 
+- [*VRC_IKFollower*](https://docs.vrchat.com/docs/vrc_ikfollower) - Obsolète. Utilisez plutôt les [contraintes](https://docs.unity3d.com/2019.4/Documentation/Manual/Constraints.html) !
 - [VRC_AvatarPedestal](/worlds/components/vrc_avatarpedestal) 
 - [VRC_PortalMarker](/worlds/components/vrc_portalmarker) 
 - [VRC_MirrorReflection](/worlds/components/vrc_mirrorreflection) 
@@ -127,7 +127,7 @@ The Quest version of VRChat has some exceptions to this list. Check [here](/plat
 - TextContainer
 - TMP_Dropdown
 
-## Unity Event System
+## Système d'événements Unity
 - EventSystem
 - EventTrigger
 - UIBehaviour
@@ -139,7 +139,7 @@ The Quest version of VRChat has some exceptions to this list. Check [here](/plat
 - BaseRaycaster
 - PhysicsRaycaster
 
-## Unity UI
+## Interface utilisateur Unity
 - Button
 - Dropdown
 - Dropdown
@@ -175,7 +175,7 @@ The Quest version of VRChat has some exceptions to this list. Check [here](/plat
 ## Post Processing Stack V2
 :::caution Post Processing Stack v1
 
-PPSv1 is not supported in either VRCSDK2 or VRCSDK3. It has been deprecated by Unity.
+PPSv1 n'est pas pris en charge dans VRCSDK2 ou VRCSDK3. Il a été rendu obsolète par Unity.
 :::
 - PostProcessDebug
 - PostProcessLayer
