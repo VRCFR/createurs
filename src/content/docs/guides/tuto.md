@@ -1,5 +1,5 @@
 ---
-title: Crée son propre tutos
+title: Créer son propre tuto
 description: Bien configurer le tutoriel pour implémentation sur le site de vrchat france
 ---
 

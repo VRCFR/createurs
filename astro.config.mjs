@@ -25,6 +25,11 @@ export default defineConfig({
       autogenerate:{
         directory: 'worlds'
       }
+    },{
+      label:'Outils',
+      autogenerate:{
+        directory: 'outils'
+      }
     }
     ]
   }), markdoc()],

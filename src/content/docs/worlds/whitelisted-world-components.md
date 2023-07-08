@@ -1,16 +1,14 @@
 ---
 title: "Composants mondiaux autorisés"
-description: "Liste complète des scripts utilisables dans les mondes. Les composants qui ne figurent pas dans cette liste ne fonctionneront pas."
+description: "Voici la liste complète des scripts utilisables dans les mondes. Les composants qui ne figurent pas dans cette liste ne fonctionneront pas."
 ---
 
-Les composants suivants sont utilisables dans les mondes. Les composants qui ne figurent pas dans cette liste ne fonctionneront pas.
+Le texte suivant est la liste complète des scripts utilisables dans les mondes. Les composants qui ne figurent pas dans cette liste ne fonctionneront pas.
 
 :::caution[Oculus Quest]
-
-La version Quest de VRChat présente certaines exceptions à cette liste. Consultez [ici](/platforms/android/quest-content-limitations#components) pour plus d'informations.
+La version Oculus Quest de VRChat présente quelques exceptions à cette liste. Consultez [ici](/platforms/android/quest-content-limitations#components) pour plus d'informations.
 :::
-
-## Unity Components
+## Composants Unity
 - WindZone
 - VideoPlayer
 - Tilemap
@@ -87,7 +85,7 @@ La version Quest de VRChat présente certaines exceptions à cette liste. Consul
 - Halo
 - MeshRenderer
 
-### Unity Components
+### Composants Unity
 - [ParticleSystemForceField](https://docs.unity3d.com/2019.4/Documentation/Manual/class-ParticleSystemForceField.html)
 - [AimConstraint](https://docs.unity3d.com/2019.4/Documentation/Manual/class-AimConstraint.html)
 - [LookAtConstraint](https://docs.unity3d.com/2019.4/Documentation/Manual/class-LookAtConstraint.html)
@@ -96,16 +94,16 @@ La version Quest de VRChat présente certaines exceptions à cette liste. Consul
 - [RotationConstraint](https://docs.unity3d.com/2019.4/Documentation/Manual/class-RotationConstraint.html)
 - [ScaleConstraint](https://docs.unity3d.com/2019.4/Documentation/Manual/class-ScaleConstraint.html)
 
-## VRChat Components
-- [*VRC_IKFollower*](https://docs.vrchat.com/docs/vrc_ikfollower) - Obsolète. Utilisez plutôt les [contraintes](https://docs.unity3d.com/2019.4/Documentation/Manual/Constraints.html) !
-- [VRC_AvatarPedestal](/worlds/components/vrc_avatarpedestal) 
-- [VRC_PortalMarker](/worlds/components/vrc_portalmarker) 
-- [VRC_MirrorReflection](/worlds/components/vrc_mirrorreflection) 
-- [VRC_SceneDescriptor](/worlds/components/vrc_scenedescriptor)  
-- [VRC_SpatialAudioSource](/worlds/components/vrc_spatialaudiosource) 
-- [VRC_Station](/worlds/components/vrc_station) 
-- [VRC_UiShape](/worlds/components/vrc_uishape) 
-- [VRCPipelineManager](/sdk/vrcpipelinemanager) 
+## Composants VRChat
+- [*VRC_IKFollower*](https://docs.vrchat.com/docs/vrc_ikfollower) - Obsolète. Utilisez [Constraints](https://docs.unity3d.com/2019.4/Documentation/Manual/Constraints.html) à la place !
+- [VRC_AvatarPedestal](/worlds/components/vrc_avatarpedestal)
+- [VRC_PortalMarker](/worlds/components/vrc_portalmarker)
+- [VRC_MirrorReflection](/worlds/components/vrc_mirrorreflection)
+- [VRC_SceneDescriptor](/worlds/components/vrc_scenedescriptor)
+- [VRC_SpatialAudioSource](/worlds/components/vrc_spatialaudiosource)
+- [VRC_Station](/worlds/components/vrc_station)
+- [VRC_UiShape](/worlds/components/vrc_uishape)
+- [VRCPipelineManager](/sdk/vrcpipelinemanager)
 
 ## Dynamic Bone
 - DynamicBone
@@ -175,7 +173,7 @@ La version Quest de VRChat présente certaines exceptions à cette liste. Consul
 ## Post Processing Stack V2
 :::caution Post Processing Stack v1
 
-PPSv1 n'est pas pris en charge dans VRCSDK2 ou VRCSDK3. Il a été rendu obsolète par Unity.
+PPSv1 n'est pas pris en charge dans VRCSDK2 ni dans VRCSDK3. Il a été abandonné par Unity.
 :::
 - PostProcessDebug
 - PostProcessLayer
