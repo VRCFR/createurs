@@ -16,6 +16,11 @@ export default defineConfig({
         directory: 'guides'
       }
     }, {
+      label: 'SDK',
+      autogenerate: {
+        directory: 'sdk'
+      }
+    }, {
       label: 'Avatars',
       autogenerate: {
         directory: 'avatars'
@@ -26,9 +31,9 @@ export default defineConfig({
         directory: 'worlds'
       }
     },{
-      label:'Outils',
+      label:'Plateforme',
       autogenerate:{
-        directory: 'outils'
+        directory: 'platform'
       }
     }
     ]
