@@ -8,7 +8,7 @@ Si vous souhaitez contribuer, merci de passer par le [Discord](https://discord.g
 ## Création de tutoriels sur Discord 
 Pour la création d'un poste sur Discord, voici la procédure à suivre:
 ![Tutos 1](/img/tuto_1.png)
-Cliquez sur **Nouveau Post** Pour créer un nouveau post sur le forum 
+Cliquez sur **Nouveau Post** Pour créer un nouveaux post sur le forum 
 
 Une fois ouvert, vous avez cette fenêtre qui apparait, c'est ici que vous allez pouvoir envoyer votre tutoriels
 ![Tutos 2](/img/tuto_2.png)

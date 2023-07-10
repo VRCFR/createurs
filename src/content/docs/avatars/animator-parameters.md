@@ -3,7 +3,7 @@ title: "Paramètres de l'animateur"
 description: "Liste des paramètres de l'animateur et leur description dans Unity."
 ---
 
-:::caution Connaissance de Unity requise
+:::caution[Connaissance de Unity requise]
 
 Ce document part du principe que vous avez des connaissances de base sur les [animateurs Unity](https://docs.unity3d.com/2019.4/Documentation/Manual/class-AnimatorController.html).
 
