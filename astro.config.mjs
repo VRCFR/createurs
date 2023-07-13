@@ -6,7 +6,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   integrations: [
     starlight({
-      title: 'VRChat France Créateurs',
+      title: 'VRChat France',
       social: {
         discord: 'https://discord.gg/vrchatfrance'
       },
