@@ -13,8 +13,8 @@ Que vous soyez un développeur chevronné ou un passionné curieux, le **SDK VRC
 
 ## Guide de démarrage rapide
 
-1. **Téléchargez et installez le Companion du Créateur**.
-   - Si Unity n'est pas installé, le Companion du Créateur vous aidera à télécharger Unity Hub, à installer Unity 2019.4.31f1 et à créer un compte Unity.
+1. **Téléchargez et installez le [Creator Compagnon](https://vrchat.com/download/vcc)**.
+   - Si Unity n'est pas installé, le Creator Compagnon vous aidera à télécharger Unity Hub, à installer Unity 2019.4.31f1 et à créer un compte Unity.
 
 2. **Utilisez le Companion du Créateur** pour créer un nouveau projet de Monde ou d'Avatar, et ouvrez-le avec Unity.
 
