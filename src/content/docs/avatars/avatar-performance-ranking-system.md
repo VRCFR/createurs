@@ -1,281 +1,287 @@
 ---
-title: "Rangs de Performance"
-description: "Le Système de Classement des Performances des Avatars vous permet de voir dans quelle mesure l'avatar d'un utilisateur affecte les performances en analysant les composants présents sur cet avatar. Vous pouvez également l'utiliser sur votre propre avatar pour évaluer ses performances."
+title: "Performance d'avatars"
+description: "Guide pour créer un menu d'expressions et gérer les contrôles dans Unity"
 ---
 
-Le présent système vise à informer les utilisateurs des composants les plus lourds en termes de performances sur leurs avatars et à offrir des conseils de base sur les éléments à prendre en compte lors de l'optimisation de leur avatar.
 
-Il est également utilisé pour alimenter le système de [Classement Minimum de Performance Affichée](/avatars/avatar-performance-ranking-system#section-minimum-displayed-performance-rank), qui permet aux utilisateurs de décider quels avatars ils souhaitent afficher en fonction de leur classement de performances.
+## Niveaux de performance
 
-**Ce système ne prétend pas être l'autorité suprême en matière de performances des avatars**, mais il constitue un bon guide général pour indiquer si un avatar nécessite un peu plus de travail pour être performant.
-:::danger Les rangs de performance ne sont pas une vérité absolue !
+Le système de classement de performance des avatars vous permet de voir dans quelle mesure l'avatar d'un utilisateur affecte les performances grâce à l'analyse des composants de cet avatar. Vous pouvez également l'utiliser sur votre propre avatar pour savoir à quel point il est performant.
 
-Bien que le système de classement des performances fasse de son mieux pour évaluer le scénario "pire cas" des performances d'un avatar, il existe de nombreuses façons qu'un avatar bien optimisé apparaisse comme étant de "Très Mauvaise" qualité, tandis qu'un avatar qui demande beaucoup de ressources en termes de FPS pourrait être classé comme "Excellent".
+Ce système est conçu pour informer les utilisateurs des composants les plus lourds en termes de performances sur leurs avatars et leur offrir des conseils de base sur ce qu'il faut examiner lors de l'optimisation de leur avatar.
 
-Pour les techniciens : le système de classement des performances est basé sur une analyse statique des propriétés de l'avatar, sans tenir compte de facteurs tels que les animateurs, les shaders, la résolution des textures, les lumières pixelisées et bien d'autres. *Cependant*, il constitue un excellent test de détection des avatars problématiques dans 95 % des cas !
+Il est également utilisé pour gérer le système [Classement de Performance Minimum Affiché](/avatars/avatar-performance-ranking-system#section-minimum-displayed-performance-rank), qui permet aux utilisateurs de décider quels avatars ils souhaitent afficher en fonction de leur classement de performance.
+
+**Ce système n'a pas vocation à être une autorité incontestable sur les performances des avatars**, mais c'est un bon guide général pour indiquer si un avatar nécessite un peu plus de travail pour être performant.
+:::danger[Les classements de performance ne sont pas définitifs !]
+
+Bien que le système de classement de performance fasse de son mieux pour évaluer le "pire scénario" en termes de performances d'un avatar, il existe de nombreuses façons qu'un avatar bien optimisé apparaisse comme "Très faible" et qu'un avatar qui consomme beaucoup de FPS obtienne un classement "Excellent".
+
+Pour les techniquement avertis : le système de classement de performance est basé sur une analyse statique des propriétés de l'avatar, sans tenir compte d'aspects tels que les animateurs, les shaders, la résolution des textures, les lumières pixelisées et de nombreux autres facteurs. *Cependant*, il sert généralement de très bon test pour détecter les avatars problématiques 95% du temps !
 :::
 
-## Version Courte
-**Visez le rang "Bon".** Si vous n'y parvenez pas, **"Moyen" est tout à fait acceptable.**
+## Version courte
+**Visez le classement "Bon".** Si vous n'y parvenez pas, le niveau "Moyen" est tout à fait acceptable.
 
-La création d'avatars est déjà difficile, et la création d'avatars optimisés l'est encore plus. C'est une compétence qui prend beaucoup de temps à développer !
+La création d'avatars est déjà difficile, et la création d'avatars optimisés l'est encore plus. C'est une compétence qui demande beaucoup de temps pour être maîtrisée !
 
-N'oubliez pas que de nombreux événements, groupes et lieux dans VRChat peuvent vous demander de changer d'avatar si vous apparaissez avec un avatar de "Très Mauvaise" qualité. Par conséquent, même si vous choisissez d'utiliser un avatar de "Très Mauvaise" qualité dans des situations restreintes avec vos amis, assurez-vous d'en avoir un autre prévu pour les situations avec plus de personnes.
+Gardez à l'esprit que de nombreux événements, groupes et lieux dans VRChat peuvent vous demander de changer d'avatar si vous apparaissez avec un avatar "Très faible". Par conséquent, même si vous choisissez d'utiliser un avatar "Très faible" dans des situations restreintes avec vos amis, assurez-vous d'avoir également un avatar destiné à être utilisé dans des instances avec plus de personnes.
 
-Votre avatar affecte le framerate de tout le monde, donc soyez conscient de l'impact de vos choix sur l'expérience des autres. Sinon, ils pourraient vous voir sous la forme de votre Fallback !
-## Icônes de Classement de Performance
-Lorsque vous ouvrez votre Menu Rapide, vous verrez des icônes apparaître au-dessus des noms des utilisateurs.
+Votre avatar affecte le taux de rafraîchissement de tout le monde, donc soyez conscient de la façon dont vos choix affectent l'expérience des autres. Sinon, ils pourraient vous voir en tant qu'avatar de secours (Fallback) !
 
-Les rangs sont les suivants :
+## Icônes de classement de performance
+Lorsque vous ouvrez votre menu rapide, des icônes apparaissent au-dessus des plaques d'identité des utilisateurs.
+
+Les classements sont les suivants :
 
 | Icône                                                  | Classement de Performance | Description                                                                                                                                                                       |
-|-------------------------------------------------------|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ![image](/img/avatars/performance-rank/excellent.png) | Excellent                 | C'est aussi bien que possible ! Le rang "Etoile d'Or sur le Frigo".                                                                                                               |
-| ![image](/img/avatars/performance-rank/good.png)      | Bon                       | Assez bien ! Un excellent objectif à viser.                                                                                                                                       |
-| ![image](/img/avatars/performance-rank/medium.png)    | Moyen                     | Ne vous laissez pas tromper par le nom, "Moyen" est tout à fait correct. Si vous êtes à ce niveau et que vous ne souhaitez pas aller plus loin, vous êtes bien.                |
-| ![image](/img/avatars/performance-rank/poor.png)      | Mauvais                   | Pourrait utiliser quelques améliorations.                                                                                                                                         |
-| ![image](/img/avatars/performance-rank/very-poor.png) | Très Mauvais              | Cet avatar présente de graves problèmes de performance. Étant donné que ce classement est sans limite, il est très probable que vos performances en souffrent si cet avatar est visible. |
+|-------------------------------------------------------|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ![image](/img/avatars/performance-rank/excellent.png) | Excellent                | C'est aussi bien que possible ! Le classement "Étoile d'or sur le frigo".                                                                                                          |
+| ![image](/img/avatars/performance-rank/good.png)      | Bon                      | Assez bon ! Un excellent objectif à atteindre.                                                                                                                                    |
+| ![image](/img/avatars/performance-rank/medium.png)    | Moyen                    | Ne vous laissez pas tromper par le nom, le classement "Moyen" est tout à fait acceptable. Si vous êtes ici et que vous ne voulez pas aller plus loin, c'est bien.                 |
+| ![image](/img/avatars/performance-rank/poor.png)      | Médiocre                 | Pourrait nécessiter quelques ajustements.                                                                                                                                        |
+| ![image](/img/avatars/performance-rank/very-poor.png) | Très Faible              | Cet avatar présente de sérieux problèmes de performances. Comme ce classement n'est pas borné, il est fort probable que vos performances en souffrent lorsque cet avatar est visible. |
 
-## Consultation des Statistiques Détaillées de l'Avatar
-Si vous cliquez sur un utilisateur avec votre Menu Rapide ouvert, vous remarquerez un nouveau bouton **"Afficher les Statistiques de l'Avatar"** à gauche, affichant l'icône du classement de performance de cet utilisateur.
+## Affichage des statistiques détaillées de l'avatar
+
+Si vous cliquez sur un utilisateur avec votre menu rapide ouvert, vous remarquerez un nouveau bouton **"Afficher les statistiques de l'avatar"** sur le côté gauche, affichant l'icône du classement de performance de cet utilisateur.
 :::caution
 
-Cette image est obsolète ! Mise à jour en cours.
+Cette image est obsolète ! Mise à jour en attente.
 :::
 
 ![image](/img/avatars/avatar-performance-ranking-system-05c612d-image_4.png)
 
-En cliquant sur cette icône, vous pouvez consulter les **Statistiques Détaillées de l'Avatar** pour cet avatar. Vous pouvez y accéder pour votre propre avatar en allant dans votre Menu Avatar, en cliquant sur l'un de vos avatars, puis en cliquant sur le bouton **"Statistiques de l'Avatar"** en bas à gauche de l'écran.
+En cliquant sur cette icône, vous pouvez afficher les **statistiques détaillées de l'avatar** correspondant. Vous pouvez accéder à ces statistiques pour votre propre avatar en allant dans le menu Avatar, en cliquant sur l'un de vos avatars, puis en cliquant sur le bouton **Avatar Stats** en bas à gauche de l'écran.
 :::caution
 
-Cette image est obsolète ! Mise à jour en cours.
+Cette image est obsolète ! Mise à jour en attente.
 :::
 
 ![avatar-performance-ranking-system-7a362c2-fixedTrogPerf.png](/img/avatars/avatar-performance-ranking-system-7a362c2-fixedTrogPerf.png)
 
-Lorsque vous cliquez sur le bouton **"Statistiques de l'Avatar"**, une fenêtre s'affiche avec les détails de l'avatar que vous regardez, ou de votre propre avatar (si vous avez cliqué sur le bouton dans l'onglet Avatar).
+Lorsque vous cliquez sur le bouton **Avatar Stats**, une fenêtre pop-up s'affiche avec les détails de l'avatar que vous regardez ou de votre propre avatar (si vous avez cliqué sur le bouton dans l'onglet Avatar).
 :::caution
 
-Cette image est obsolète ! Mise à jour en cours.
+Cette image est obsolète ! Mise à jour en attente.
 :::
 
 <iframe src='https://gfycat.com/ifr/ImpossibleFarawayLamprey?hd=1' frameborder='0' scrolling='no' allowfullscreen width='640' height='506'></iframe>
 
-La couleur du texte correspond au rang auquel la statistique particulière "fait baisser" le classement.
+La couleur du texte correspond au classement qui fait "baisser" le classement global en raison de cette statistique particulière.
 
-Vous verrez également un avant et un après sous la forme des lignes "Original" et "Filtré pour les Performances". Si vous utilisez le système de [Classement Minimum de Performance Affichée](/avatars/avatar-performance-ranking-system#section-minimum-displayed-performance-rank), vous pouvez voir les statistiques avant et après que le système ait supprimé des composants. Dans le cas où le système de Classement Minimum de Performance Affichée bloque un avatar pour des raisons de performances, vous ne verrez que les statistiques originales.
+Vous verrez également un "avant et après" sous forme de lignes "Original" et "Perf Filtered". Si vous utilisez le système [Classement de Performance Minimum Affiché](/avatars/avatar-performance-ranking-system#section-minimum-displayed-performance-rank), vous pouvez voir les statistiques avant et après que le système ait supprimé des composants. Dans le cas où le système de classement de performance minimum bloque un avatar pour des raisons de performances, vous ne verrez que les statistiques originales.
 
-Dans l'exemple ci-dess
+Dans l'exemple ci-dessus, les Lights (lumières) et les Particle Systems (systèmes de particules) sont désactivés car la limite définie est dépassée. Comme les Particle Systems utilisent au moins un matériau chacun, le nombre de matériaux issus des Particle Systems est également soustrait de l'avatar avant le filtrage.
 
-us, les éclairages (Lights) et les systèmes de particules (Particle Systems) sont désactivés car ils dépassent la limite définie. Comme les systèmes de particules utilisent au moins un matériau chacun, le nombre de matériaux des systèmes de particules est également soustrait à l'avatar avant le filtrage.
+Vous pouvez également voir que nous fournissons un lien vers notre **Documentation**, en particulier nos [Conseils d'optimisation des avatars](/avatars/avatar-optimizing-tips).
 
-Vous pouvez également voir que nous fournissons un lien vers notre **Documentation**, notamment nos [Conseils d'Optimisation des Avatars](/avatars/avatar-optimizing-tips).
-## Statistiques de Classement de Performance de l'Avatar
+## Statistiques de classement de performance des avatars
 Voici une liste de toutes les statistiques prises en compte par le système et leur description.
 
-Les statistiques en gras entraîneront le blocage complet de l'avatar si elles dépassent le Classement de Performance Minimum Affichée. Si d'autres statistiques (à l'exception de la taille des limites) dépassent le Classement de Performance Minimum Affichée, seuls certains composants de l'avatar seront bloqués. Les composants liés aux statistiques dépassées seront supprimés.
+Les statistiques en gras bloqueront complètement l'avatar s'ils dépassent le classement de performance minimum affiché. Si d'autres statistiques (à l'exception des limites) dépassent le classement de performance minimum affiché, l'avatar sera partiellement bloqué. Les composants liés aux statistiques dépassées seront supprimés.
 
-Par exemple, si le Classement de Performance Minimum Affichée est réglé sur "Mauvais", un avatar avec 9 Renderers de Traînée (Trails) (Classement de Performance "Très Mauvais") sera affiché avec tous ses Renderers de Traînée supprimés. Consultez [Classement Minimum de Performance Affichée](/avatars/avatar-performance-ranking-system#section-minimum-displayed-performance-rank) pour plus d'informations.
+Par exemple, avec le classement de performance minimum affiché réglé sur "Médiocre", un avatar ayant 9 renderers de trails (Très Faible) sera affiché avec tous ses renderers de trails supprimés. Référez-vous à la section [Classement de Performance Minimum Affiché](/avatars/avatar-performance-ranking-system#section-minimum-displayed-performance-rank) pour plus d'informations.
 
-| Qualité de l'Avatar              | Description                                                                                                                       |
-| --------------------------------| ---------------------------------------------------------------------------------------------------------------------------------------- |
-| Polygones                        | Nombre de polygones du modèle, compté en triangles.                                                                        |
-| Taille des Limites               | Taille totale de l'avatar. Si elle est très grande, l'utilisateur a probablement une grande animation sur l'avatar qui n'est pas visible en permanence. Note importante : la Taille des Limites n'entraînera pas le blocage de l'avatar même si elle est inférieure au Classement de Performance Minimum Affichée. |
-| Mémoire des Textures             | Quantité de mémoire estimée utilisée par les textures de l'avatar. Ces textures occupent de l'espace à la fois dans la RAM du système et dans la mémoire de la carte vidéo.                                                     |
-| Meshes à Armatures               | Nombre de Meshes à Armatures (Skinned Mesh) présents sur l'avatar.                                                                                     |
-| Meshes                           | Nombre de Meshes (non à Armatures) présents sur l'avatar.                                                                                 |
-| Emplacements de Matériaux        | Nombre d'emplacements de matériaux présents sur l'avatar. Les emplacements de matériaux sont les emplacements sur le maillage où vous placez les matériaux. Ce sont eux qui comptent pour la création des sous-maillages, ce qui entraîne d'autres appels de dessin. Gardez à l'esprit que les systèmes de particules utiliseront un emplacement de matériaux, les systèmes de particules avec traînées utiliseront deux emplacements et les Renderers de Ligne utiliseront un emplacement de matériaux. |
-| Composants Dynamic Bone          | Nombre de scripts Dynamic Bone présents sur l'avatar.                                                                                        |
-| Transformations Dynamic Bone     | Nombre de transformations animées par un script Dynamic Bone donné sur l'avatar.                                                        |
-| Composants Dynamic Bone Collider | Nombre de scripts Dynamic Bone Collider présents sur l'avatar.                                                                               |
-| Vérification des Collisions Dynamic Bone | Nombre total de transformations Dynamic Bone affectées par les scripts Dynamic Bone Collider sur l'avatar. Cela peut compter plusieurs fois les transformations, car une seule transformation peut être affectée par plusieurs colliders. |
-| Composants PhysBones             | Nombre de composants PhysBone présents sur l'avatar.                                                                                          |
-| Transformations Affectées par les PhysBones | Nombre total de transformations affectées par les composants PhysBone sur l'avatar.                                                          |
-| Colliders PhysBones              | Nombre de scripts de collider PhysBone présents sur l'avatar.                                                                                    |
-| Vérification des Collisions PhysBones | Somme du nombre de transformations PhysBone que chaque collider peut affecter. Cela peut compter plusieurs fois les transformations, car une seule transformation peut être affectée par plusieurs colliders. |
-| Contacts Dynamics de l'Avatar    | Nombre de Contacts Dynamics de l'avatar.                                                                                     |
-| Animateurs                       | Nombre d'animateurs présents sur l'avatar. Note importante : il y en aura toujours au moins 1 en raison de l'animateur racine qui est compté. Cela signifie que pour le rang "Excellent", vous ne pouvez avoir aucun autre animateur. |
-| Os                               | Nombre d'os dans la structure de l'avatar.                                                                                                 |
-| Lumières                         | Nombre de composants Light présents sur l'avatar.                                                                                            |
-| Systèmes de Particules           | Nombre de composants Particle System présents sur l'avatar.                                                                                   |
-| Particules Actives Totales       | Somme de maxParticles pour tous les systèmes de particules de l'avatar.                                                                        |
-| Polys Actifs de Particules Mesh  | Nombre total de polygones de Mesh Particles émis par
+| Qualité de l'avatar       | Description                                                                                                                       |
+|--------------------------| ---------------------------------------------------------------------------------------------------------------------------------------- |
+| Polygones                | Le nombre de polygones du modèle en question, compté en triangles.                                                                        |
+| Taille des limites        | La taille totale de l'avatar. Si elle est vraiment énorme, l'utilisateur a probablement une grande animation sur l'avatar qui n'apparaît pas tout le temps. Note importante : La taille des limites n'entraînera pas le blocage de l'avatar même si elle est inférieure au classement de performance minimum affiché. |
+| Mémoire de texture        | La quantité de mémoire estimée utilisée par les textures de l'avatar. Ces textures occupent de l'espace à la fois dans la RAM du système et dans la mémoire de la carte vidéo.                                                     |
+| Meshes animées           | Le nombre de composants Mesh animés de l'avatar.                                                                                     |
+| Meshes                   | Le nombre de composants Mesh non animés de l'avatar.                                                                                 |
+| Emplacements de matériaux | Le nombre d'emplacements de matériaux sur l'avatar. Les emplacements de matériaux sont les emplacements sur le mesh où vous placez les matériaux. C'est ce qui compte pour la création de sous-meshes, ce qui entraîne d'autres appels de rendu. Gardez à l'esprit que les systèmes de particules utiliseront un emplacement de matériaux, les systèmes de particules avec des trails en utiliseront deux, et les Line Renderers en utiliseront un. |
+| Composants os dynamiques  | Le nombre de scripts Dynamic Bone sur l'avatar.                                                                                        |
+| Transformations os dynamiques | Le nombre de transformations animées par un script Dynamic Bone donné sur l'avatar.                                                        |
+| Colliders os dynamiques   | Le nombre de scripts Dynamic Bone Collider sur l'avatar.                                                                               |
+| Nombre de vérifications de collision des os dynamiques | Le nombre total de transformations DynamicBone affectées par les scripts Dynamic Bone Collider sur l'avatar. Cela peut compter les transformations deux fois ou plus, car une seule transformation peut être affectée par plusieurs colliders. |
+| Composants os physiques   | Le nombre de composants PhysBone sur l'avatar.                                                                                          |
+| Transformations affectées par les composants os physiques | Le nombre total de transformations affectées par les composants PhysBone sur l'avatar.                                                          |
+| Colliders os physiques    | Le nombre de scripts de collision PhysBone sur l'avatar.                                                                                    |
+| Nombre de vérifications de collision des os physiques | La somme du nombre de transformations PhysBone que chaque collider peut affecter. Cela peut compter les transformations deux fois ou plus, car une seule transformation peut être affectée par plusieurs colliders. |
+| Contacts dynamiques de l'avatar | Le nombre de contacts dynamiques de l'avatar.                                                                                     |
+| Animateurs                | Le nombre d'animateurs de l'avatar. Note importante : il y en aura toujours au moins 1 en raison de l'animateur racine compté. Cela signifie que pour le classement "Excellent", vous ne pouvez pas avoir d'animateurs supplémentaires. |
+| Os                       | Le nombre d'os dans le rig de l'avatar.                                                                                                 |
+| Lumières                 | Le nombre de composants Light sur l'avatar.                                                                                            |
+| Systèmes de particules   | Le nombre de composants Particle System sur l'avatar.                                                                                   |
+| Particules actives au total | La somme de maxParticles de tous les systèmes de particules sur l'avatar.                                                                        |
+| Polys actifs des Mesh Particles | Le nombre total de polygones des Mesh Particles émis par les systèmes de particules actifs. En d'autres termes, maxEmission * meshParticleVerts. |
+| Trails de particules activés | Si des systèmes de particules de l'avatar ont des trails activés, ceci sera vrai.                                                   |
+| Collision de particules activée | Si des systèmes de particules de l'avatar ont la collision de particules activée, ceci sera vrai.                                                |
+| Renderers de trails       | Le nombre de composants Trail Renderer sur l'avatar.                                                                                             |
+| Renderers de lignes        | Le nombre de composants Line Renderer sur l'avatar.                                                                                              |
+| Vêtements                 | Le nombre total de composants Cloth sur l'avatar.                                                                                     |
 
- les systèmes de particules actifs. Autrement dit, maxEmission * meshParticleVerts. |
-| Traînées de Particules Activées  | Si des systèmes de particules sur l'avatar ont des traînées activées, ceci sera vrai.                                                   |
-| Collisions de Particules Activées | Si des systèmes de particules sur l'avatar ont des collisions de particules activées, ceci sera vrai.                                                |
-| Renderers de Traînées            | Nombre de Renderers de Traînées (Trail Renderers) présents sur l'avatar.                                                                                             |
-| Renderers de Ligne               | Nombre de Renderers de Ligne (Line Renderers) présents sur l'avatar.                                                                                              |
-| Tissus                           | Nombre total de composants Cloth présents sur l'avatar.                                                                                     |
+## Avatar Performance Ranks - Valeurs maximales par classement
 
+Ci-dessous, vous trouverez les limites pour chacun des classements de performance. Si vous dépassez ces nombres pour une catégorie quelconque, vous passerez au classement supérieur.
 
-## Classes de Performance de l'Avatar - Limites Maximales par Classement
-Ci-dessous, vous trouverez les limites pour chaque Classement de Performance. Si vous dépassez ces chiffres pour une catégorie, vous serez classé dans la catégorie supérieure.
+Par exemple (sur PC), si votre avatar a 2 Meshes animées, votre avatar sera classé comme "Bon", car cela dépasse le classement "Excellent", mais ne dépasse pas le classement "Bon".
+:::caution[Tous les GameObjects et les composants sont pris en compte !]
 
-Par exemple (sur PC), si votre avatar a 2 Meshes à Armatures, votre avatar sera classé comme "Bon", car cela dépasse la note "Excellent", mais ne dépasse pas la note "Bon".
-
-:::caution Tous les GameObjects et Composants sont comptés !
-
-Tous les GameObjects et Composants, **y compris ceux qui sont actuellement désactivés**, sont pris en compte pour le Classement de Performance de l'Avatar.
+Tous les GameObjects et les composants, **y compris ceux qui sont actuellement désactivés**, contribuent au classement de performance de l'avatar.
 :::
 
-:::caution Mesh Read/Write Désactivé
+:::caution[Mesh Read/Write désactivé]
 
-Si vous désactivez Mesh Read/Write (lecture/écriture) sur **n'importe quel** Mesh (y compris les systèmes de particules) de l'avatar, le nombre de "Polygones" sera remplacé par "Mesh Read/Write Désactivé" et le Classement de Performance de l'Avatar sera immédiatement rétrogradé en "Très Mauvais", quel que soit le nombre réel de triangles sur l'avatar.
+Si vous désactivez Mesh Read/Write sur **n'importe quel** mesh de l'avatar (y compris les systèmes de particules), le nombre de "Polygones" affichera "Mesh Read/Write Disabled" et le classement de performance de l'avatar sera immédiatement rétrogradé à "Très Faible", indépendamment du nombre réel de triangles sur l'avatar.
 
 Le SDK vous avertit de cela et vous demandera de le corriger avant de télécharger l'avatar.
 :::
 
 ## Limites sur PC
-Sur PC, le Classement de Performance Minimum Affichée par défaut est réglé sur "Très Mauvais". **Actuellement, aucun avatar ne sera bloqué par défaut en raison du classement de performance sur PC, sauf si vous avez activé le système [Classement de Performance Minimum Affichée](/avatars/avatar-performance-ranking-system#section-minimum-displayed-performance-rank).**
+Sur PC, le niveau de classement de performance minimum affiché par défaut est réglé sur "Très Faible". **Actuellement, aucun avatar ne sera bloqué par défaut en raison du classement de performance sur PC, sauf si vous avez activé le système [Classement de Performance Minimum Affiché](/avatars/avatar-performance-ranking-system#section-minimum-displayed-performance-rank).**
 
-Les triangles (polygones) sont un cas un peu particulier : si vous avez 32 000 triangles ou moins, vous serez classé "Excellent". Tout nombre supérieur à 32 000 mais inférieur à 70 001 sera classé "Bon" (à moins qu'une autre statistique ne vous fasse descendre en dessous). Si vous dépassez 70 000 polygones, l'avatar sera immédiatement classé "Très Mauvais".
+Les polygones sont un cas quelque peu spécial - si vous avez 32 000 polygones ou moins, vous serez classé "Excellent". Tout nombre supérieur à 32 000 mais inférieur à 70 001 sera classé "Bon" (sauf si une autre statistique vous fait descendre). Si vous dépassez 70 000 polygones, l'avatar sera immédiatement classé comme "Très Faible".
 
-| Qualité de l'Avatar              | Excellent          | Bon         | Moyen       | Mauvais         |
-|---------------------------------|-------------------|-------------|-------------|-----------------|
-| Polygones                       | 32 000            | 70 000      | 70 000      | 70 000          |
-| Taille des Limites<sup>1</sup>  | 2,5m x 2,5m x 2,5m | 4m x 4m x 4m | 5m x 6m x 5m | 5m x 6m x 5m    |
-| Mémoire des Textures            | 40 Mo             | 75 Mo       | 110 Mo      | 150 Mo          |
-| Meshes à Armatures              | 1                 | 2           | 8           | 16              |
-| Meshes                          | 4                 | 8           | 16          | 24              |
-| Emplacements de Matériaux       | 4                 | 8           | 16          | 32              |
-| Composants Dynamic Bone         | 0                 | 4           | 16          | 32              |
-| Transformations Dynamic Bone    | 0                 | 16          | 32          | 256             |
-| Composants Dynamic Bone Collider| 0                 | 0           | 4           | 32              |
-| Vérification des Collisions Dynamic Bone | 0                 | 0           | 8           | 256             |
-| [PhysBones](/avatars/avatar-dynamics/physbones) Composants           | 4                 | 8           | 16          | 32              |
-| [PhysBones](/avatars/avatar-dynamics/physbones) Transformations      | 16                | 64          | 128         | 256             |
-| [PhysBones](/avatars/avatar-dynamics/physbones) Colliders            | 4                 | 8           | 16          | 32              |
-| Vérification des Collisions [PhysBones](/avatars/avatar-dynamics/physbones)   | 32                | 128         | 256         | 512             |
-| Contacts Dynamics de l'Avatar   | 8                 | 16          | 24          | 32              |
-| Animateurs                     | 1                 | 4           | 16          | 32              |
-| Os                             | 75                | 150         | 256         | 400             |
-| Lumières                       | 0                 | 0           | 0           | 1               |
-| Systèmes de Particules         | 0                 | 4           | 8           | 16              |
-| Particules Actives Totales     | 0                 | 300         | 1000        | 2500            |
-| Polys Actifs de Particules Mesh | 0                 | 1000        | 2000        | 5000            |
-| Traînées de Particules Activées | Faux              | Faux        | Vrai        | Vrai            |
-| Collisions de Particules Activées | Faux              | Faux        | Vrai        | Vrai            |
-| Renderers de Traînées           | 1                 | 2           | 4           | 8               |
-| Renderers de Ligne              | 1                 | 2           | 4           | 8               |
-| Tissus                         | 0                 | 1           | 1           | 1               |
-| Total des Sommets de Tissu     | 0                 | 50          | 100         | 200             |
-| Colliders Physiques            | 0                 | 1           | 8           | 8               |
-| Rigidbodies Physiques          | 0                 | 1           | 8           | 8               |
-| Joints Physiques               | 0                 | 0           | 4           | 8               |
-| Effets Audio                   | 32                | 64          | 128         | 256             |
-| Sources Audio                  | 32                | 64          | 128         | 256             |
-| Sources Audio en 3D            | 0                 | 16          | 32          | 64              |
-| Bande Passante Audio           | 20 kbps           | 40 kbps     | 60 kbps     | 100 kbps        |
+| Qualité de l'avatar                                                        | Excellent          | Bon         | Moyen       | Médiocre         |
+|----------------------------------------------------------------------------| ------------------ | ----------- | ----------- | -------------- |
+| Polygones                                                                  | 32 000             | 70 000      | 70 000      | 70 000         |
+| Taille des limites<sup>1</sup>                                              | 2,5m x 2,5m x 2,5m | 4m x 4m x 4m | 5m x 6m x 5m | 5m x 6m x 5m   |
+| Mémoire de texture                                                         | 40 Mo              | 75 Mo       | 110 Mo      | 150 Mo         |
+| Meshes animées                                                             | 1                  | 2           | 8           | 16             |
+| Meshes                                                                     | 4                  | 8           | 16          | 24             |
+| Emplacements de matériaux                                                  | 4                  | 8           | 16          | 32             |
+| Composants os dynamiques                                                   | 0                  | 4           | 16          | 32             |
+| Transformations os dynamiques                                              | 0                  | 16          | 32          | 256            |
+| Colliders os dynamiques                                                    | 0                  | 0           | 4           | 32             |
+| Nombre de vérifications de collision des os dynamiques                     | 0                  | 0           | 8           | 256            |
+| [PhysBones](/avatars/avatar-dynamics/physbones) Components                 | 4                  | 8           | 16          | 32             |
+| [PhysBones](/avatars/avatar-dynamics/physbones) Affected Transforms        | 16                 | 64          | 128         | 256            |
+| [PhysBones](/avatars/avatar-dynamics/physbones) Colliders                  | 4                  | 8           | 16          | 32             |
+| Nombre de vérifications de collision des os physiques                      | 32                 | 128         | 256         | 512            |
+| Contacts dynamiques de l'avatar                                            | 8                  | 16          | 24          | 32             |
+| Animateurs                                                                 | 1                  | 4           | 16          | 32             |
+| Os                                                                         | 75                 | 150         | 256         | 400            |
+| Lumières                                                                   | 0                  | 0           | 0           | 1              |
+| Systèmes de particules                                                     | 0                  | 4           | 8           | 16             |
+| Particules actives au total                                               | 0                  | 300         | 1000        | 2500           |
+| Polys actifs des Mesh Particles                                            | 0                  | 1000        | 2000        | 5000           |
+| Trails de particules activés                                               | False              | False       | True        | True           |
+| Collision de particules activée                                            | False              | False       | True        | True           |
+| Renderers de trails                                                        | 1                  | 2           | 4           | 8              |
+| Renderers de lignes                                                        | 1                  | 2           | 4           | 8              |
+| Vêtements                                                                  | 0                  | 1           | 1           | 1              |
+| Total Cloth Vertices                                                       | 0                  | 50          | 100         | 200            |
+| Physics Colliders                                                          | 0                  | 1           | 8           | 8              |
+| Physics Rigidbodies                                                        | 0                  | 1           | 8           | 8              |
+| Sources audio                                                              | 1                  | 4           | 8           | 8              |
 
-1 : En raison des limitations de Unity, les limites des Tailles ne sont pas exactes. Les échelles de plus de 10 sur n'importe quel axe peuvent provoquer des problèmes avec l'avatar. Assurez-vous de rester en dessous de cette valeur ! C'est toutefois un bon objectif pour les dimensions de l'avatar. Pour de meilleurs résultats, essayez de rester à une taille inférieure à 4m x 4m x 4m.
+Note de bas de page :
+1: La taille des limites est déterminée par la taille maximale de tous les composants de votre avatar. Les Trail Renderers et les Line Renderers ne sont pas pris en compte dans ce calcul.
 
 ## Limites sur Quest
-Sur Quest, les performances sont plus limitées, donc le Classement de Performance Minimum Affichée par défaut est réglé sur "Moyen". **Tout avatar classé "Très Mauvais" sur Quest ne sera pas autorisé à charger par défaut.**
+### Blocage du classement de performance par défaut
+Sur Quest, le classement de performance minimum affiché est réglé par défaut sur "Moyen". Cela signifie que vous ne verrez aucun avatar classé comme "Médiocre" ou "Très Médiocre".
 
-| Qualité de l'Avatar              | Excellent          | Bon         | Moyen       | Mauvais        |
-|---------------------------------|-------------------|-------------|-------------|----------------|
-| Polygones                       | 25 000            | 50 000      | 50 000      | 50 000         |
-| Taille des Limites<sup>1</sup>  | 2,5m x 2,5m x 2,5m | 3m x 3m x 3m | 3m x 3m x 3m | 3m x 3m x 3m   |
-| Mémoire des Textures            | 40 Mo             | 60 Mo       | 80 Mo       | 100 Mo         |
-| Meshes à Armatures              | 1                 | 2           | 8           | 16             |
-| Meshes                          | 4                 | 6           | 12          | 18             |
-| Emplacements de Matériaux       | 4                 | 6           | 12          | 16             |
-| Composants Dynamic Bone         | 0                 | 2           | 8           | 16             |
-| Transformations Dynamic Bone    | 0                 | 8           | 16          | 128            |
-| Composants Dynamic Bone Collider| 0                 | 0           | 2           | 16             |
-| Vérification des Collisions Dynamic Bone | 0                 | 0           | 4           | 128            |
-| [PhysBones](/avatars/avatar-dynamics/physbones) Composants           | 4                 | 6           | 12          | 16             |
-| [PhysBones](/avatars/avatar-dynamics/physbones) Transformations      | 12                | 32          | 64          | 128            |
-| [PhysBones](/avatars/avatar-dynamics/physbones) Colliders            | 4                 | 6           | 12          | 16             |
-| Vérification des Collisions [PhysBones](/avatars/avatar-dynamics/physbones)   | 16                | 32          | 64          | 128            |
-| Contacts Dynamics de l'Avatar   | 6                 | 12          | 18          | 24             |
-| Animateurs                     | 1                 | 2           | 8           | 16             |
-| Os                             | 50                | 100         | 128         | 200            |
-| Lumières                       | 0                 | 0           | 0           | 0              |
-| Systèmes de Particules         | 0                 | 2           | 4           | 8              |
-| Particules Actives Totales     | 0                 | 100         | 500         | 1000           |
-| Polys Actifs de Particules Mesh | 0                 | 500         | 1000        | 2000           |
-| Traînées de Particules Activées | Faux              | Vrai        | Vrai        | Vrai           |
-| Collisions de Particules Activées | Faux              | Vrai        | Vrai        | Vrai           |
-| Renderers de Traînées           | 1                 | 2           | 4           | 8              |
-| Renderers de Ligne              | 1                 | 2           | 4           | 8              |
-| Tissus                         | 0                 | 0           | 0           | 0              |
-| Total des Sommets de Tissu     | 0                 | 0           | 0           | 0              |
-| Colliders Physiques            | 0                 | 0           | 4           | 4              |
-| Rigidbodies Physiques          | 0                 | 0           | 4           | 4              |
-| Joints Physiques               | 0                 | 0           | 2           | 4              |
-| Effets Audio                   | 32                | 64          | 128         | 256            |
-| Sources Audio                  | 32                | 64          | 128         | 256            |
-| Sources Audio en 3D            | 0                 | 8           | 16          | 32             |
-| Bande Passante Audio           | 20 kbps           | 40 kbps     | 60 kbps     | 100 kbps       |
+Vous pouvez régler votre niveau de blocage de classement de performance sur "Médiocre" pour permettre l'affichage des avatars "Médiocres". Cependant, vous ne pouvez pas régler votre niveau de blocage de classement de performance sur "Très Médiocre".
 
-1 : En raison des limitations de Unity, les limites des Tailles ne sont pas exactes. Les échelles de plus de 10 sur n'importe quel axe peuvent provoquer des problèmes avec l'avatar. Assurez-vous de rester en dessous de cette valeur ! C'est toutefois un bon objectif pour les dimensions de l'avatar. Pour de meilleurs résultats, essayez de rester à une taille inférieure à 3m x 3m x 3m.
+Par exemple, si un avatar sur Quest dépasse 20 000 triangles (polygones), il ne s'affichera pas par défaut dans l'application. Ces avatars peuvent être forcés à s'afficher en cliquant sur chaque utilisateur et en cliquant sur "Afficher l'avatar".
 
-## Limites sur Quest 2
-Sur Quest 2, les performances sont meilleures que sur Quest, mais toujours limitées, donc le Classement de Performance Minimum Affichée par défaut est réglé sur "Moyen". **Tout avatar classé "Très Mauvais" sur Quest 2 ne sera pas autorisé à charger par défaut.**
+Il convient de noter qu'il existe une limite rigide sur les systèmes [Avatar Dynamics](/avatars/avatar-dynamics) sur Quest. Elle ne peut pas être contournée en utilisant "Afficher l'avatar". Voici la limite rigide :
 
-| Qualité de l'Avatar              | Excellent          | Bon         | Moyen       | Mauvais        |
-|---------------------------------|-------------------|-------------|-------------|----------------|
-| Polygones                       | 25 000            | 70 000      | 70 000      | 70000         |
-| Taille des Limites<sup>1</sup>  | 2,5m x 2,5m x 2,5m | 3m x 3m x 3m | 3m x 3m x 3m | 3m x 3m x 3m   |
-| Mémoire des Textures            | 40 Mo             | 75 Mo       | 110 Mo      | 150 Mo         |
-| Meshes à Armatures              | 1                 | 2           | 8           | 16             |
-| Meshes                          | 4                 | 8           | 16          | 24             |
-| Emplacements de Matériaux       | 4                 | 8           | 16          | 32             |
-| Composants Dynamic Bone         | 0                 | 4           | 16          | 32             |
-| Transformations Dynamic Bone    | 0                 | 16          | 32          | 256            |
-| Composants Dynamic Bone Collider| 0                 | 0           | 4           | 32             |
-| Vérification des Collisions Dynamic Bone | 0                 | 0           | 8           | 256            |
-| [PhysBones](/avatars/avatar-dynamics/physbones) Composants           | 4                 | 8           | 16          | 32             |
-| [PhysBones](/avatars/avatar-dynamics/physbones) Transformations      | 16                | 64          | 128         | 256            |
-| [PhysBones](/avatars/avatar-dynamics/physbones) Colliders            | 4                 | 8           | 16          | 32             |
-| Vérification des Collisions [PhysBones](/avatars/avatar-dynamics/physbones)   | 32                | 128         | 256         | 512            |
-| Contacts Dynamics de l'Avatar   | 8                 | 16          | 24          | 32             |
-| Animateurs                     | 1                 | 4           | 16          | 32             |
-| Os                             | 75                | 150         | 256         | 400            |
-| Lumières                       | 0                 | 0           | 0           | 1              |
-| Systèmes de Particules         | 0                 | 4           | 8           | 16             |
-| Particules Actives Totales     | 0                 | 300         | 1000        | 2500           |
-| Polys Actifs de Particules Mesh | 0                 | 1000        | 2000        | 5000           |
-| Traînées de Particules Activées | Faux              | Faux        | Vrai        | Vrai           |
-| Collisions de Particules Activées | Faux              | Faux        | Vrai        | Vrai           |
-| Renderers de Traînées           | 1                 | 2           | 4           | 8              |
-| Renderers de Ligne              | 1                 | 2           | 4           | 8              |
-| Tissus                         | 0                 | 1           | 1           | 1              |
-| Total des Sommets de Tissu     | 0                 | 50          | 100         | 200            |
-| Colliders Physiques            | 0                 | 1           | 8           | 8              |
-| Rigidbodies Physiques          | 0                 | 1           | 8           | 8              |
-| Joints Physiques               | 0                 | 0           | 4           | 8              |
-| Effets Audio                   | 32                | 64          | 128         | 256            |
-| Sources Audio                  | 32                | 64          | 128         | 256            |
-| Sources Audio en 3D            | 0                 | 16          | 32          | 64             |
-| Bande Passante Audio           | 20 kbps           | 40 kbps     | 60 kbps     | 100 kbps       |
+- 8 composants [PhysBone](/avatars/avatar-dynamics/physbones)
+- 64 transforms affectés par les [PhysBones](/avatars/avatar-dynamics/physbones)
+- 16 [PhysBones](/avatars/avatar-dynamics/physbones) colliders
+- 64 vérifications de collisions des [PhysBones](/avatars/avatar-dynamics/physbones)
+- 16 [Avatar Dynamics Contacts](/avatars/avatar-dynamics/contacts)
 
-1 : En raison des limitations de Unity, les limites des Tailles ne sont pas exactes. Les échelles de plus de 10 sur n'importe quel axe peuvent provoquer des problèmes avec l'avatar. Assurez-vous de rester en dessous de cette valeur ! C'est toutefois un bon objectif pour les dimensions de l'avatar. Pour de meilleurs résultats, essayez de rester à une taille inférieure à 3m x 3m x 3m.
+Si cette limite est dépassée sur Quest, tous les composants [Avatar Dynamics](/avatars/avatar-dynamics) seront supprimés de l'avatar, même si "Afficher l'avatar" est activé.
+:::danger
 
-## Limites sur PC et Quest
-Sur PC et Quest, certaines statistiques sont les mêmes, mais d'autres sont différentes. Voici les limites communes entre les deux plates-formes :
-
-| Qualité de l'Avatar              | Excellent          | Bon         | Moyen       | Mauvais         |
-|---------------------------------|-------------------|-------------|-------------|-----------------|
-| Meshes à Armatures              | 1                 | 2           | 8           | 16              |
-| Emplacements de Matériaux       | 4                 | 8           | 16          | 32              |
-| Animateurs                     | 1                 | 4           | 16          | 32              |
-| Systèmes de Particules         | 0                 | 4           | 8           | 16              |
-| Renderers de Traînées           | 1                 | 2           | 4           | 8               |
-| Renderers de Ligne              | 1                 | 2           | 4           | 8               |
-| Particules Actives Totales     | 0                 | 300         | 1000        | 2500            |
-| Traînées de Particules Activées | Faux              | Faux        | Vrai        | Vrai            |
-| Collisions de Particules Activées | Faux              | Faux        | Vrai        | Vrai            |
-| Tissus                         | 0                 | 1           | 1           | 1               |
-
-Le reste des statistiques varie en fonction de la plate-forme.
-
-:::caution
-
-Les statistiques fournies ici sont basées sur les limites de performance du SDK à la date de publication. Ces limites sont susceptibles d'être mises à jour à l'avenir en fonction des améliorations de la technologie et des capacités des plates-formes.
-
+La fonctionnalité "Afficher l'avatar" pour les avatars "Très Médiocres" pourrait être supprimée à l'avenir, et les avatars "Très Médiocres" pourraient être complètement supprimés de Quest.** Veuillez garder cela à l'esprit lors de la création d'avatars pour VRChat sur l'Oculus Quest.
 :::
 
-J'espère que cela vous aide à mieux comprendre les limites et les classes de performance de l'avatar ! N'hésitez pas à poser d'autres questions si vous en avez besoin.
+| Qualité de l'avatar                                                              | Excellent          | Bon         | Moyen       | Médiocre      |
+|----------------------------------------------------------------------------------| ------------------ | ----------- | ----------- | ------------- |
+| Polygones                                                                        | 7 500              | 10 000      | 15 000      | 20 000        |
+| Taille des limites<sup>1</sup>                                                  | 2,5m x 2,5m x 2,5m | 4m x 4m x 4m | 5m x 6m x 5m | 5m x 6m x 5m  |
+| Mémoire de texture                                                               | 10 Mo              | 18 Mo       | 25 Mo       | 40 Mo         |
+| Meshes animées                                                                   | 1                  | 1           | 2           | 2             |
+| Meshes                                                                           | 1                  | 1           | 2           | 2             |
+| Emplacements de matériaux                                                        | 1                  | 1           | 2           | 4             |
+| Animateurs                                                                       | 1                  | 1           | 1           | 2             |
+| Os                                                                               | 75                 | 90          | 150         | 150           |
+| Composants [PhysBones](/avatars/avatar-dynamics/physbones)<sup>2</sup>            | 0                  | 4           | 6           | 8             |
+| [PhysBones](/avatars/avatar-dynamics/physbones) Transforms affectés<sup>2</sup>  | 0                  | 16          | 32          | 64            |
+| [PhysBones](/avatars/avatar-dynamics/physbones) Colliders<sup>2</sup>             | 0                  | 4           | 8           | 16            |
+| Nombre de vérifications de collisions des [PhysBones](/avatars/avatar-dynamics/physbones)<sup>2</sup> | 0                  | 16          | 32          | 64            |
+| Contacts dynamiques de l'avatar                                                 | 2                  | 4           | 8           | 16            |
+| Systèmes de particules                                                           | 0                  | 0           | 0           | 2             |
+| Particules actives au total                                                     | 0                  | 0           | 0           | 200           |
+| Polys actifs des Mesh Particles                                                  | 0                  | 0           | 0           | 400           |
+| Trails de particules activés                                                     | False              | False       | False       | True          |
+| Collision de particules activée                                                  | False              | False       | False       | True          |
+| Renderers de trails                                                              | 0                  | 0           | 0           | 1             |
+| Renderers de lignes                                                              | 0                  | 0           | 0           | 1             |
+
+Note de bas de page :
+1: La taille des limites est déterminée par la taille maximale de tous les composants de votre avatar. Les Trail Renderers et les Line Renderers ne sont pas
+
+ pris en compte dans ce calcul.
+2: Si la valeur de "Très Médiocre" est dépassée sur Quest, peu importe l'état actuel de "Afficher l'avatar" de l'avatar, tous les composants liés aux Avatar Dynamics seront supprimés.
+
+### Catégories supprimées
+Les catégories suivantes sont désactivées sur Quest car elles ne peuvent jamais apparaître sur les avatars :
+
+  * Composants Dynamic Bone
+  * Transforms Dynamic Bone
+  * Colliders Dynamic Bone
+  * Compteur de vérifications de collisions Dynamic Bone
+  * Lumières (Lights)
+  * Vêtements (Cloths)
+  * Nombre total de sommets des vêtements (Total Cloth Vertices)
+  * Colliders de physique (Physics Colliders)
+  * Rigidbodies de physique (Physics Rigidbodies)
+  * Sources audio (Audio Sources)
+
+Ces valeurs peuvent toujours apparaître dans les statistiques affichées dans l'application, mais elles seront toujours nulles.
+
+## Classement minimum de performance affichée
+Vous pouvez choisir de gérer les avatars en fonction de leur classement de performance. Cette option est disponible dans le menu "Options de performance", accessible en tant que bouton dans le coin supérieur droit de l'onglet "Sécurité" du menu principal.
+
+Lorsque vous choisissez un classement de performance dans ce menu, tous les avatars qui sont en dessous de ce niveau auront leurs composants/affichage gérés comme décrit ci-dessous.
+
+| Paramètre                                                                          | Description                                                                                                          |
+| :-- |:---------------------------------------------------------------------------------------------------------------------|
+| Polygones                                                                         | **Avatar remplacé par [Fallback](https://docs.vrchat.com/docs/avatar-fallback-system)**                     |
+| Taille des limites                                                                | Aucun changement                                                                                                     |
+| Mémoire de texture                                                                | **Avatar remplacé par [Fallback](https://docs.vrchat.com/docs/avatar-fallback-system)**                             |
+| Meshes animées                                                                    | **Avatar remplacé par [Fallback](https://docs.vrchat.com/docs/avatar-fallback-system)**                             |
+| Meshes                                                                            | **Avatar remplacé par [Fallback](https://docs.vrchat.com/docs/avatar-fallback-system)**                             |
+| Emplacements de matériaux                                                         | **Avatar remplacé par [Fallback](https://docs.vrchat.com/docs/avatar-fallback-system)**                             |
+| Composants, Transformations, Colliders, CollisionCheckCount ou Contacts des PhysBones (Avatar Dynamics)  | Tous les composants PhysBone, PhysBone Collider et Contact sont supprimés                                                       |
+| Composants ou Transformations des Dynamic Bones                                    | Tous les composants Dynamic Bones sont supprimés                                                                                 |
+| Composants ou Colliders des Dynamic Bones                                          | Tous les composants Dynamic Bone Collider sont supprimés                                                                         |
+| Animators                                                                         | Tous les animateurs (à l'exception de l'animateur racine) sont supprimés                                                         |
+| Os                                                                                | **Avatar remplacé par [Fallback](https://docs.vrchat.com/docs/avatar-fallback-system)**                             |
+| Lumières                                                                          | Toutes les lumières sont supprimées                                                                                          |
+| Systèmes de particules                                                            | Tous les systèmes de particules sont supprimés                                                                                 |
+| Particules actives au total                                                       | Tous les systèmes de particules sont supprimés                                                                                 |
+| Polys actifs des Mesh Particles                                                   | Tous les systèmes de particules sont supprimés                                                                                 |
+| Trails de particules activés                                                      | Tous les systèmes de particules sont supprimés                                                                                 |
+| Collision de particules activée                                                   | Tous les systèmes de particules sont supprimés                                                                                 |
+| Renderers de trails                                                               | Tous les Trail Renderers sont supprimés                                                                                       |
+| Renderers de lignes                                                               | Tous les Line Renderers sont supprimés                                                                                        |
+| Vêtements                                                                         | Tous les composants Cloth sont supprimés                                                                                      |
+| Nombre total de sommets des vêtements                                             | Tous les composants Cloth sont supprimés                                                                                      |
+| Colliders de physique                                                             | Tous les colliders de physique sont supprimés                                                                                 |
+| Rigidbodies de physique                                                           | Tous les rigidbodies de physique sont supprimés                                                                               |
+| Sources audio                                                                      | Toutes les sources audio sont supprimées                                                                                     |
+
+### Classement minimum de performance affichée sur PC
+Sur VRChat pour PC, le classement minimum de performance affichée est réglé par défaut sur "Très Médiocre". Cela signifie que, par défaut, aucun avatar n'aura ses composants ou son affichage affecté pour des raisons de performance sur PC. Si vous souhaitez modifier cela, vous pouvez choisir entre les options "Moyen", "Médiocre" ou "Très Médiocre".
+
+### Blocage du classement de performance de l'avatar sur Quest
+Sur VRChat pour l'Oculus Quest, le blocage du classement de performance de l'avatar est réglé par défaut sur "Moyen". Vous pouvez choisir de le modifier pour le régler sur "Médiocre" afin de voir les avatars de ce rang, mais cela peut entraîner une baisse des performances.
+
+Vous ne pouvez pas désactiver le système de blocage du classement de performance de l'avatar sur Quest. En d'autres termes, les avatars classés comme "Très Médiocres" auront toujours leur affichage géré par VRChat pour l'Oculus Quest, et pourraient ne pas s'afficher du tout.
+
+Quel que soit le réglage que vous choisissez, si les limites des composants [Avatar Dynamics](/avatars/avatar-dynamics) sont dépassées sur Quest, tous ces composants seront supprimés. En résumé, il existe une limite rigide pour les composants Avatar Dynamics sur les avatars Quest.
+
+### Annulation de l'affichage des avatars individuels
+:::danger
+
+**La fonctionnalité "Afficher l'avatar" pour les avatars classés "Très Médiocre" pourrait être supprimée à l'avenir, et les avatars classés "Très Médiocres" pourraient être complètement supprimés de Quest.** Veuillez garder cela à l'esprit lors de la création d'avatars pour VRChat sur l'Oculus Quest.
+:::
+Vous pouvez choisir de remplacer l'ensemble du système (et le système de sécurité) en sélectionnant "Afficher l'avatar" pour chaque utilisateur que vous souhaitez afficher.
