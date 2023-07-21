@@ -1,6 +1,6 @@
 ---
 title: "Performance d'avatars"
-description: "Guide pour créer un menu d'expressions et gérer les contrôles dans Unity"
+description: "Quel sont les performances d'avatars sur VRChat"
 ---
 
 
