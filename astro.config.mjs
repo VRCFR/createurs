@@ -7,12 +7,6 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'VRChat France',
-      locales: {
-        root: {
-          label: "Français",
-          lang: "fr"
-        }
-      },
       social: {
         discord: 'https://discord.gg/vrchatfrance'
       },

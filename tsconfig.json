@@ -1,3 +1,6 @@
 {
+  "compilerOptions": {
+    "types": ["astro/env"]
+  },
   "extends": "astro/tsconfigs/strict"
 }
