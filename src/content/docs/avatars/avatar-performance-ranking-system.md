@@ -3,6 +3,16 @@ title: "Performance d'avatars"
 description: "Quel sont les performances d'avatars sur VRChat"
 ---
 
+:::note[Vidéo de Tupper]
+je vous conseil cette vidéo qui explique comment fonctionne l'optimisation d'avatar et comment le faire ! 
+:::caution[Langue]
+La vidéo est que en anglais, en vue de la durée de la vidéo, nous n'avons pas sous-titré toutes les informations contenue dedans
+
+<iframe src="https://www.youtube.com/embed/JFBQeNON64Q" title="Furality Sylva - Where'd My Frames Go? Avatar Performance in VRChat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+</iframe>
+:::
+
+
 
 ## Niveaux de performance
 
