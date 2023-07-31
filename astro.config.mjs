@@ -19,7 +19,6 @@ export default defineConfig({
       sidebar: [
         {
           label: 'Pour commencer',
-          collapsed: true,
           autogenerate: { directory: 'guides', collapsed: true, },
           
         },
@@ -27,7 +26,7 @@ export default defineConfig({
           label: 'SDK',
           collapsed: true,
           autogenerate: {
-            directory: 'sdk',
+            directory: 'SDK',
             collapsed: true,
           }
         },
