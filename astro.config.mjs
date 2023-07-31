@@ -19,31 +19,40 @@ export default defineConfig({
       sidebar: [
         {
           label: 'Pour commencer',
-          autogenerate: { directory: 'guides' }
+          collapsed: true,
+          autogenerate: { directory: 'guides', collapsed: true, },
+          
         },
         {
           label: 'SDK',
+          collapsed: true,
           autogenerate: {
             directory: 'sdk',
-            collapsed: true
+            collapsed: true,
           }
         },
         {
           label: 'Avatars',
+          collapsed: true,
           autogenerate: {
-            directory: 'avatars'
+            directory: 'avatars',
+            collapsed: true,
           }
         },
         {
           label: 'Mondes',
+          collapsed: true,
           autogenerate: {
-            directory: 'worlds'
+            directory: 'worlds',
+            collapsed: true,
           }
         },
         {
           label: 'Plateforme',
+          collapsed: true,
           autogenerate: {
-            directory: 'platform'
+            directory: 'platform',
+            collapsed: true,
           }
         }
       ]
