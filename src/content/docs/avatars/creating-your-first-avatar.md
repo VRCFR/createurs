@@ -12,7 +12,11 @@ Après avoir configuré le SDK, consultez notre exemple **exemple d'avatar**. Ou
 ![L'exemple d'avatar peut vous aider à comprendre à quoi peut ressembler un projet d'avatar VRChat complet.](/img/avatars/creating-your-first-avatar-3dfc191-Unity_YrUFLEWWDe.png)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 :::note[Besoin d'aide ?]
+=======
+:::note Besoin d'aide ?
+>>>>>>> master
 =======
 :::note Besoin d'aide ?
 >>>>>>> master
