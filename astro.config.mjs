@@ -18,8 +18,22 @@ export default defineConfig({
       },
       sidebar: [
         {
+<<<<<<< HEAD
+          label: 'Guides',
+          items: [
+            {
+              label: 'Bien démarrer',
+              autogenerate: { directory: 'guides', collapsed: true, },
+            },
+            {
+              label: 'A savoir !',
+              autogenerate: { directory: 'to-know', collapsed: true,},
+            },
+          ]
+=======
           label: 'Pour commencer',
           autogenerate: { directory: 'guides', collapsed: true, },
+>>>>>>> master
           
         },
         {

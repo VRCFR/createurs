@@ -11,7 +11,15 @@ Après avoir configuré le SDK, consultez notre exemple **exemple d'avatar**. Ou
 
 ![L'exemple d'avatar peut vous aider à comprendre à quoi peut ressembler un projet d'avatar VRChat complet.](/img/avatars/creating-your-first-avatar-3dfc191-Unity_YrUFLEWWDe.png)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+:::note[Besoin d'aide ?]
+=======
 :::note Besoin d'aide ?
+>>>>>>> master
+=======
+:::note Besoin d'aide ?
+>>>>>>> master
 
 La création de votre premier avatar peut être difficile. Si vous êtes bloqué, voici où vous pouvez obtenir de l'aide :
 - Lisez notre documentation (vous êtes en train de le faire !)
