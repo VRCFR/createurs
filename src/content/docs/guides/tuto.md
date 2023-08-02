@@ -2,7 +2,8 @@
 title: Créer son propre tuto
 description: Bien configurer le tutoriel pour implémentation sur le site de vrchat france
 ---
-:::note[Ou envoyer les postes ?]
+
+:::note[Ou envoyer les posts ?]
 Si vous souhaitez contribuer, merci de passer par le [Discord](https://discord.gg/vrchatfrance), un forum à était mis en place pour permettre de créer des postes.
 :::
 ## Création de tutoriels sur Discord 
@@ -29,10 +30,7 @@ Le staff se réserve le droit de supprimer ou non les postes si non respect des 
 Pour bien présenter son tutoriel, il est important de commencer par son titre ! Pour cela vous allez pouvoir rajouter au tout début de votre fichier: 
 
 ```
----
-title: Un titre
-description: Une description
----
+
 ```
 
 
@@ -157,27 +155,11 @@ Pour créer une citation, utilisez le symbole plus grand que (`>`) suivi d'un es
 Pour insérer une ligne horizontale, utilisez trois traits d'union (`---`) ou trois astérisques (`***`) sur une ligne séparée :
 
 ```
----
-```
 
-ou
-
-```
-***
-```
-
-:::tip[Le plus ?]
-Grâce à vous, vous allez aidez plein de personnes dans le besoin qui recherche de l'aide sur Unity ou Blender ! 
-:::
-
-## Exemple de présentation d'un tutos
-
-```md
----
 title: Créer son propre tuto
 description: Bien configurer le tutoriel pour implémentation sur le site de vrchat france
 ---
-:::note[Ou envoyer les postes ?]
+:::note[Ou envoyer les posts ?]
 Si vous souhaitez contribuer, merci de passer par le [Discord](https://discord.gg/vrchatfrance), un forum à était mis en place pour permettre de créer des postes.
 :::
 :::note[Pourquoi faire le tutos de cette manière]
