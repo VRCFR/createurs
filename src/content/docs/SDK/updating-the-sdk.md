@@ -30,7 +30,7 @@ Si vous voulez être très prudent, sauvegardez toujours vos projets avant de me
 ### SDK3 - Monde
 1. Fermez Unity.
 2. Sauvegardez votre projet Unity ! Vous n'avez pas besoin de sauvegarder votre dossier Library, ces fichiers sont générés automatiquement par Unity.
-:::caution Mise à niveau SDK3 avant 2020.3.2
+:::caution[Mise à niveau SDK3 avant 2020.3.2]
 
 **Cette étape est peu courante et vous n'aurez probablement pas besoin de la faire.** \n\nSi vous mettez à niveau à partir d'un SDK antérieur à 2020.3.2, allez dans le dossier `Assets` de votre projet et supprimez les dossiers `VRCSDK` et `Udon`, ainsi que les fichiers `VRCSDK.meta` et `Udon.meta`.
 :::
@@ -38,7 +38,7 @@ Si vous voulez être très prudent, sauvegardez toujours vos projets avant de me
 4. Importez le nouveau SDK3 - Monde par-dessus l'ancien.
 
 ### SDK3 - Avatars
-:::danger Ne procédez pas à la "réinstallation par suppression" pour les avatars SDK3 !
+:::danger[Ne procédez pas à la "réinstallation par suppression" pour les avatars SDK3 !]
 
 ***Si vous supprimez les dossiers du SDK avec Unity fermé et ouvrez Unity sans le SDK installé, vous perdrez les comportements d'état.*** Ils sont fragiles et ne persistent pas lors de mises à jour complètes par suppression. Assurez-vous de sauvegarder souvent vos projets et de sauvegarder/documenter vos configurations de comportements d'état.\n\nSi vous devez absolument effectuer une réinstallation complète par suppression de votre package d'avatars SDK3, sauvegardez d'abord votre projet. Vous devrez configurer vos comportements d'état à nouveau, alors assurez-vous de bien les documenter.
 :::

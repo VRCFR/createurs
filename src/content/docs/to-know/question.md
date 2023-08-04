@@ -1,8 +1,8 @@
 ---
-title: "Les questions les plus posé"
+title: "La foire aux questions VRChat"
 description: "Voici une liste des questions les plus posé et leurs réponse"
 sidebar:
-    label: "Question Fréquente"
+    label: "Foire Aux Questions"
 ---
 ## Pourquoi ne puis-je pas encore télécharger de contenu ?
 
