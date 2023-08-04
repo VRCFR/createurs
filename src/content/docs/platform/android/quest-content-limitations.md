@@ -1,5 +1,5 @@
 ---
-title: "Limitations du contenu des quêtes"
+title: "Limitations du contenu des Quest"
 description: "Cette page décrira les différentes limitations en place pour la version Oculus Quest de VRChat. Ces limitations sont en place dans l'intérêt des performances, de la sécurité des utilisateurs et pour décourager les comportements malveillants."
 ---
 
