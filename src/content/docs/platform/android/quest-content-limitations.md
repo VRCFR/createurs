@@ -1,5 +1,5 @@
 ---
-title: "Limitations du contenu des quêtes"
+title: "Limitations du contenu des Quest"
 description: "Cette page décrira les différentes limitations en place pour la version Oculus Quest de VRChat. Ces limitations sont en place dans l'intérêt des performances, de la sécurité des utilisateurs et pour décourager les comportements malveillants."
 ---
 
@@ -57,6 +57,7 @@ Les composants suivants ne sont pas pris en charge sur Quest et ne fonctionneron
 
  Ils sont autorisés dans les mondes, mais faites attention à ne pas en abuser. |
 | Systèmes de particules  | Les particules sont fortement limitées sur les avatars dans VRChat Quest, avec des paramètres reflétant les [Limites du système de particules de l'avatar](https://docs.vrchat.com/docs/avatar-particle-system-limits) sur PC. |
+
 | Contraintes             | Les contraintes sont entièrement désactivées sur les avatars dans VRChat Quest. Il n'y a pas de plans pour les activer pour la Quest, car elles ont des problèmes de performances complexes qui ne sont pas résolus par une limite douce ou dure.
 
 Autorisé pour une utilisation dans les mondes. Faites attention à ne pas en abuser, car elles ont un impact sur les performances plus important que ce qui était précédemment pensé, surtout avec les ressources limitées de la Quest. |
