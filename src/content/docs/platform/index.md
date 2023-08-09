@@ -21,3 +21,5 @@ Voici le fichier config.json que j'utilise :
 ```
 
 (PS : N'oubliez pas de supprimer l'ancien dossier Cache-WindowsPlayer après avoir mis à jour la configuration.)
+
+Créer par **Nittch**
