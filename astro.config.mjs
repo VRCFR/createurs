@@ -35,7 +35,7 @@ export default defineConfig({
           label: 'SDK',
           autogenerate: {
             collapsed: true,
-            directory: 'sdk',
+            directory: 'SDK',
           }
         },
         {
