@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import markdoc from "@astrojs/markdoc";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
@@ -64,7 +63,6 @@ export default defineConfig({
         }
       ]
     }), 
-    markdoc(), 
     sitemap()
   ],
   image: {
