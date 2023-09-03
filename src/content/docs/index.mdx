@@ -5,7 +5,7 @@ template: splash
 hero:
   tagline: Le site est encore en cours de conception, merci de votre compréhension !
   image:
-    file: ../../assets/mini_VRCFR_Logo_v1.png
+    file: ../../assets/rani_hat.png
   actions:
     - text: Lire les tutos
       link: /guides/demarrer/
@@ -23,6 +23,12 @@ hero:
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import CssButton from "../../components/CssButton.astro";
 import DiscordButton from "../../components/DiscordButton.astro";
+import CardDoc from "../../components/CardDoc.astro";
+
+## Découvrer aussi !
+### Outils d'aide à la création de contenue *(Worlds/Avatars)*
+
+<CardDoc />
 
 ## Ce qu'il faut savoir 
 
@@ -30,6 +36,7 @@ import DiscordButton from "../../components/DiscordButton.astro";
   <Card title="Unity" icon="pencil">
     Le moteur de VRChat est actuellement Unity version 2019.4.31f1. Mais faites attention, depuis récemment, VRChat tente de changer la version de l'éditeur. Rester à l'affut !
     <a class="text-decoration:none" href="https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe"><CssButton text="Télécharger Unity Hub"></CssButton></a>
+    <h4>Attention: VRChat ont l'intention de changer la version Unity utilisé vers une version plus récente du moteur</h4>
   </Card>
   <Card title="VRChat SDK" icon="add-document">
     Depuis l'ajout de Creator Companion par VRChat, télécharger le SDK n'a jamais était aussi simple ! C'est un éléments essentiels pour créer du contenue sur le jeu.
@@ -47,3 +54,4 @@ import DiscordButton from "../../components/DiscordButton.astro";
     <a class="text-decoration:none" href="https://www.blender.org/download/"><CssButton text="Télécharger Blender"></CssButton></a>  
   </Card>
 </CardGrid>
+
