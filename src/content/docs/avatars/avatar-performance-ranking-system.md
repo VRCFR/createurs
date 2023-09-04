@@ -25,7 +25,7 @@ Il est également utilisé pour gérer le système [Classement de Performance Mi
 **Ce système n'a pas vocation à être une autorité incontestable sur les performances des avatars**, mais c'est un bon guide général pour indiquer si un avatar nécessite un peu plus de travail pour être performant.
 :::danger[Les classements de performance ne sont pas définitifs !]
 
-Bien que le système de classement de performance fasse de son mieux pour évaluer le "pire scénario" en termes de performances d'un avatar, il existe de nombreuses façons qu'un avatar bien optimisé apparaisse comme "Très faible" et qu'un avatar qui consomme beaucoup de FPS obtienne un classement "Excellent".
+Bien que le système de classement de performance fasse de son mieux pour évaluer le "pire scénario" en termes de performances d'un avatar, il existe de nombreuses façons qu'un avatar bien optimisé apparaisse comme "Très Médiocre" et qu'un avatar qui consomme beaucoup de FPS obtienne un classement "Excellent".
 
 Pour les techniquement avertis : le système de classement de performance est basé sur une analyse statique des propriétés de l'avatar, sans tenir compte d'aspects tels que les animateurs, les shaders, la résolution des textures, les lumières pixelisées et de nombreux autres facteurs. *Cependant*, il sert généralement de très bon test pour détecter les avatars problématiques 95% du temps !
 :::
@@ -35,7 +35,7 @@ Pour les techniquement avertis : le système de classement de performance est ba
 
 La création d'avatars est déjà difficile, et la création d'avatars optimisés l'est encore plus. C'est une compétence qui demande beaucoup de temps pour être maîtrisée !
 
-Gardez à l'esprit que de nombreux événements, groupes et lieux dans VRChat peuvent vous demander de changer d'avatar si vous apparaissez avec un avatar "Très faible". Par conséquent, même si vous choisissez d'utiliser un avatar "Très faible" dans des situations restreintes avec vos amis, assurez-vous d'avoir également un avatar destiné à être utilisé dans des instances avec plus de personnes.
+Gardez à l'esprit que de nombreux événements, groupes et lieux dans VRChat peuvent vous demander de changer d'avatar si vous apparaissez avec un avatar "Très Médiocre". Par conséquent, même si vous choisissez d'utiliser un avatar "Très Médiocre" dans des situations restreintes avec vos amis, assurez-vous d'avoir également un avatar destiné à être utilisé dans des instances avec plus de personnes.
 
 Votre avatar affecte le taux de rafraîchissement de tout le monde, donc soyez conscient de la façon dont vos choix affectent l'expérience des autres. Sinon, ils pourraient vous voir en tant qu'avatar de secours (Fallback) !
 
@@ -91,7 +91,7 @@ Voici une liste de toutes les statistiques prises en compte par le système et l
 
 Les statistiques en gras bloqueront complètement l'avatar s'ils dépassent le classement de performance minimum affiché. Si d'autres statistiques (à l'exception des limites) dépassent le classement de performance minimum affiché, l'avatar sera partiellement bloqué. Les composants liés aux statistiques dépassées seront supprimés.
 
-Par exemple, avec le classement de performance minimum affiché réglé sur "Médiocre", un avatar ayant 9 renderers de trails (Très Faible) sera affiché avec tous ses renderers de trails supprimés. Référez-vous à la section [Classement de Performance Minimum Affiché](/avatars/avatar-performance-ranking-system#section-minimum-displayed-performance-rank) pour plus d'informations.
+Par exemple, avec le classement de performance minimum affiché réglé sur "Médiocre", un avatar ayant 9 renderers de trails (Très Médiocre) sera affiché avec tous ses renderers de trails supprimés. Référez-vous à la section [Classement de Performance Minimum Affiché](/avatars/avatar-performance-ranking-system#section-minimum-displayed-performance-rank) pour plus d'informations.
 
 | Qualité de l'avatar       | Description                                                                                                                       |
 |--------------------------| ---------------------------------------------------------------------------------------------------------------------------------------- |
@@ -134,15 +134,15 @@ Tous les GameObjects et les composants, **y compris ceux qui sont actuellement d
 
 :::caution[Mesh Read/Write désactivé]
 
-Si vous désactivez Mesh Read/Write sur **n'importe quel** mesh de l'avatar (y compris les systèmes de particules), le nombre de "Polygones" affichera "Mesh Read/Write Disabled" et le classement de performance de l'avatar sera immédiatement rétrogradé à "Très Faible", indépendamment du nombre réel de triangles sur l'avatar.
+Si vous désactivez Mesh Read/Write sur **n'importe quel** mesh de l'avatar (y compris les systèmes de particules), le nombre de "Polygones" affichera "Mesh Read/Write Disabled" et le classement de performance de l'avatar sera immédiatement rétrogradé à "Très Médiocre", indépendamment du nombre réel de triangles sur l'avatar.
 
 Le SDK vous avertit de cela et vous demandera de le corriger avant de télécharger l'avatar.
 :::
 
 ## Limites sur PC
-Sur PC, le niveau de classement de performance minimum affiché par défaut est réglé sur "Très Faible". **Actuellement, aucun avatar ne sera bloqué par défaut en raison du classement de performance sur PC, sauf si vous avez activé le système [Classement de Performance Minimum Affiché](/avatars/avatar-performance-ranking-system#section-minimum-displayed-performance-rank).**
+Sur PC, le niveau de classement de performance minimum affiché par défaut est réglé sur "Très Médiocre". **Actuellement, aucun avatar ne sera bloqué par défaut en raison du classement de performance sur PC, sauf si vous avez activé le système [Classement de Performance Minimum Affiché](/avatars/avatar-performance-ranking-system#section-minimum-displayed-performance-rank).**
 
-Les polygones sont un cas quelque peu spécial - si vous avez 32 000 polygones ou moins, vous serez classé "Excellent". Tout nombre supérieur à 32 000 mais inférieur à 70 001 sera classé "Bon" (sauf si une autre statistique vous fait descendre). Si vous dépassez 70 000 polygones, l'avatar sera immédiatement classé comme "Très Faible".
+Les polygones sont un cas quelque peu spécial - si vous avez 32 000 polygones ou moins, vous serez classé "Excellent". Tout nombre supérieur à 32 000 mais inférieur à 70 001 sera classé "Bon" (sauf si une autre statistique vous fait descendre). Si vous dépassez 70 000 polygones, l'avatar sera immédiatement classé comme "Très Médiocre".
 
 | Qualité de l'avatar                                                        | Excellent          | Bon         | Moyen       | Médiocre         |
 |----------------------------------------------------------------------------| ------------------ | ----------- | ----------- | -------------- |
