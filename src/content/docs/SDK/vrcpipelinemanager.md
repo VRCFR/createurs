@@ -14,7 +14,7 @@ Ce composant est ajouté automatiquement lorsque le composant dont il dépend es
 | ID de Blueprint | L'identifiant unique de l'avatar ou du monde |
 
 Si vous souhaitez télécharger le monde ou l'avatar sur un autre blueprint, vous pouvez appuyer sur le bouton `Détacher (optionnel)`
-:::danger Format de blueprint requis
+:::danger[Format de blueprint requis]
 
 Les identifiants de blueprint ne peuvent être que dans le format suivant, où 0 est remplacé par [0-9] [a-f]:
 
@@ -31,7 +31,7 @@ Si vous avez un ID de blueprint que vous souhaitez télécharger, vous pouvez en
 
 ![vrcpipelinemanager-db63e77-Unity_2017-12-10_01-37-47.png](/img/sdk/vrcpipelinemanager-db63e77-Unity_2017-12-10_01-37-47.png)
 
-:::caution ASTUCE
+:::caution[ASTUCE]
 
 N'ayez pas plus d'un PipelineManager dans la scène lors de la construction d'un monde ! Vous risquez de télécharger vers le mauvais ID de blueprint.
 
