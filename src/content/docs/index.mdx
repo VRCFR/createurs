@@ -24,12 +24,61 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 import CssButton from "../../components/CssButton.astro";
 import DiscordButton from "../../components/DiscordButton.astro";
 import CardDoc from "../../components/CardDoc.astro";
+import ShowCard from '../../components/showcase.astro';
+import FluidGrid from '../../components/fluid-grid.astro';
 
-## Découvrer aussi !
-### Outils d'aide à la création de contenue *(Worlds/Avatars)*
+## Découvrer aussi les outils pour la création de contenue !
+#### Avatar
+<FluidGrid>
+	<ShowCard
+		title="Poyomi Shaders"
+		href="https://github.com/poiyomi/PoiyomiToonShader"
+		thumbnail="poyomi.jpg"
+	/>
+    <ShowCard
+  title="GogoLoco"
+  href="https://franadavrc.gumroad.com/l/gogoloco"
+  thumbnail="gogoloco.webp"
+  />
+  <ShowCard
+  title="OBS Controller"
+  href="https://nerdywoffy.gumroad.com/l/vrchat-obs-controller "
+  thumbnail="obs.png"
+  />
+  
+  <ShowCard
+  title="Pumkin's Avatar Tools"
+  href="https://booth.pm/en/items/2089810"
+  thumbnail="pumpkin.jpg"
+  />
+  <ShowCard
+  title="Toggle Assistant VRChat"
+  href="https://shatteredfur.gumroad.com/l/vrctoggle"
+  thumbnail="toggle.png"
+  />
+</FluidGrid>
+#### World
 
-*Suite à un soucis avec certaines images, cette section est actuellement indisponible*
-
+<FluidGrid>
+	<ShowCard
+		title="Poyomi Shaders"
+		href="https://github.com/poiyomi/PoiyomiToonShader"
+		thumbnail="poyomi.jpg"
+	/>
+  <ShowCard
+		title="AudioLink"
+		href="https://github.com/llealloo/vrc-udon-audio-link/tree/master"
+		thumbnail="audiolink.gif"
+	/>
+  </FluidGrid>
+#### Outils VRChat
+<FluidGrid>
+  <ShowCard
+  title="VRCX"
+  href="https://github.com/vrcx-team/VRCX"
+  thumbnail="vrcx.png"
+  />
+  </FluidGrid>
 ## Ce qu'il faut savoir 
 
 <CardGrid stagger>
@@ -54,4 +103,3 @@ import CardDoc from "../../components/CardDoc.astro";
     <a class="text-decoration:none" href="https://www.blender.org/download/"><CssButton text="Télécharger Blender"></CssButton></a>  
   </Card>
 </CardGrid>
-
