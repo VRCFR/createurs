@@ -61,7 +61,15 @@ export default defineConfig({
             directory: 'platform',
             collapsed: true,
           }
-        }
+        },
+        {
+          label: 'Mise à jours',
+          collapsed: true,
+          autogenerate: {
+            directory: 'updates',
+            collapsed: true,
+          }
+        },
       ]
     }), 
     sitemap()
