@@ -1,9 +1,10 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import sitemap from "@astrojs/sitemap";
+import starlightBlog from 'starlight-blog'
 
 export default defineConfig({
   integrations: [
+    starlightBlog(),
     starlight({
       title: 'VRChat France',
       locales: {
@@ -29,6 +30,7 @@ export default defineConfig({
             },
           ]
           
+          
         },
         {
           label: 'SDK',
@@ -36,7 +38,7 @@ export default defineConfig({
           autogenerate: {
             collapsed: true,
             directory: 'sdk',
-          }
+          },
         },
         {
           label: 'Avatars',
@@ -61,10 +63,17 @@ export default defineConfig({
             directory: 'platform',
             collapsed: true,
           }
-        }
+        },
+        {
+          label: 'Mise à jours',
+          collapsed: true,
+          autogenerate: {
+            directory: 'updates',
+            collapsed: true,
+          }
+        },
       ]
     }), 
-    sitemap()
   ],
   image: {
     service: {

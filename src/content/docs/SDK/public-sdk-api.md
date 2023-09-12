@@ -1,6 +1,8 @@
 ---
 title: "API SDK Public"
 description: "Le Public API est une interface permettant aux développeurs d'interagir avec une application ou un service de manière programmable et contrôlée."
+sidebar:
+    badge: Nouveau
 ---
 
 Le SDK VRChat propose un ensemble d'interfaces et de méthodes que vous pouvez utiliser pour améliorer le processus de création de mondes et d'avatars.
