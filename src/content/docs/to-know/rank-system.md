@@ -6,10 +6,10 @@ sidebar:
 ---
 
 :::caution[Mise à jour en attente]
-Cette section est en attente de mises à jour ! Les noms des avatars et le système de sécurité de VRChat ont récemment changé, donc les captures d'écran peuvent ne pas être exactes. Cependant, la fonctionnalité reste la même.
+Cette section contient des images que VRChat ont supprimer. Par ce fait, nous ne pouvons pas vous les remettres ici.
 :::
 
-![](https://files.readme.io/894b94a-MediumHeader_v4_Friends.png "MediumHeader_v4_Friends.png")
+![](/img/know/trust_system.png)
 
 Le système de Confiance et de Sécurité de VRChat est une nouvelle extension du système de Confiance VRChat actuellement mis en œuvre. Il est conçu pour protéger les utilisateurs contre les utilisateurs nuisibles qui utilisent des shaders d'espace d'écran, des sons ou des microphones bruyants, des effets de particules visuellement perturbants ou malveillants, et d'autres méthodes que quelqu'un pourrait utiliser pour perturber votre expérience dans VRChat.
 
@@ -47,7 +47,7 @@ Tous les rangs de "Utilisateur Connu" et au-delà ont également la possibilité
 
 Par défaut, les utilisateurs "Connu" et "Digne de Confiance" afficheront leur rang. L'utilisation du bouton de bascule vous ramènera au rang "Utilisateur".
 
-![](https://files.readme.io/b89003f-ShowTrustRank_v3_toggle_wm.png "ShowTrustRank_v3_toggle_wm.png")
+![](/img/know/rank_change.png)
 
 En outre, il existe un rang spécial appelé "Ennui". Ces utilisateurs ont causé des problèmes aux autres, et auront un indicateur au-dessus de leur plaque nominative lorsque votre menu rapide est ouvert. La plupart du temps, les avatars de ces utilisateurs seront complètement bloqués. Vous ne les verrez probablement pas souvent - ce qui est une bonne chose !
 
@@ -55,9 +55,7 @@ Enfin, il existe un rang "Équipe VRChat", qui n'est utilisable que par les memb
 
 Si un membre de l'équipe VRChat n'a pas son tag "DEV" activé, il apparaîtra comme un utilisateur normal.
 
-### Que fait le
-
- système de Sécurité ?
+### Que fait le système de Sécurité ?
 
 "**Sécurité**" est un nouvel onglet de menu qui vous permet de configurer la manière dont les utilisateurs de chaque rang sont traités en ce qui concerne leur affichage dans VRChat. Cela affecte de nombreux aspects de la présence d'un utilisateur dans VRChat :
 
@@ -71,23 +69,23 @@ Si un membre de l'équipe VRChat n'a pas son tag "DEV" activé, il apparaîtra c
 
 Chaque rang possède ses propres paramètres uniques. Pour illustrer cela, voici une capture d'écran du Menu de Sécurité :
 
-![](https://files.readme.io/3b64fe0-SafetyShield_Friends_Custom.png "SafetyShield_Friends_Custom.png")
+![](/img/know/custom_safe.png)
 
 Il y a **quatre éléments principaux** dans ce Menu auxquels il convient de prêter attention.
 
-![](https://files.readme.io/8e617e2-ShieldLevelsBar.png "ShieldLevelsBar.png")
+![](/img/know/custom_change_power.png)
 
 En haut se trouve **une rangée de "Niveaux de Bouclier"**, qui sont des paramètres prédéfinis pour le système de Sécurité que nous avons développés. Ces Niveaux devraient couvrir la plupart de vos besoins - cependant, vous êtes libre de les personnaliser complètement dans le Niveau "Personnalisé", qui est un mode spécial où vous pouvez créer vos propres paramètres.
 
-![](https://files.readme.io/fc1f584-AvatarFeaturesBar.png "AvatarFeaturesBar.png")
+![](/img/know/custom_change_type.png)
 
 Au milieu se trouvent les **paramètres réels pour le Niveau de Bouclier que vous avez sélectionné**. Ils couvrent chacun des éléments que le système de Sécurité affecte, et si vous êtes en mode personnalisé, vous pouvez les activer ou les désactiver comme bon vous semble.
 
-![](https://files.readme.io/85fab11-TrustRanksBar.png "TrustRanksBar.png")
+![](/img/know/custom_change_rank.png)
 
 En bas se trouve **une liste de chacun des Rangs de Confiance**. Lorsque vous avez choisi un "Mode de Sécurité", vous pouvez sélectionner chaque Rang pour voir comment les caractéristiques de l'avatar de ce Rang sont configurées.
 
-![](https://files.readme.io/a665bd0-Tooltips.png "Tooltips.png")
+![](/img/know/custom_change_hint.png)
 
 Le **texte à l'intérieur de la zone bleue** en dessous des Modes de Sécurité change lorsque vous sélectionnez différents Modes. Le **texte en bas** change également lorsque vous explorez le menu, et vous informe sur l'élément de l'interface utilisateur sur lequel vous pointez.
 
@@ -139,7 +137,7 @@ Comme vous pouvez le voir en haut à gauche, l'image de l'avatar et le nom de l'
 
 Sélectionner un utilisateur ouvre un menu social plus détaillé.
 
-![](https://files.readme.io/a89a564-QM_UserActions_1.png "QM_UserActions (1).png")
+![](/img/know/profile.png)
 
 En utilisant ce menu, vous pouvez également envoyer une demande d'ami à l'utilisateur, activer ou désactiver sa voix, et consulter les détails sur l'utilisateur (ce qui ouvre le menu social complet pour cet utilisateur). En cliquant sur le bouton "Non Bloqué"/"Bloqué", vous pouvez bloquer ou débloquer cet utilisateur.
 
