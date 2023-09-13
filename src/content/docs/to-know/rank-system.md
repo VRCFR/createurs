@@ -1,8 +1,8 @@
 ---
-title: "Grade de joueurs sur VRChat"
+title: "Système de confiance dans VRChat"
 description: "Découvrez comment les rangs sont trouvable sur VRChat"
 sidebar:
-    label: "Rang de confiance"
+    label: "Système de confiance"
 ---
 
 :::caution[Mise à jour en attente]
