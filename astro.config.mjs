@@ -33,6 +33,14 @@ export default defineConfig({
           
         },
         {
+          label: 'En avant !',
+          collapsed: true, 
+          autogenerate: {
+            collapsed: true,
+            directory: 'starting',
+          }
+        },
+        {
           label: 'SDK',
           collapsed: true,
           autogenerate: {
