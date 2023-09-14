@@ -1,2 +1,2 @@
 # VRCHAT FRANCE CREATOR
-### En cours de conception 
+Merci de fork la branch dev, le master et le main sont les systèmes de préproduction 
