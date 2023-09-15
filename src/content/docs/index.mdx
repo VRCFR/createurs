@@ -21,9 +21,7 @@ hero:
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
-import CssButton from "../../components/CssButton.astro";
-import DiscordButton from "../../components/DiscordButton.astro";
-import CardDoc from "../../components/CardDoc.astro";
+import Button from "../../components/Button.astro";
 import ShowCard from '../../components/showcase.astro';
 import FluidGrid from '../../components/fluid-grid.astro';
 
@@ -35,30 +33,28 @@ import FluidGrid from '../../components/fluid-grid.astro';
 		href="https://github.com/poiyomi/PoiyomiToonShader"
 		thumbnail="poyomi.jpg"
 	/>
-    <ShowCard
-  title="GogoLoco"
-  href="https://franadavrc.gumroad.com/l/gogoloco"
-  thumbnail="gogoloco.webp"
+  <ShowCard
+    title="GogoLoco"
+    href="https://franadavrc.gumroad.com/l/gogoloco"
+    thumbnail="gogoloco.webp"
   />
   <ShowCard
-  title="OBS Controller"
-  href="https://nerdywoffy.gumroad.com/l/vrchat-obs-controller "
-  thumbnail="obs.png"
-  />
-  
-  <ShowCard
-  title="Pumkin's Avatar Tools"
-  href="https://booth.pm/en/items/2089810"
-  thumbnail="pumpkin.jpg"
+    title="OBS Controller"
+    href="https://nerdywoffy.gumroad.com/l/vrchat-obs-controller "
+    thumbnail="obs.png"
   />
   <ShowCard
-  title="Toggle Assistant VRChat"
-  href="https://shatteredfur.gumroad.com/l/vrctoggle"
-  thumbnail="toggle.png"
+    title="Pumkin's Avatar Tools"
+    href="https://booth.pm/en/items/2089810"
+    thumbnail="pumpkin.jpg"
+  />
+  <ShowCard
+    title="Toggle Assistant VRChat"
+    href="https://shatteredfur.gumroad.com/l/vrctoggle"
+    thumbnail="toggle.png"
   />
 </FluidGrid>
 #### World
-
 <FluidGrid>
 	<ShowCard
 		title="Poyomi Shaders"
@@ -70,36 +66,49 @@ import FluidGrid from '../../components/fluid-grid.astro';
 		href="https://github.com/llealloo/vrc-udon-audio-link/tree/master"
 		thumbnail="audiolink.gif"
 	/>
-  </FluidGrid>
+</FluidGrid>
 #### Outils VRChat
 <FluidGrid>
   <ShowCard
-  title="VRCX"
-  href="https://github.com/vrcx-team/VRCX"
-  thumbnail="vrcx.png"
+    title="VRCX"
+    href="https://github.com/vrcx-team/VRCX"
+    thumbnail="vrcx.png"
   />
-  </FluidGrid>
+</FluidGrid>
 ## Ce qu'il faut savoir 
 
 <CardGrid stagger>
   <Card title="Unity" icon="pencil">
     Le moteur de VRChat est actuellement Unity version 2019.4.31f1. Mais faites attention, depuis récemment, VRChat tente de changer la version de l'éditeur. Rester à l'affut !
-    <a class="text-decoration:none" href="https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe"><CssButton text="Télécharger Unity Hub"></CssButton></a>
+    <Button 
+      text="Télécharger Unity Hub"
+      href="https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe"
+    />
     <h4>Attention: VRChat ont l'intention de changer la version Unity utilisé vers une version plus récente du moteur</h4>
   </Card>
   <Card title="VRChat SDK" icon="add-document">
     Depuis l'ajout de Creator Companion par VRChat, télécharger le SDK n'a jamais était aussi simple ! C'est un éléments essentiels pour créer du contenue sur le jeu.
-    <a class="text-decoration:none" href="https://vrchat.com/download/vcc"><CssButton text="Télécharger Creator Companion"></CssButton></a>  
+    <Button 
+      text="Télécharger Creator Companion"
+      href="https://vrchat.com/download/vcc"
+    />
   </Card>
   <Card title="UdonSharp" icon="setting">
     Créer par la communautée, pour la communautée. Très utilisée pour le scripting de mondes vrchat
   </Card>
   <Card title="Et tout le reste ..." icon="open-book">
     N'hésitez pas à venir sur le serveur discord de VRChat France !
-    <DiscordButton url="https://discord.gg/vrchatfrance" text="Rejoindre"></DiscordButton>
+    <Button 
+      text="Rejoindre"
+      href="https://discord.gg/vrchatfrance"
+      discord="true" 
+    />
   </Card>
   <Card title="Blender" icon="open-book">
     Très utile pour donnée vie à vos projets 3D!
-    <a class="text-decoration:none" href="https://www.blender.org/download/"><CssButton text="Télécharger Blender"></CssButton></a>  
+    <Button 
+      text="Télécharger Blender"
+      href="https://www.blender.org/download/"
+    />
   </Card>
 </CardGrid>
