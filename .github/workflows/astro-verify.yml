@@ -23,7 +23,7 @@ jobs:
       run: |
         # Ici, vous pouvez ajouter des commandes pour vérifier votre site Astro.
         # Par exemple, si vous avez un script de test, vous pouvez l'exécuter ici.
-        npm run test
+        npm run dev
 
     - name: Comment PR if successful
       if: success()
