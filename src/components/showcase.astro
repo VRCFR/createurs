@@ -20,8 +20,8 @@ const src = (await thumbnail()).default;
 ---
 
 <li>
-	<a class="showcase-card" {href}>
-		<span class="image"><Image {src} alt="" width="560" /></span>
+	<a class="showcase-card" href={href} title={"Voir le projet '"+title+"' dans une nouvelle page"} target="_blank" rel="noopener">
+		<span class="image"><Image src={src} alt={src} width="560" /></span>
 		<span class="title">{title}</span>
 	</a>
 </li>

@@ -1,8 +1,16 @@
 ---
 const { link, name } = Astro.props;
 ---
+
 <button class="button">
-  <a href={link} style="text-decoration: none; color: #fff;">
-    { name }
+  <a href={link} title={name} target="_blank" rel="noopener">
+    {name}
   </a>
 </button>
+
+<style>
+  a {
+    text-decoration: none; 
+    color: #fff !important;
+  }
+</style>
