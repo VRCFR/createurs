@@ -45,7 +45,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: "20"
           cache: ${{ env.manager }}
           cache-dependency-path: ${{ github.workspace }}/package-lock.json
 
@@ -67,7 +67,4 @@ jobs:
           port: ${{ secrets.PORT }}
           source: dist/*
           target: /var/www/html/dev/
-          
-      - name: Clean Runner
-        run: rm -rf ${{ github.workspace }}
           
