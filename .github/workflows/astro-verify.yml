@@ -1,0 +1,58 @@
+name: Astro Site Check
+
+on:
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build Astro site
+      run: npm run build
+
+    - name: Check Astro site
+      run: |
+        # Ici, vous pouvez ajouter des commandes pour vérifier votre site Astro.
+        # Par exemple, si vous avez un script de test, vous pouvez l'exécuter ici.
+        npm run test
+
+    - name: Comment PR if successful
+      if: success()
+      uses: actions/github-script@v5
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          const issueComment = `
+            :white_check_mark: Aucun problème détecté. Validation réussie!
+          `;
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: issueComment
+          });
+
+    - name: Comment PR if failed
+      if: failure()
+      uses: actions/github-script@v5
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          const issueComment = `
+            :x: Un problème a été détecté. Veuillez vérifier les logs pour plus de détails.
+          `;
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: issueComment
+          });
