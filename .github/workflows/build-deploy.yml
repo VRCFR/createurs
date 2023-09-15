@@ -67,3 +67,7 @@ jobs:
           port: ${{ secrets.PORT }}
           source: dist/*
           target: /var/www/html/dev/
+          
+      - name: Clean Runner
+        run: sudo rm -rf ${{ github.workspace }}
+          
