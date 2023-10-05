@@ -19,12 +19,6 @@ jobs:
     - name: Build Astro site
       run: npm run build
 
-    - name: Check Astro site
-      run: |
-        # Ici, vous pouvez ajouter des commandes pour vérifier votre site Astro.
-        # Par exemple, si vous avez un script de test, vous pouvez l'exécuter ici.
-        npm run dev
-
     - name: Comment PR if successful
       if: success()
       uses: actions/github-script@v5
