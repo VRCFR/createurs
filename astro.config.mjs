@@ -28,17 +28,13 @@ export default defineConfig({
               label: 'A savoir !',
               autogenerate: { directory: 'to-know', collapsed: true,},
             },
+            {
+              label: 'En avant !',
+              autogenerate: { directory: 'starting', collapsed: true,},
+            }
           ]
           
           
-        },
-        {
-          label: 'En avant !',
-          collapsed: true, 
-          autogenerate: {
-            collapsed: true,
-            directory: 'starting',
-          }
         },
         {
           label: 'SDK',
