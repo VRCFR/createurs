@@ -17,4 +17,23 @@ jobs:
       run: npm install
 
     - name: Build Astro site
-      run: npm run astro check
+      id: astro-check
+      run: |
+        output=$(npm run astro check)
+        echo "$output"
+        errors_count=$(echo "$output" | grep -oP '(?<=- )[0-9]+(?= errors)')
+        echo "::set-output name=errors-count::$errors_count"
+
+    - name: Comment on PR if no errors
+      if: steps.astro-check.outputs.errors-count == '0'
+      uses: actions/github-script@v5
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const { issue } = context;
+          await github.rest.issues.createComment({
+            issue_number: issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: 'La vérification a passé toutes les étapes de vérification.'
+          });
