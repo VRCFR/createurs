@@ -19,7 +19,7 @@ env:
 jobs:
   build-and-deploy:
     name: Build And Deploy
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -45,7 +45,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: "20"
           cache: ${{ env.manager }}
           cache-dependency-path: ${{ github.workspace }}/package-lock.json
 
@@ -67,3 +67,4 @@ jobs:
           port: ${{ secrets.PORT }}
           source: dist/*
           target: /var/www/html/dev/
+          
