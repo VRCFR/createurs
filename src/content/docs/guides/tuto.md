@@ -1,9 +1,28 @@
 ---
-title: Crée son propre tutos
+title: Créer son propre tuto
 description: Bien configurer le tutoriel pour implémentation sur le site de vrchat france
 ---
+:::note[Ou envoyer les postes ?]
+Si vous souhaitez contribuer, merci de passer par le [Discord](https://discord.gg/vrchatfrance), un forum à était mis en place pour permettre de créer des postes.
+:::
+## Création de tutoriels sur Discord 
+Pour la création d'un poste sur Discord, voici la procédure à suivre:
+![Tutos 1](/img/tuto_1.png)
+Cliquez sur **Nouveau Post** Pour créer un nouveaux post sur le forum 
 
-# Tutoriel VRChat
+Une fois ouvert, vous avez cette fenêtre qui apparait, c'est ici que vous allez pouvoir envoyer votre tutoriels
+![Tutos 2](/img/tuto_2.png)
+Voici la liste des tags que vous pouvez ajouter à votre poste pour le spécialiser dans un domaine spécifique. (Ex: si vous faites un tuto sur blender, ajouter le tag blender)
+![Tuto 3](/img/tuto_3.png)
+Une fois publié, nous allons pouvoir trier les postes par tags
+![Tuto 4](/img/tuto_4.png)
+:::note[Pourquoi faire le tutos de cette manière]
+Pour éviter la surcharge de travail des staffs, nous mettons à disposition la formulation de comment la page seras mis sur le sites pour faciliter son intégration
+:::
+:::caution[A savoir]
+Le staff se réserve le droit de supprimer ou non les postes si non respect des règles de création de tutoriels 
+:::
+# Format du tutoriel
 
 ## Thème
 
@@ -16,9 +35,7 @@ description: Une description
 ---
 ```
 
-:::caution[Ou envoyer les postes ?]
-Si vous souhaitez contribuer, merci de passer par le [Discord](https://discord.gg/vrchatfrance).
-:::
+
 Voici la structure que cela prendra sur le sites:
 
    <FileTree>
@@ -31,7 +48,9 @@ Voici la structure que cela prendra sur le sites:
 
    </FileTree>
 
-
+:::note[Information concernant la structuration]
+Ceci est uniquement du coté code source du sites, c'est juste représentatif et n'a rien de dépendant à votre tutos. Ne pas prendre en compte 
+:::
 Cela va permettre d'identifier correctement ce sur quoi le tutoriel va porter. Ensuite, vous avez plus qu'a suivre le tutoriel de markdown pour pouvoir configurer votre page correctement ! 
 
 
@@ -150,3 +169,26 @@ ou
 :::tip[Le plus ?]
 Grâce à vous, vous allez aidez plein de personnes dans le besoin qui recherche de l'aide sur Unity ou Blender ! 
 :::
+
+## Exemple de présentation d'un tutos
+
+```md
+---
+title: Créer son propre tuto
+description: Bien configurer le tutoriel pour implémentation sur le site de vrchat france
+---
+:::note[Ou envoyer les postes ?]
+Si vous souhaitez contribuer, merci de passer par le [Discord](https://discord.gg/vrchatfrance), un forum à était mis en place pour permettre de créer des postes.
+:::
+:::note[Pourquoi faire le tutos de cette manière]
+Pour éviter la surcharge de travail des staffs, nous mettons à disposition la formulation de comment la page seras mis sur le sites pour faciliter son intégration
+:::
+:::caution[A savoir]
+Le staff se réserve le droit de supprimer ou non les postes si non respect des règles de création de tutoriels 
+:::
+# Tutoriel VRChat
+
+## Thème
+
+Pour bien présenter son tutoriel, il est important de commencer par son titre ! Pour cela vous allez pouvoir rajouter au tout début de votre fichier: 
+```
