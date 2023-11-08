@@ -1,11 +1,6 @@
 ---
 title: "VRChat France et VRChat"
 description: "Les mises à jour de vrchat"
-sidebar:
-    label: "Lisez ceci !"
-    badge:
-        text: Nouveau
-        variant: caution
 ---
 ## Staff VRChat France et modération VRChat
 

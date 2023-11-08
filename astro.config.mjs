@@ -7,6 +7,7 @@ export default defineConfig({
     starlightBlog(),
     starlight({
       title: 'VRChat France',
+      customCss: process.env.NO_GRADIENTS ? [] : ['./src/assets/landing.css'],
       locales: {
         root: {
           label: "Français",

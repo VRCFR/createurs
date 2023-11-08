@@ -1,10 +1,6 @@
 ---
 title: Directives pour les créateurs de contenu
 description: Directives pour les créateurs de contenu
-sidebar:
-    badge:
-        text: Nouveau
-        variant: tip
 ---
 
 ### Directives pour les créateurs VRChat

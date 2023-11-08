@@ -2,10 +2,11 @@
 title: "Création de Votre Premier Monde"
 description: "Création de monde VRChat"
 ---
-> 🚧
-> 
-> Certaines parties de cette page sont en cours de mise à jour.  
-> Besoin d'aide ? Visitez notre Discord à [discord.gg/vrchat](https://discord.gg/vrchat) ou notre forum officiel à [ask.vrchat.com](https://ask.vrchat.com).
+
+:::caution[🚧]
+Certaines parties de cette page sont en cours de mise à jour.  
+Besoin d'aide ? Visitez notre Discord à [discord.gg/vrchat](https://discord.gg/vrchat) ou notre forum officiel à [ask.vrchat.com](https://ask.vrchat.com).
+:::
 
 Avant de commencer, assurez-vous d'avoir un [projet Unity avec le SDK configuré](/sdk).
 
