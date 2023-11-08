@@ -1,6 +1,10 @@
 ---
 title: "Liste blanche du lecteur vidéo"
 description: "La liste blanche du lecteur vidéo VRChat"
+sidebar:
+    badge:
+        text: Mis à jour
+        variant: tip
 ---
 
 :::note
@@ -36,11 +40,12 @@ Les services énumérés ci-dessous sont intrinsèquement dignes de confiance et
 | Paramètre | Description |
 | --- | --- |
 | Soundcloud | `soundcloud.com` |
-| FacebookVideo | `facebook.com` |
+| Facebook Video | `facebook.com` |
 | NicoNico | `*.nicovideo.jp` |
 | Twitch.TV | `*.twitch.tv` |
 | Vimeo | `*.vimeo.com` |
 | Youku | `*.youku.com` |
 | YouTube | `*.youtube.com`,`youtu.be` |
 | Mixcloud | `mixcloud.com` |
+| Poly | `*.poly.jp` |
 | VRCDN | `*.vrcdn.live`,`*.vrcdn.video` |
