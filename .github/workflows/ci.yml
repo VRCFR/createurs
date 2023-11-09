@@ -31,7 +31,7 @@ jobs:
       - name: Run Check
         run: pnpm run check
   eslint:
-    name: Check for code issues with ESLint
+    name: Check for code issues with ESLints
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
