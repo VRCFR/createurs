@@ -29,7 +29,7 @@ jobs:
         uses: ./.github/actions/install
 
       - name: Run Check
-        run: pnpm run check
+        run: npm run check
   eslint:
     name: Check for code issues with ESLints
     runs-on: ubuntu-latest
@@ -41,7 +41,7 @@ jobs:
         uses: ./.github/actions/install
 
       - name: Run Check
-        run: pnpm run lint:eslint
+        run: npm run lint:eslint
   slugcheck:
     name: Check for Mismatched Slugs
     runs-on: ubuntu-latest
@@ -53,7 +53,7 @@ jobs:
         uses: ./.github/actions/install
 
       - name: Run Check
-        run: pnpm run lint:slugcheck
+        run: npm run lint:slugcheck
   linkcheck:
     name: Check Links
     runs-on: ubuntu-latest
@@ -65,7 +65,7 @@ jobs:
         uses: ./.github/actions/install
 
       - name: Run Check
-        run: pnpm run lint:linkcheck
+        run: npm run lint:linkcheck
   unitTest:
     name: Check for code issues with Vitest
     runs-on: ubuntu-latest
@@ -77,4 +77,4 @@ jobs:
         uses: ./.github/actions/install
 
       - name: Run Check
-        run: pnpm run test
+        run: npm run test
