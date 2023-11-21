@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import starlightBlog from 'starlight-blog'
+import starlightBlog from 'starlight-blog';
 
 export default defineConfig({
   integrations: [
@@ -22,6 +22,7 @@ export default defineConfig({
         Sidebar: 'starlight-blog/overrides/Sidebar.astro',
         ThemeSelect: 'starlight-blog/overrides/ThemeSelect.astro',
       },
+      
       sidebar: [
         {
           label: 'Guides',
