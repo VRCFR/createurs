@@ -17,6 +17,11 @@ export default defineConfig({
       social: {
         discord: 'https://discord.gg/vrchatfrance'
       },
+      components: {
+        MarkdownContent: 'starlight-blog/overrides/MarkdownContent.astro',
+        Sidebar: 'starlight-blog/overrides/Sidebar.astro',
+        ThemeSelect: 'starlight-blog/overrides/ThemeSelect.astro',
+      },
       sidebar: [
         {
           label: 'Guides',
@@ -27,15 +32,15 @@ export default defineConfig({
             },
             {
               label: 'A savoir !',
-              autogenerate: { directory: 'to-know', collapsed: true,},
+              autogenerate: { directory: 'to-know', collapsed: true, },
             },
             {
               label: 'En avant !',
-              autogenerate: { directory: 'starting', collapsed: true,},
+              autogenerate: { directory: 'starting', collapsed: true, },
             }
           ]
-          
-          
+
+
         },
         {
           label: 'SDK',
@@ -78,7 +83,7 @@ export default defineConfig({
           }
         },
       ]
-    }), 
+    }),
   ],
   image: {
     service: {
