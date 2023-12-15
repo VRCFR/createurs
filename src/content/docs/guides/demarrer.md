@@ -23,7 +23,7 @@ Que vous soyez un développeur chevronné ou un passionné curieux, le **VRChat 
 ## Guide de démarrage rapide
 
 1. **Téléchargez et installez le Creator Companion**.
-   - Si Unity n'est pas installé, le Creator Companion vous aidera à télécharger Unity Hub, à installer Unity 2019.4.31f1 et à créer un compte Unity.
+   - Si Unity n'est pas installé, le Creator Companion vous aidera à télécharger Unity Hub, à installer Unity 2022.3.6f1 et à créer un compte Unity.
 
 ### Conception de Mondes
 
