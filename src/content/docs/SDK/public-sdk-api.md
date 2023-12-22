@@ -1,17 +1,32 @@
 ---
 title: "API SDK Public"
 description: "Le Public API est une interface permettant aux développeurs d'interagir avec une application ou un service de manière programmable et contrôlée."
-
+sidebar:
+    badge: 
+        text: Mis à jour
+        variant: tip
 ---
 
 Le SDK VRChat propose un ensemble d'interfaces et de méthodes que vous pouvez utiliser pour améliorer le processus de création de mondes et d'avatars.
 
 Vous pouvez trouver le dossier **API SDK Public** dans les deux SDK :
 
-Pour les avatars : `Packages/VRChat SDK > Avatars/Editor/VRCSDK/SDK3A/API SDK Public`  
-Pour les mondes : `Packages/VRChat SDK > Base/Editor/VRCSDK/SDK3A/API SDK Public`
+Pour les avatars : `Packages/VRChat SDK/Avatars/Editor/VRCSDK/SDK3A/Public SDK API`  
+Pour les mondes : `Packages/VRChat SDK/Base/Editor/VRCSDK/SDK3A/Public SDK API`
 
-Cependant, la plupart des événements et des méthodes sont partagés entre les SDK de mondes et d'avatars et sont définis dans le **Package de Base du SDK.**
+Cependant, la plupart des événements et méthodes sont partagés entre les SDK pour mondes et avatars et sont définis dans le **Package SDK de Base** : `Packages/VRChat SDK - Base > Editor/VRCSDK/Dependencies/VRChat/Public SDK API`.
+
+D'autres méthodes marquées comme `[PublicAPI]` font également partie de l'API SDK Public. Par exemple, "Packages/VRChat SDK - Base/Editor/VRCSDK/Dependencies/VRChat/API/VRCApi.cs" pour la mise à jour de la description des contenus.
+
+:::note
+
+Ces types se trouvent dans des définitions d'assemblages qui sont référencés automatiquement. Si vous écrivez du code dans votre propre projet, les types seront généralement disponibles par défaut. Si vous écrivez un package redistribuable et avez votre propre définition d'assemblage, vous devrez ajouter les références de définition d'assemblage appropriées :
+
+Pour les avatars : `VRC.SDK3A.Editor`  
+Pour les mondes : `VRC.SDK3.Editor`  
+Pour les deux : `VRC.SDKBase.Editor`
+
+:::
 
 # Qu'est-ce qui est disponible ?
 
