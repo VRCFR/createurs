@@ -1,10 +1,6 @@
 ---
 title: "Imposteurs"
 description: "Les avatars imposteurs"
-sidebar:
-    badge: 
-        text: Nouveau
-        variant: caution
 ---
 
 # Imposteurs
