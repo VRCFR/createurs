@@ -2,7 +2,7 @@ name: déployer sur le serveur
 
 on: 
   push:
-    branches: ["master"]
+    branches: ["main"]
 
 concurrency:
   group: "pages"
@@ -65,5 +65,5 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           source: dist/*
-          target: /var/www/html/dev/
+          target: /var/www/html/creator/
           
