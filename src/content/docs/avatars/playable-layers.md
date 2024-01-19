@@ -9,10 +9,15 @@ Lorsque vous créez des animations pour votre avatar VRChat, vous utiliserez les
 Ce document est rédigé en supposant que vous connaissez un peu les [animateurs Unity](https://docs.unity3d.com/2019.4/Documentation/Manual/class-AnimatorController.html).
 :::
 
-Dans le descripteur d'avatar Avatars 3.0, il y a cinq boutons étiquetés :
+Dans le descripteur d'avatar Avatars 3.0, tout les avatars humanoid ont 5 boutons :
 - Base
 - Additive
 - Gesture (Geste)
+- Action
+- FX
+
+Les avatars générique ont que 3 boutons:
+- Base
 - Action
 - FX
 

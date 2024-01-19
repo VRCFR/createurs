@@ -1,6 +1,10 @@
 ---
 title: "Performance d'avatars"
 description: "Quel sont les performances d'avatars sur VRChat"
+sidebar:
+    badge: 
+        text: Mis à jour
+        variant: tip
 ---
 
 :::note[Vidéo de Tupper]
@@ -93,34 +97,34 @@ Les statistiques en gras bloqueront complètement l'avatar s'ils dépassent le c
 
 Par exemple, avec le classement de performance minimum affiché réglé sur "Médiocre", un avatar ayant 9 renderers de trails (Très Médiocre) sera affiché avec tous ses renderers de trails supprimés. Référez-vous à la section [Classement de Performance Minimum Affiché](/avatars/avatar-performance-ranking-system#section-minimum-displayed-performance-rank) pour plus d'informations.
 
-| Qualité de l'avatar       | Description                                                                                                                       |
-|--------------------------| ---------------------------------------------------------------------------------------------------------------------------------------- |
-| Polygones                | Le nombre de polygones du modèle en question, compté en triangles.                                                                        |
-| Taille des limites        | La taille totale de l'avatar. Si elle est vraiment énorme, l'utilisateur a probablement une grande animation sur l'avatar qui n'apparaît pas tout le temps. Note importante : La taille des limites n'entraînera pas le blocage de l'avatar même si elle est inférieure au classement de performance minimum affiché. |
-| Mémoire de texture        | La quantité de mémoire estimée utilisée par les textures de l'avatar. Ces textures occupent de l'espace à la fois dans la RAM du système et dans la mémoire de la carte vidéo.                                                     |
-| Meshes animées           | Le nombre de composants Mesh animés de l'avatar.                                                                                     |
-| Meshes                   | Le nombre de composants Mesh non animés de l'avatar.                                                                                 |
-| Emplacements de matériaux | Le nombre d'emplacements de matériaux sur l'avatar. Les emplacements de matériaux sont les emplacements sur le mesh où vous placez les matériaux. C'est ce qui compte pour la création de sous-meshes, ce qui entraîne d'autres appels de rendu. Gardez à l'esprit que les systèmes de particules utiliseront un emplacement de matériaux, les systèmes de particules avec des trails en utiliseront deux, et les Line Renderers en utiliseront un. |
-| Composants os dynamiques  | Le nombre de scripts Dynamic Bone sur l'avatar.                                                                                        |
-| Transformations os dynamiques | Le nombre de transformations animées par un script Dynamic Bone donné sur l'avatar.                                                        |
-| Colliders os dynamiques   | Le nombre de scripts Dynamic Bone Collider sur l'avatar.                                                                               |
-| Nombre de vérifications de collision des os dynamiques | Le nombre total de transformations DynamicBone affectées par les scripts Dynamic Bone Collider sur l'avatar. Cela peut compter les transformations deux fois ou plus, car une seule transformation peut être affectée par plusieurs colliders. |
-| Composants os physiques   | Le nombre de composants PhysBone sur l'avatar.                                                                                          |
-| Transformations affectées par les composants os physiques | Le nombre total de transformations affectées par les composants PhysBone sur l'avatar.                                                          |
-| Colliders os physiques    | Le nombre de scripts de collision PhysBone sur l'avatar.                                                                                    |
-| Nombre de vérifications de collision des os physiques | La somme du nombre de transformations PhysBone que chaque collider peut affecter. Cela peut compter les transformations deux fois ou plus, car une seule transformation peut être affectée par plusieurs colliders. |
-| Contacts dynamiques de l'avatar | Le nombre de contacts dynamiques de l'avatar.                                                                                     |
-| Animateurs                | Le nombre d'animateurs de l'avatar. Note importante : il y en aura toujours au moins 1 en raison de l'animateur racine compté. Cela signifie que pour le classement "Excellent", vous ne pouvez pas avoir d'animateurs supplémentaires. |
-| Os                       | Le nombre d'os dans le rig de l'avatar.                                                                                                 |
-| Lumières                 | Le nombre de composants Light sur l'avatar.                                                                                            |
-| Systèmes de particules   | Le nombre de composants Particle System sur l'avatar.                                                                                   |
-| Particules actives au total | La somme de maxParticles de tous les systèmes de particules sur l'avatar.                                                                        |
-| Polys actifs des Mesh Particles | Le nombre total de polygones des Mesh Particles émis par les systèmes de particules actifs. En d'autres termes, maxEmission * meshParticleVerts. |
-| Trails de particules activés | Si des systèmes de particules de l'avatar ont des trails activés, ceci sera vrai.                                                   |
-| Collision de particules activée | Si des systèmes de particules de l'avatar ont la collision de particules activée, ceci sera vrai.                                                |
-| Renderers de trails       | Le nombre de composants Trail Renderer sur l'avatar.                                                                                             |
-| Renderers de lignes        | Le nombre de composants Line Renderer sur l'avatar.                                                                                              |
-| Vêtements                 | Le nombre total de composants Cloth sur l'avatar.                                                                                     |
+| Qualité de l'Avatar        | Description de la Qualité                                                                                                                 |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Polygones                  | Le nombre de polygones du modèle, comptés en triangles.                                                                                   |
+| Taille des Limites         | La taille totale de l'avatar. Si elle est très grande, cet utilisateur a probablement une grande animation sur l'avatar qui n'est pas visible tout le temps.<br/>Note importante : La taille des limites n'entraînera pas le blocage de l'avatar, même si elle est inférieure au paramètre "Rang de Performance Minimale Affichée". |
+| Mémoire des Textures       | La quantité de mémoire estimée être utilisée par les textures de l'avatar. Ces textures occupent de l'espace dans la RAM du système et dans la mémoire de la carte vidéo. |
+| Meshs Skinnés              | Le nombre de composants Skinned Mesh Renderer sur l'avatar.                                                                               |
+| Meshs Basiques             | Le nombre de composants Mesh Renderer (non skinnés) sur l'avatar.                                                                        |
+| Emplacements de Matériaux  | Le nombre d'emplacements de matériaux sur l'avatar. Ce sont les emplacements sur le mesh où vous insérez les matériaux. C'est ce qui compte pour la création de Submesh, ce qui entraîne plus d'appels de rendu. Gardez à l'esprit que les systèmes de particules utiliseront un emplacement de matériau, les systèmes de particules avec des traînées en utilisent deux, et les Line Renderers utilisent un emplacement de matériau. |
+| Composants PhysBones       | Le nombre de composants PhysBone sur l'avatar.                                                                                            |
+| Transforms Affectés par PhysBones | Le nombre total de transforms affectés par les composants PhysBones sur l'avatar.                                                        |
+| Colliders PhysBones        | Le nombre de scripts de collider PhysBone sur l'avatar.                                                                                   |
+| Compte de Vérification de Collision PhysBones | La somme de combien de transforms PhysBone chaque collider peut affecter. Cela peut compter des transforms deux fois ou plus, car un transform peut être affecté par plusieurs colliders. |
+| Contacts de Dynamique d'Avatar | Le nombre de Contacts de Dynamique d'Avatar sur l'avatar.                                                                                |
+| Animateurs                 | Le nombre d'Animateurs sur l'avatar. Note importante : Il y en aura toujours au moins 1 à cause de l'animateur racine compté. Cela signifie que pour le rang Excellent, vous ne pouvez pas avoir d'animateurs supplémentaires. |
+| Os                         | Le nombre d'Os dans le rig de l'avatar.                                                                                                  |
+| Lumières                   | Le nombre de composants Light sur l'avatar.                                                                                              |
+| Systèmes de Particules     | Le nombre de composants Système de Particules sur l'avatar.                                                                              |
+| Total de Particules Actives| La somme de maxParticles à travers tous les systèmes de particules sur l'avatar.                                                          |
+| Polygones Actifs de Particules de Mesh | Le nombre total de polygones de Particules de Mesh émises par les Systèmes de Particules actifs. En d'autres termes, maxEmission * meshParticleVerts. |
+| Traînées de Particules Activées | Si des Systèmes de Particules sur l'avatar ont des Traînées de Particules activées, cela sera Vrai.                                       |
+| Collision de Particules Activée | Si des Systèmes de Particules sur l'avatar ont la Collision de Particules activée, cela sera Vrai.                                        |
+| Traîneurs de Piste        | Le nombre de Traîneurs de Piste sur l'avatar.                                                                                            |
+| Traîneurs de Ligne         | Le nombre de Traîneurs de Ligne sur l'avatar.                                                                                            |
+| Tissus                     | Le nombre total de composants Cloth sur l'avatar.                                                                                        |
+| Composants d'Os Dynamiques | (Obsolète) Le nombre de scripts d'Os Dynamiques sur l'avatar.                                                                            |
+| Transforms d'Os Dynamiques | (Obsolète) Le nombre de transforms animés par un script d'Os Dynamiques donné sur l'avatar.                                              |
+| Colliders d'Os Dynamiques  | (Obsolète) Le nombre de scripts de Collider d'Os Dynamiques sur l'avatar.                                                                 |
+| Compte de Vérification de Collision d'Os Dynamiques | (Obsolète) Le nombre total de transforms d'Os Dynamiques affectés par les scripts de Collider d'Os Dynamiques sur l'avatar. Cela peut compter des transforms deux fois ou plus, car un transform peut être affecté par plusieurs colliders. |                                                                                 |
 
 ## Avatar Performance Ranks - Valeurs maximales par classement
 
@@ -151,6 +155,7 @@ Les polygones sont un cas quelque peu spécial - si vous avez 32 000 polygones o
 | Mémoire de texture                                                         | 40 Mo              | 75 Mo       | 110 Mo      | 150 Mo         |
 | Meshes animées                                                             | 1                  | 2           | 8           | 16             |
 | Meshes                                                                     | 4                  | 8           | 16          | 24             |
+| Meshes Basique | 4 | 8 | 16 | 24 |
 | Emplacements de matériaux                                                  | 4                  | 8           | 16          | 32             |
 | Composants os dynamiques                                                   | 0                  | 4           | 16          | 32             |
 | Transformations os dynamiques                                              | 0                  | 16          | 32          | 256            |
@@ -180,15 +185,15 @@ Les polygones sont un cas quelque peu spécial - si vous avez 32 000 polygones o
 Note de bas de page :
 1: La taille des limites est déterminée par la taille maximale de tous les composants de votre avatar. Les Trail Renderers et les Line Renderers ne sont pas pris en compte dans ce calcul.
 
-## Limites sur Quest
+## Limites sur Android
 ### Blocage du classement de performance par défaut
-Sur Quest, le classement de performance minimum affiché est réglé par défaut sur "Moyen". Cela signifie que vous ne verrez aucun avatar classé comme "Médiocre" ou "Très Médiocre".
+Sur Android (téléphones, tablettes et Meta Quest), le Rang de Performance Minimale Affichée est réglé par défaut sur Moyen. Cela signifie que vous ne verrez aucun avatar classé comme Médiocre ou Très Médiocre.
 
 Vous pouvez régler votre niveau de blocage de classement de performance sur "Médiocre" pour permettre l'affichage des avatars "Médiocres". Cependant, vous ne pouvez pas régler votre niveau de blocage de classement de performance sur "Très Médiocre".
 
-Par exemple, si un avatar sur Quest dépasse 20 000 triangles (polygones), il ne s'affichera pas par défaut dans l'application. Ces avatars peuvent être forcés à s'afficher en cliquant sur chaque utilisateur et en cliquant sur "Afficher l'avatar".
+Par exemple, si un avatar sur Android dépasse 20 000 triangles (polygones), il ne s'affichera pas par défaut dans l'application. Ces avatars peuvent être forcés à s'afficher en cliquant sur chaque utilisateur et en cliquant sur "Afficher l'Avatar".
 
-Il convient de noter qu'il existe une limite rigide sur les systèmes [Avatar Dynamics](/avatars/avatar-dynamics) sur Quest. Elle ne peut pas être contournée en utilisant "Afficher l'avatar". Voici la limite rigide :
+Il est important de noter **qu'il existe une limite maximale stricte sur les systèmes de [Dynamique d'Avatar](/avatars/avatar-dynamics) sur Android.** Elle ne peut pas être contournée en utilisant "Afficher l'Avatar". Voici la limite maximale :
 
 - 8 composants [PhysBone](/avatars/avatar-dynamics/physbones)
 - 64 transforms affectés par les [PhysBones](/avatars/avatar-dynamics/physbones)
@@ -196,10 +201,12 @@ Il convient de noter qu'il existe une limite rigide sur les systèmes [Avatar Dy
 - 64 vérifications de collisions des [PhysBones](/avatars/avatar-dynamics/physbones)
 - 16 [Avatar Dynamics Contacts](/avatars/avatar-dynamics/contacts)
 
-Si cette limite est dépassée sur Quest, tous les composants [Avatar Dynamics](/avatars/avatar-dynamics) seront supprimés de l'avatar, même si "Afficher l'avatar" est activé.
+
+Si cette limite est dépassée sur Android, tous les composants de Dynamique d'Avatar seront retirés de l'avatar, même si l'option "Afficher l'Avatar" est activée.
+
 :::danger
 
-La fonctionnalité "Afficher l'avatar" pour les avatars "Très Médiocres" pourrait être supprimée à l'avenir, et les avatars "Très Médiocres" pourraient être complètement supprimés de Quest.** Veuillez garder cela à l'esprit lors de la création d'avatars pour VRChat sur l'Oculus Quest.
+**La fonctionnalité "Afficher l'Avatar" pour les avatars classés Très Médiocre pourrait être supprimée à l'avenir, et les avatars Très Médiocres pourraient être entièrement retirés d'Android.** Veuillez garder cela à l'esprit lors de la création d'avatars pour VRChat sur Android.
 :::
 
 | Qualité de l'avatar                                                              | Excellent          | Bon         | Moyen       | Médiocre      |
@@ -209,6 +216,7 @@ La fonctionnalité "Afficher l'avatar" pour les avatars "Très Médiocres" pourr
 | Mémoire de texture                                                               | 10 Mo              | 18 Mo       | 25 Mo       | 40 Mo         |
 | Meshes animées                                                                   | 1                  | 1           | 2           | 2             |
 | Meshes                                                                           | 1                  | 1           | 2           | 2             |
+| Meshes Basiques                                                                   | 1                  | 1           | 2           | 2             |
 | Emplacements de matériaux                                                        | 1                  | 1           | 2           | 4             |
 | Animateurs                                                                       | 1                  | 1           | 1           | 2             |
 | Os                                                                               | 75                 | 90          | 150         | 150           |
@@ -226,24 +234,24 @@ La fonctionnalité "Afficher l'avatar" pour les avatars "Très Médiocres" pourr
 | Renderers de lignes                                                              | 0                  | 0           | 0           | 1             |
 
 Note de bas de page :
-1: La taille des limites est déterminée par la taille maximale de tous les composants de votre avatar. Les Trail Renderers et les Line Renderers ne sont pas
 
- pris en compte dans ce calcul.
-2: Si la valeur de "Très Médiocre" est dépassée sur Quest, peu importe l'état actuel de "Afficher l'avatar" de l'avatar, tous les composants liés aux Avatar Dynamics seront supprimés.
+1: La taille des limites est déterminée par la taille maximale de tous les composants de votre avatar. Les Trail Renderers et les Line Renderers ne sont pas pris en compte dans ce calcul.
+
+2 : Si la valeur Très Médiocre est dépassée sur Android, quel que soit l'état actuel de l'option "Afficher l'Avatar" de l'avatar, tous les composants liés à la Dynamique d'Avatar seront retirés.
 
 ### Catégories supprimées
-Les catégories suivantes sont désactivées sur Quest car elles ne peuvent jamais apparaître sur les avatars :
+Les catégories suivantes sont désactivées sur Android car elles ne peuvent jamais apparaître sur les avatars :
 
-  * Composants Dynamic Bone
-  * Transforms Dynamic Bone
-  * Colliders Dynamic Bone
-  * Compteur de vérifications de collisions Dynamic Bone
-  * Lumières (Lights)
-  * Vêtements (Cloths)
-  * Nombre total de sommets des vêtements (Total Cloth Vertices)
-  * Colliders de physique (Physics Colliders)
-  * Rigidbodies de physique (Physics Rigidbodies)
-  * Sources audio (Audio Sources)
+  * Lumières
+  * Tissus
+  * Total de Vertices de Tissu
+  * Colliders Physiques
+  * Rigidbodies Physiques
+  * Sources Audio
+  * Composants d'Os Dynamiques
+  * Transforms d'Os Dynamiques
+  * Colliders d'Os Dynamiques
+  * Compte de Vérification de Collision d'Os Dynamiques
 
 Ces valeurs peuvent toujours apparaître dans les statistiques affichées dans l'application, mais elles seront toujours nulles.
 
@@ -259,6 +267,7 @@ Lorsque vous choisissez un classement de performance dans ce menu, tous les avat
 | Mémoire de texture                                                                | **Avatar remplacé par [Fallback](https://docs.vrchat.com/docs/avatar-fallback-system)**                             |
 | Meshes animées                                                                    | **Avatar remplacé par [Fallback](https://docs.vrchat.com/docs/avatar-fallback-system)**                             |
 | Meshes                                                                            | **Avatar remplacé par [Fallback](https://docs.vrchat.com/docs/avatar-fallback-system)**                             |
+| Meshs Basiques                                                                    | **Avatar remplacé par [Système de Remplacement](https://docs.vrchat.com/docs/avatar-fallback-system)**              |
 | Emplacements de matériaux                                                         | **Avatar remplacé par [Fallback](https://docs.vrchat.com/docs/avatar-fallback-system)**                             |
 | Composants, Transformations, Colliders, CollisionCheckCount ou Contacts des PhysBones (Avatar Dynamics)  | Tous les composants PhysBone, PhysBone Collider et Contact sont supprimés                                                       |
 | Composants ou Transformations des Dynamic Bones                                    | Tous les composants Dynamic Bones sont supprimés                                                                                 |
@@ -282,16 +291,16 @@ Lorsque vous choisissez un classement de performance dans ce menu, tous les avat
 ### Classement minimum de performance affichée sur PC
 Sur VRChat pour PC, le classement minimum de performance affichée est réglé par défaut sur "Très Médiocre". Cela signifie que, par défaut, aucun avatar n'aura ses composants ou son affichage affecté pour des raisons de performance sur PC. Si vous souhaitez modifier cela, vous pouvez choisir entre les options "Moyen", "Médiocre" ou "Très Médiocre".
 
-### Blocage du classement de performance de l'avatar sur Quest
-Sur VRChat pour l'Oculus Quest, le blocage du classement de performance de l'avatar est réglé par défaut sur "Moyen". Vous pouvez choisir de le modifier pour le régler sur "Médiocre" afin de voir les avatars de ce rang, mais cela peut entraîner une baisse des performances.
+### Blocage du classement de performance de l'avatar sur Android
+Sur VRChat pour Android, le blocage du classement de performance de l'avatar est réglé par défaut sur "Moyen". Vous pouvez choisir de le modifier pour le régler sur "Médiocre" afin de voir les avatars de ce rang, mais cela peut entraîner une baisse des performances.
 
 Vous ne pouvez pas désactiver le système de blocage du classement de performance de l'avatar sur Quest. En d'autres termes, les avatars classés comme "Très Médiocres" auront toujours leur affichage géré par VRChat pour l'Oculus Quest, et pourraient ne pas s'afficher du tout.
 
-Quel que soit le réglage que vous choisissez, si les limites des composants [Avatar Dynamics](/avatars/avatar-dynamics) sont dépassées sur Quest, tous ces composants seront supprimés. En résumé, il existe une limite rigide pour les composants Avatar Dynamics sur les avatars Quest.
+Quel que soit le réglage que vous choisissez, si les limites des composants [Avatar Dynamics](/avatars/avatar-dynamics) sont dépassées sur Android, tous ces composants seront supprimés. En résumé, il existe une limite rigide pour les composants Avatar Dynamics sur les avatars Android.
 
 ### Annulation de l'affichage des avatars individuels
 :::danger
 
 **La fonctionnalité "Afficher l'avatar" pour les avatars classés "Très Médiocre" pourrait être supprimée à l'avenir, et les avatars classés "Très Médiocres" pourraient être complètement supprimés de Quest.** Veuillez garder cela à l'esprit lors de la création d'avatars pour VRChat sur l'Oculus Quest.
 :::
-Vous pouvez choisir de remplacer l'ensemble du système (et le système de sécurité) en sélectionnant "Afficher l'avatar" pour chaque utilisateur que vous souhaitez afficher.
+Vous pouvez choisir de passer outre l'ensemble du système (et le système de Sécurité) en sélectionnant "Afficher l'Avatar" pour chaque utilisateur que vous souhaitez afficher.
