@@ -3,6 +3,7 @@ import starlight from '@astrojs/starlight';
 import starlightBlog from 'starlight-blog';
 import sitemap from "@astrojs/sitemap";
 
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://createur.vrchatfrance.fr',
