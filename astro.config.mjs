@@ -9,6 +9,7 @@ export default defineConfig({
   site: 'https://createur.vrchatfrance.fr',
   integrations: [sitemap(), starlightBlog(), starlight({
     title: 'VRChat France',
+    favicon: '/favicon.ico',
     customCss: process.env.NO_GRADIENTS ? [] : ['./src/assets/landing.css'],
     locales: {
       root: {
