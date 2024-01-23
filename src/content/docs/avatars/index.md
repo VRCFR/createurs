@@ -84,7 +84,7 @@ Pour supprimer l'avatar de test local copié, allez dans l'onglet "Content Manag
 
 ### Mouvement des Yeux Simulé
 
-Le mouvement des yeux simulé est là où vos yeux bougeront, regardant autour de vous. Ce n'est pas un _suivi des yeux_ -- c'est-à-dire, nous n'avons pas de moyen pour vous de saisir des données de dispositifs de suivi des yeux -- mais c'est une assez bonne manière de rendre votre avatar plus "vivant".
+Le mouvement simulé des yeux est lorsque vos yeux se déplacent, regardant les choses autour de vous. Ce n'est pas un _suivi des yeux_ à proprement parler, mais c'est une assez bonne manière de rendre votre avatar plus "vivant".
 
 Vous pouvez prévisualiser votre configuration dans l'éditeur et ajuster l'apparence des yeux de votre avatar dans une combinaison d'états, qui sont utilisés pour déterminer comment vos os des yeux sont configurés.
 

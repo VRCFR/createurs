@@ -16,9 +16,9 @@ Ceci est une liste de Paramètres (**sensibles à la casse**) qui peuvent être 
 
 Vous devrez les ajouter à vos animateurs de Couches Jouables pour les utiliser. **Ils sont sensibles à la casse !**
 
-:::danger Ne pas créer d'impasse !
+:::danger[Ne pas créer d'impasse !]
 
-Vous devez supposer que les valeurs des paramètres peuvent changer. Si vous "bloquez" vos animateurs, ce qui signifie que vous n'avez pas de "sortie" dans une branche particulière, vous pourriez vous retrouver avec un avatar défectueux.
+Vous devez supposer que les valeurs des paramètres peuvent changer. Si vous "bloquez" vos animateurs, ce qui signifie que vous n'avez pas de "sortie" dans une branche particulière, vous risquez de vous retrouver avec un avatar défectueux.
 
 :::
 ## Paramètres
@@ -48,6 +48,7 @@ Vous devez supposer que les valeurs des paramètres peuvent changer. Si vous "bl
 | InStation                          | Retourne `vrai` si l'utilisateur est dans une station, `faux` sinon | Bool        | IK                |
 | Earmuffs                           | Retourne `vrai` si la fonction Earmuff de l'utilisateur est activée, `faux` sinon | Bool        | Jouable           |
 | IsOnFriendsList                    | Retourne `vrai` si l'utilisateur qui visualise l'avatar est ami avec l'utilisateur le portant. `Faux` localement. | Bool        | Autre             |
+| [AvatarVersion](/worlds/components/vrc_station/#sdk3-station-with-sdk2sdk3-avatar) | Retourne `3` si l'avatar a été créé en utilisant le SDK3 de VRChat (2020.3.2) ou plus récent, `0` sinon. | Entier      | IK             |
 
 "Supine" et "GroundProximity" sont visibles dans l'affichage de débogage, mais ne sont pas encore implémentés. Ils ne font actuellement rien et ne changent jamais de valeurs.
 
