@@ -1,38 +1,33 @@
 ---
-title: "Simple Pen System"
-sidebar:
-    order: 2
-    badge: 
-        text: à traduire !
-        variant: danger
+title: "Système de Stylo Simple"
 ---
-The Simple Pen system consists of two programs - one for the Pen, and one for each Line that will be drawn
+Le système de Stylo Simple se compose de deux programmes - un pour le Stylo, et un pour chaque Ligne qui sera dessinée.
 
-# How the Pen and Lines Work Together
+# Comment le Stylo et les Lignes fonctionnent ensemble
 
-### Pen
-The pen has VRCPickup and VRCObjectSync components, which provide the basic pickup and sync functionality. The program itself is uses Continuous sync since that works well with these components.
+### Stylo
+Le stylo a des composants VRCPickup et VRCObjectSync, qui fournissent la fonctionnalité de base de prise en main et de synchronisation. Le programme lui-même utilise une synchronisation Continue puisque cela fonctionne bien avec ces composants.
 
-### Lines
-Each line object has its own LineRenderer and a program with Manual Sync, since it doesn't need to update as often as the pen. The line has a **points** variable which is Vector3 array. This variable is the main way that data for the lines are synced for everyone in the instance.
+### Lignes
+Chaque objet de ligne a son propre LineRenderer et un programme avec une synchronisation Manuelle, car il n'a pas besoin de se mettre à jour aussi souvent que le stylo. La ligne a une variable **points** qui est un tableau de Vector3. Cette variable est le principal moyen de synchronisation des données pour les lignes pour tout le monde dans l'instance.
 
-## Drawing Starts
-When someone uses the Pen, this calls **OnPickupUseDown** on the pen. This will cause a few things to happen in the program:
-* A new Line is retrieved from the pool and saved in a variable
-*The player with the pen is made the Owner of the line
-* *isDrawing* is set to true
-* The line is reset to have two points with their positions at the tip of the pen
-* a variable is incremented to track which line will be used next.
+## Début du Dessin
+Lorsqu'une personne utilise le Stylo, cela appelle **OnPickupUseDown** sur le stylo. Cela entraînera plusieurs actions dans le programme :
+* Une nouvelle Ligne est récupérée du pool et sauvegardée dans une variable.
+* Le joueur avec le stylo est fait Propriétaire de la ligne.
+* *isDrawing* est défini sur vrai.
+* La ligne est réinitialisée pour avoir deux points dont les positions sont à l'extrémité du stylo.
+* Une variable est incrémentée pour suivre quelle ligne sera utilisée ensuite.
 
-## Drawing Continues
-Every frame, the **Update** event is called on the pen, and the following logic is run:
-* If *isDrawing* is true, we continue:
-* If the pen has moved more than *minMoveDistance*, we continue:
-* We add a new point to the LineRenderer at the position of the *penTip*
-* We check if we've queued up enough points to send by comparing currentIndex against pointsPerUpdate
-* If we're ready to update the data, we call **OnUpdate** on the UdonBehaviour on the target line.
+## Continuation du Dessin
+À chaque image, l'événement **Update** est appelé sur le stylo, et la logique suivante est exécutée :
+* Si *isDrawing* est vrai, on continue :
+* Si le stylo a bougé de plus que *minMoveDistance*, on continue :
+* Nous ajoutons un nouveau point au LineRenderer à la position de la *pointe du stylo*.
+* Nous vérifions si nous avons mis en file d'attente suffisamment de points à envoyer en comparant currentIndex à pointsPerUpdate.
+* Si nous sommes prêts à mettre à jour les données, nous appelons **OnUpdate** sur l'UdonBehaviour de la ligne cible.
 
-When this **OnUpdate** method is called on the line, the program retrieves the current positions of the points in the line, updates the synced *points* variable, and calls **RequestSerialization**, which is how Manual-synced UdonBehaviours tell VRChat to send out the queued data. This method is only called on the owner of the line. Everyone else receives the data, and then has their **OnDeserialization** method called. When this method triggers on a line, the line program reads the positions from the *points* array, and uses them to update the positions in their own line.
+Lorsque cette méthode **OnUpdate** est appelée sur la ligne, le programme récupère les positions actuelles des points dans la ligne, met à jour la variable synchronisée *points*, et appelle **RequestSerialization**, qui est la façon dont les UdonBehaviours synchronisés Manuellement disent à VRChat d'envoyer les données mises en file d'attente. Cette méthode est appelée uniquement par le propriétaire de la ligne. Tous les autres reçoivent les données, puis ont leur méthode **OnDeserialization** appelée. Lorsque cette méthode se déclenche sur une ligne, le programme de ligne lit les positions à partir du tableau *points* et les utilise pour mettre à jour les positions dans leur propre ligne.
 
-## Drawing Finishes
-When the user lets go of the Use button, the **OnPickupUseUp** event is called on the pen. This event simply sets *isDrawing* to false, and calls **OnFinish** on the target line's UdonBehaviour. This will send the **OnUpdate** method one more time to make sure the **points** data is up-to-date for everyone.
+## Fin du Dessin
+Lorsque l'utilisateur lâche le bouton d'Utilisation, l'événement **OnPickupUseUp** est appelé sur le stylo. Cet événement se contente de définir *isDrawing* sur faux et appelle **OnFinish** sur l'UdonBehaviour de la ligne cible. Cela enverra la méthode **OnUpdate** une dernière fois pour s'assurer que les données **points** sont à jour pour tout le monde.

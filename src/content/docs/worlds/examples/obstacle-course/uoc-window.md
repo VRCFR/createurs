@@ -1,63 +1,58 @@
 ---
-title: "Obstacle Course Toolkit"
-sidebar:
-    order: 2
-    badge: 
-        text: à traduire !
-        variant: danger
+title: "Boîte à Outils pour Parcours d'Obstacles"
 ---
-![Obstacle Course Toolkit](/img/worlds/uoc-window-0a203a2-obstacle-course-toolkit.png)
+![Boîte à Outils pour Parcours d'Obstacles](/img/worlds/uoc-window-0a203a2-obstacle-course-toolkit.png)
 
-We created a special window to help manage all the special prefabs and programs in the project. Here's what you can do in each section:
+Nous avons créé une fenêtre spéciale pour aider à gérer tous les préfabriqués spéciaux et les programmes dans le projet. Voici ce que vous pouvez faire dans chaque section :
 
-## Checkpoints
+## Points de Contrôle
 
-### Checkpoint Prefabs
+### Préfabriqués de Point de Contrôle
 ![image](/img/worlds/uoc-window-a05aa7a-checkpoint-prefabs.png)
-You can set all the prefabs you would like to use for your start gate, checkpoints and finish gate here. They can then be easily placed into your scene: [Add Checkpoints](/worlds/examples/obstacle-course/build-from-demo-parts#add-checkpoints).
+Vous pouvez définir tous les préfabriqués que vous souhaitez utiliser pour votre porte de départ, les points de contrôle et la porte d'arrivée ici. Ils peuvent ensuite être facilement placés dans votre scène : [Ajouter des Points de Contrôle](/worlds/examples/obstacle-course/build-from-demo-parts#add-checkpoints).
 
-### Checkpoints In Scene
+### Points de Contrôle dans la Scène
 ![uoc-window-f588547-checkpoints-in-scene.png](/img/worlds/uoc-window-f588547-checkpoints-in-scene.png)
 
-Select one of these to zoom to the selected checkpoint in Scene View. You can re-order the checkpoints (which will rename them as well) and delete them. Changes made here will properly update the variables on the CourseManager.
+Sélectionnez l'un de ceux-ci pour zoomer sur le point de contrôle sélectionné dans la Vue Scène. Vous pouvez réorganiser les points de contrôle (ce qui les renommera également) et les supprimer. Les modifications apportées ici mettront correctement à jour les variables sur le CourseManager.
 
-## Player Manager
+## Gestionnaire de Joueurs
 
-### Player Object Prefab
+### Préfabriqué d'Objet Joueur
 ![uoc-window-b781ee6-playerobjectprefab.png](/img/worlds/uoc-window-b781ee6-playerobjectprefab.png)
 
-Change this object if you make your own Player Object, which holds the PlayerData program and follows each local player around. Most creators won't need to do this.
+Changez cet objet si vous créez votre propre Objet Joueur, qui contient le programme PlayerData et suit chaque joueur local. La plupart des créateurs n'auront pas besoin de faire cela.
 
-### Number of Players
+### Nombre de Joueurs
 ![uoc-window-0aa8cd9-number-of-players.png](/img/worlds/uoc-window-0aa8cd9-number-of-players.png)
 
-Change this number to generate the right number of Player Objects and automatically populate the ObjectPool.
+Changez ce nombre pour générer le bon nombre d'Objets Joueurs et peupler automatiquement le ObjectPool.
 
-## Score Manager
+## Gestionnaire de Scores
 
-### Score Object Prefab
+### Préfabriqué d'Objet Score
 ![uoc-window-c808c71-score-object-prefab.png](/img/worlds/uoc-window-c808c71-score-object-prefab.png)
 
-Change this object if you make your own ScoreField, which will display the player scores as they finish a run.
+Changez cet objet si vous créez votre propre ScoreField, qui affichera les scores des joueurs à mesure qu'ils terminent un parcours.
 
-### Number of Scores to Show
+### Nombre de Scores à Afficher
 ![uoc-window-778d7ed-number-of-scores.png](/img/worlds/uoc-window-778d7ed-number-of-scores.png)
 
-Change this number to generate the right number of Score Fields and populate the ScoreManager references to them.
+Changez ce nombre pour générer le bon nombre de Champs de Score et peupler les références du ScoreManager à ceux-ci.
 
 ## Power Ups
 
-### Power Up Prefabs
+### Préfabriqués de Power Up
 ![uoc-window-d656caf-power-up-prefabs.png](/img/worlds/uoc-window-d656caf-power-up-prefabs.png)
 
-You can set all the prefabs you would like to use for your Power Ups here. They can then be easily placed into your scene (link to powerUp placement) and automatically wired up.
+Vous pouvez définir tous les préfabriqués que vous souhaitez utiliser pour vos Power Ups ici. Ils peuvent ensuite être facilement placés dans votre scène (lien vers le placement de Power Up) et automatiquement connectés.
 
-## Power Ups In Scene
+## Power Ups dans la Scène
 ![uoc-window-4bf4a4c-power-ups-in-scene.png](/img/worlds/uoc-window-4bf4a4c-power-ups-in-scene.png)
 
-Select one of these to zoom to the selected Power Up in Scene View. You can change the effects they will have on Speed and Jump for the player, as well as how long those effects will last after they touch the pickup.
+Sélectionnez l'un de ceux-ci pour zoomer sur le Power Up sélectionné dans la Vue Scène. Vous pouvez changer les effets qu'ils auront sur la Vitesse et le Saut du joueur, ainsi que la durée de ces effets après qu'ils touchent le ramassage.
 
-## Defaults
+## Valeurs par Défaut
 ![uoc-window-f1374e0-defaults.png](/img/worlds/uoc-window-f1374e0-defaults.png)
 
-Here is where you set the Move and Jump speeds instead of on the VRCWorld object. Walk, Run and Strafe are all set to the same speed by default, and they're modified together when the player touches  Power Ups.
+C'est ici que vous définissez les vitesses de Mouvement et de Saut au lieu de le faire sur l'objet VRCWorld. La Marche, la Course et le Déplacement Latéral sont tous réglés à la même vitesse par défaut, et ils sont modifiés ensemble lorsque le joueur touche les Power Ups.

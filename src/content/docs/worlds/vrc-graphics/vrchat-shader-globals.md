@@ -1,22 +1,17 @@
 ---
 title: "VRChat Shader Globals"
-sidebar:
-    order: 2
-    badge: 
-        text: à traduire !
-        variant: danger
 ---
-VRChat provides multiple global shader parameters Shader creators can use to implement VRChat-specific features.
+VRChat fournit plusieurs paramètres globaux de shader que les créateurs de shaders peuvent utiliser pour implémenter des fonctionnalités spécifiques à VRChat.
 
-The following shader globals are currently available:
+Les paramètres globaux de shader suivants sont actuellement disponibles :
 
-- `float _VRChatCameraMode`:
-  - `0` - Rendering normally
-  - `1` - Rendering in VR handheld camera
-  - `2` - Rendering in Desktop handheld camera
-  - `3` - Rendering for a screenshot
-- `float _VRChatMirrorMode`:
-  - `0` - Rendering normally, not in a mirror
-  - `1` - Rendering in a mirror viewed in VR
-  - `2` - Rendering in a mirror viewed in desktop mode
-- `float3 _VRChatMirrorCameraPos` - World space position of mirror camera (eye independent, "centered" in VR)
+- `float _VRChatCameraMode` :
+  - `0` - Rendu normal
+  - `1` - Rendu dans une caméra portable VR
+  - `2` - Rendu dans une caméra portable de bureau
+  - `3` - Rendu pour une capture d'écran
+- `float _VRChatMirrorMode` :
+  - `0` - Rendu normal, pas dans un miroir
+  - `1` - Rendu dans un miroir vu en VR
+  - `2` - Rendu dans un miroir vu en mode bureau
+- `float3 _VRChatMirrorCameraPos` - Position dans l'espace mondial de la caméra miroir (indépendante de l'œil, "centrée" en VR)

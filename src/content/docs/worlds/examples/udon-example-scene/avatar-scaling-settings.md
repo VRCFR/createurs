@@ -1,37 +1,32 @@
 ---
-title: "Avatar Scaling Settings"
-sidebar:
-    order: 2
-    badge: 
-        text: à traduire !
-        variant: danger
+title: "Paramètres de Mise à l'Échelle des Avatars"
 ---
 
-This UdonBehaviour example script allows you easily to override your world's avatar scaling settings.
+Ce script d'exemple UdonBehaviour vous permet de modifier facilement les paramètres de mise à l'échelle des avatars de votre monde.
 
-To learn how to write your own Udon script for avatar scaling, read our [avatar scaling documentation](/worlds/udon/players/player-avatar-scaling).
+Pour apprendre à écrire votre propre script Udon pour la mise à l'échelle des avatars, lisez notre [documentation sur la mise à l'échelle des avatars](/worlds/udon/players/player-avatar-scaling).
 
 ![avatar-scaling-example-component.png](/img/worlds/udon/avatar-scaling-example-component.png)
 
 ## Variables
 
-| Name | Type | Default | Description |
+| Nom | Type | Défaut | Description |
 | - | - | - | - |
-| **disableAvatarScaling** | bool | false | | If enabled, players in your world will not be able to choose their own avatar scale, even if you enabled it on VRChat.com. |
-| **minimumHeight** | float | 0.2 | The minimum avatar eye height in meters which players can choose. |
-| **maximumHeight** | float | 5 | The maximum avatar eye height in meters which players can choose. |
-| **alwaysEnforceHeight** | bool | false | If enabled, players who switch to use a very tall or very short avatar will automatically be set to "minimumHeight" or "maximumHeight". 
+| **disableAvatarScaling** | booléen | false | Si activé, les joueurs dans votre monde ne pourront pas choisir leur propre échelle d'avatar, même si vous l'avez autorisé sur VRChat.com. |
+| **minimumHeight** | flottant | 0.2 | La hauteur minimale des yeux de l'avatar en mètres que les joueurs peuvent choisir. |
+| **maximumHeight** | flottant | 5 | La hauteur maximale des yeux de l'avatar en mètres que les joueurs peuvent choisir. |
+| **alwaysEnforceHeight** | booléen | false | Si activé, les joueurs qui passent à un avatar très grand ou très petit seront automatiquement réglés sur "minimumHeight" ou "maximumHeight". 
 
-## Examples
+## Exemples
 
-- I want players to use avatar scaling freely.
-	- You don't need to change any settings.
-- I don't want players to use avatar scaling.
-	- Turn on "disableAvatarScaling."
-- I want players to use a specific avatar height.
-	- Set "minimumHeight" and "maximumHeight" how you prefer.
-	- If you want to prevent very tall or very short avatars, enable "alwaysEnforceHeight".
+- Je veux que les joueurs utilisent la mise à l'échelle des avatars librement.
+	- Vous n'avez pas besoin de changer les paramètres.
+- Je ne veux pas que les joueurs utilisent la mise à l'échelle des avatars.
+	- Activez "disableAvatarScaling".
+- Je veux que les joueurs utilisent une hauteur d'avatar spécifique.
+	- Réglez "minimumHeight" et "maximumHeight" comme vous le souhaitez.
+	- Si vous voulez empêcher l'utilisation d'avatars très grands ou très petits, activez "alwaysEnforceHeight".
 
-Here's what the Udon Graph for the example script looks like:
+Voici à quoi ressemble le Graph Udon pour le script d'exemple :
 
 ![avatar-scaling-example-component.png](/img/worlds/udon/avatar-scaling-example-graph.png)

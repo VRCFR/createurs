@@ -1,66 +1,61 @@
 ---
-title: "Udon Video Sync Player"
-sidebar:
-    order: 2
-    badge: 
-        text: à traduire !
-        variant: danger
+title: "Système de synchronisation vidéo Udon"
 ---
 ![](/img/worlds/udon-video-sync-player-9000c94-udonsyncplayer-scene.png)
 
-# Overview
-There's two main things we need to sync for people to watch videos together - the URL of the video to watch, and the playback time so people are watching things simultaneously. In order to understand how we sync these two items for everyone, including late joiners - let's walk through a scenario that uses this program.
+# Vue d'ensemble
+Il y a deux choses principales que nous devons synchroniser pour que les gens puissent regarder des vidéos ensemble - l'URL de la vidéo à regarder, et le temps de lecture pour que les gens regardent les choses simultanément. Pour comprendre comment nous synchronisons ces deux éléments pour tout le monde, y compris les nouveaux arrivants, examinons un scénario qui utilise ce programme.
 
-**The flow for someone entering a URL is: **
-Become Owner of UdonSyncPlayer Object▸send new **_url_** ▸Try to Load & Play Url ▸When Video Starts, send Sync info out ▸Send new Sync info every **_syncFrequency_** seconds
+**Le déroulement pour quelqu'un qui entre une URL est :**
+Devenir propriétaire de l'objet UdonSyncPlayer ▸ envoyer une nouvelle **_url_** ▸ Essayer de charger et de jouer l'URL ▸ Lorsque la vidéo commence, envoyer des informations de synchronisation ▸ Envoyer de nouvelles informations de synchronisation toutes les **_syncFrequency_** secondes
 
-**The flow for everyone else is:**
-Receive new **_url_** value ▸Try to Load & Play Url ▸Receive Sync Info▸Jump to synced time
+**Le déroulement pour tout le monde est :**
+Recevoir la nouvelle valeur de **_url_** ▸ Essayer de charger et de jouer l'URL ▸ Recevoir les informations de synchronisation ▸ Sauter au temps synchronisé
 
-# Someone Loads a URL
-When our hypothetical scene loads, let's say there is no video playing yet, and there are two people in the room. Someone pastes a new URL into the Input Field, which triggers the **OnURLChanged** event which is wired up in the UI.
-![When someone enters a new URL, this logic runs to send the new URL to everyone else.](/img/worlds/udon-video-sync-player-c08ee3f-url-change.png)
-There's a few 'IsValid' calls in here that we use just to make sure we're not trying to call methods on objects that have been destroyed or improperly set up. We'll skip describing these for the rest of this example these to keep the explanations simpler.
+# Quelqu'un charge une URL
+Lorsque notre scène hypothétique se charge, disons qu'aucune vidéo n'est encore en cours de lecture et qu'il y a deux personnes dans la pièce. Quelqu'un colle une nouvelle URL dans le champ de saisie, ce qui déclenche l'événement **OnURLChanged** qui est câblé dans l'interface utilisateur.
+![Lorsqu'une nouvelle URL est entrée, cette logique fonctionne pour envoyer la nouvelle URL à tout le monde.](/img/worlds/udon-video-sync-player-c08ee3f-url-change.png)
+Il y a quelques appels 'IsValid' ici que nous utilisons juste pour nous assurer que nous n'essayons pas d'appeler des méthodes sur des objets qui ont été détruits ou mal configurés. Nous allons sauter la description de ceux-ci pour le reste de cet exemple pour simplifier les explications.
 
-The Local Player has just put in a new URL, so we make them the Owner of the program so they can control its variables. We get the URL from the InputField, then call **SetProgramVariable** on the **_url_** symbol with this new value. This works the same as calling **set url** with "sendChange" enabled, it's just another way to do it, handy to know about if you want to change the variable on another UdonBehaviour. Once we've updated this variable, we call **RequestSerialization** to ask Udon to update the value of **_url_** for everyone else in the world.
+Le joueur local vient de mettre une nouvelle URL, donc nous le rendons propriétaire du programme pour qu'il puisse contrôler ses variables. Nous obtenons l'URL du champ InputField, puis appelons **SetProgramVariable** sur le symbole **_url_** avec cette nouvelle valeur. Cela fonctionne de la même manière que d'appeler **set url** avec "sendChange" activé, c'est juste une autre façon de le faire, pratique à savoir si vous voulez changer la variable sur un autre UdonBehaviour. Une fois que nous avons mis à jour cette variable, nous appelons **RequestSerialization** pour demander à Udon de mettre à jour la valeur de **_url_** pour tout le monde dans le monde.
 
+# Les utilisateurs obtiennent la nouvelle URL
+![Chaque fois que la variable synchronisée **_url_** change, essayez de la lire !](/img/worlds/udon-video-sync-player-572ee25-playurl.png)
+Comme nous avons un événement de **Changement de variable** pour **_url_** dans notre graphique, cet événement sera déclenché chaque fois que l'URL est mise à jour, et il essaiera simplement de jouer l'URL.
 
-# Users Get New URL
-![Whenever the synced **_url_** variable changes, try to Play it!](/img/worlds/udon-video-sync-player-572ee25-playurl.png)
-Since we have a **Variable Change** event for **_url_** in our graph, this event will be triggered whenever the URL is updated, and it will simply try to play the URL.
-
-
-# The Video Starts
+# La vidéo commence
 ![](/img/worlds/udon-video-sync-player-8eb0c7f-onvideostart.png)
 
-This event is triggered locally when the video actually beings playing. We call the same event for the Owner and everyone else - the different logic is handled in **UpdateTimeAndOffset**.
+Cet événement est déclenché localement lorsque la vidéo commence réellement à être jouée. Nous appelons le même événement pour le propriétaire et pour tout le monde - la logique différente est gérée dans **UpdateTimeAndOffset**.
 
-# Update Time and Offset
+# Mise à jour du temps et du décalage
 ![](/img/worlds/udon-video-sync-player-3735c0c-update-time-and-offset.png)
 
-First, this logic checks whether it's running on the Owner of the object. If it's not, it runs the **Resync** event instead. If it is on the owner, the we want to sync both _where_ in the video we are, and _when_ we were there. We should be at the very beginning of the video since this is the first time the logic is running, but by saving both of these values, we can use this for future sync updates as well. 
+Tout d'abord, cette logique vérifie si elle est exécutée sur le propriétaire de l'objet. Si ce n'est pas le cas, elle exécute l'événement **Resync** à la place. Si c'est le cas, alors nous voulons synchroniser à la fois _où_ dans la vidéo nous sommes, et _quand_ nous y étions. Nous devrions être au tout début de la vidéo puisque c'est la première fois que la logique est exécutée, mais en enregistrant ces deux valeurs, nous pouvons utiliser ceci pour des mises à jour de synchronisation futures également.
 
-We want to sync two numbers to everyone else, and these two numbers are closely related, so we combine them into a single Vector2 variable in order to keep them together and simplify some of the sync logic. We construct a Vector2 where 'x' is the current time of the video and 'y' is the Server Time observed by the owner when they were at that video time. With this info, everyone else can set themselves to a matching time - see [Resync](/worlds/examples/udon-example-scene/udon-video-sync-player#resync)  below.
+Nous voulons synchroniser deux nombres avec tout le monde, et ces deux nombres sont étroitement liés, donc nous les combinons en une seule variable Vector2 afin de les garder ensemble et de simplifier une partie de la logique de synchronisation. Nous construisons un Vector2 où 'x' est le temps actuel de la vidéo et 'y' est le temps du serveur observé par le propriétaire lorsqu'ils étaient à ce moment de la vidéo. Avec ces informations, tout le monde peut se régler sur un temps correspondant - voir [Resync](/worlds/examples/udon-example-scene/udon-video-sync-player#resync) ci-dessous.
 
-After **Requesting Serialization** of this synced variable, the owner calls **SendCustomEventDelayedSeconds** to update this value again. They use the variable **_syncFrequency_** to determine how long until they update the value. For a _very_ simple approach, this variable can be left at 0 if the owner never pauses, rewinds or fast-forwards the video, and everyone can sync from the start time of the video instead of updating **_timeAndOffset_** every so often.
+Après avoir **demandé
+
+ la sérialisation** de cette variable synchronisée, le propriétaire appelle **SendCustomEventDelayedSeconds** pour mettre à jour cette valeur à nouveau. Ils utilisent la variable **_syncFrequency_** pour déterminer combien de temps avant de mettre à jour la valeur. Pour une approche _très_ simple, cette variable peut être laissée à 0 si le propriétaire ne met jamais en pause, ne revient pas en arrière ou n'avance pas rapidement la vidéo, et tout le monde peut se synchroniser à partir de l'heure de début de la vidéo au lieu de mettre à jour **_timeAndOffset_** de temps en temps.
 
 # Resync
 ![](/img/worlds/udon-video-sync-player-b63cdfd-resync.png)
 
-When non-owners start playing the video or receive an update to the **_timeAndOffset_** variable, they can use the data to figure out where to jump to in the video.
+Lorsque des non-propriétaires commencent à jouer la vidéo ou reçoivent une mise à jour de la variable **_timeAndOffset_**, ils peuvent utiliser les données pour savoir où sauter dans la vidéo.
 
-For a simple example, let's say the owner was at video-time **0** at server-time **1000**.
-  * Owners sets **_timeAndOffset_** to (0,1000).
-  * You join 45 seconds later and get this value. Your own server-time is **1045**, so you jump to **00:45** in the video by finding the difference in the server time (45 seconds) and adding the video-time (0 seconds).
+Pour un exemple simple, disons que le propriétaire était à **0** au temps vidéo à **1000** au temps du serveur.
+  * Les propriétaires définissent **_timeAndOffset_** à (0,1000).
+  * Vous rejoignez 45 secondes plus tard et obtenez cette valeur. Votre propre temps de serveur est **1045**, vous sautez donc à **00:45** dans la vidéo en trouvant la différence dans le temps du serveur (45 secondes) et en ajoutant le temps de la vidéo (0 seconde).
 
-# Improvements and Augmentations
+# Améliorations et augmentations
 ![](/img/worlds/udon-video-sync-player-f43a120-udonsyncplayer-full-graph.png)
 
-We kept this example pretty simple so it would be understandable and upgradeable. There's lots you could do to improve it and share your changes! Here are some ideas:
+Nous avons gardé cet exemple assez simple pour qu'il soit compréhensible et améliorable. Il y a beaucoup de choses que vous pourriez faire pour l'améliorer et partager vos changements ! Voici quelques idées :
 
-* Have non-owners wait to play the video until they receive info from the Owner
-* Detect stream urls vs videos and turn off syncing
-* Handle Video Error events with helpful notes for users
-* Only allow certain players to change videos
-* Create video playlists
-* Create a video Queueing system
+* Faire attendre les non-propriétaires pour jouer la vidéo jusqu'à ce qu'ils reçoivent des informations du propriétaire
+* Détecter les URL de flux par rapport aux vidéos et désactiver la synchronisation
+* Gérer les événements d'erreur vidéo avec des notes utiles pour les utilisateurs
+* Autoriser uniquement certains joueurs à changer de vidéos
+* Créer des listes de lecture vidéo
+* Créer un système de mise en file d'attente vidéo

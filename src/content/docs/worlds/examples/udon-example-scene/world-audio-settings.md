@@ -1,19 +1,14 @@
 ---
-title: World Audio Settings
-sidebar:
-    order: 2
-    badge: 
-        text: à traduire !
-        variant: danger
+title: Paramètres Audio du Monde
 ---
 :::note
 
-This script is currently not present in the Udon example scene.
+Ce script n'est actuellement pas présent dans la scène d'exemple Udon.
 
 :::
 
-This UdonBehaviour example script allows you configure player voices and avatar audio in your VRChat world.
+Ce script UdonBehaviour permet de configurer les voix des joueurs et l'audio de l'avatar dans votre monde VRChat.
 
-This script sets these values once when a player joins your world. You may use other scripts to change these values later.
+Ce script définit ces valeurs une fois lorsqu'un joueur rejoint votre monde. Vous pouvez utiliser d'autres scripts pour changer ces valeurs plus tard.
 
-For more information, please read the [Player Audio](/worlds/udon/players/player-audio/) documentation.
+Pour plus d'informations, veuillez lire la documentation [Player Audio](/worlds/udon/players/player-audio/).

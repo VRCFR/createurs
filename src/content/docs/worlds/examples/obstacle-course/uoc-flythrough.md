@@ -1,35 +1,30 @@
 ---
-title: "Obstacle Course: Flythrough"
-sidebar:
-    order: 2
-    badge: 
-        text: à traduire !
-        variant: danger
+title: "Parcours d'Obstacles : Vue Aérienne"
 ---
-We included a Cinemachine system to easily generate a fly-through video of your course!
+Nous avons inclus un système Cinemachine pour générer facilement une vidéo vue aérienne de votre parcours !
 
-# Basic Setup
-* Drag and Drop the **Flythrough** prefab from **Assets/_WorldJam2/_SubSystems/Flythrough** into your scene.
-* Press "Refresh" in the Obstacle Utility Window. This will generate a path based on all the Checkpoints in your scene!
-* Select the **FlythroughPrefab/RecordCamPath** object in your hierarchy to see the path that was created.
+# Configuration de Base
+* Glissez et déposez le préfabriqué **Flythrough** depuis **Assets/_WorldJam2/_SubSystems/Flythrough** dans votre scène.
+* Appuyez sur "Rafraîchir" dans la fenêtre Utilitaire des Obstacles. Cela générera un chemin basé sur tous les Points de Contrôle dans votre scène !
+* Sélectionnez l'objet **FlythroughPrefab/RecordCamPath** dans votre hiérarchie pour voir le chemin qui a été créé.
 ![uoc-flythrough-2114971-flythrough-path.png](/img/worlds/uoc-flythrough-2114971-flythrough-path.png)
 
-* Press 'Play' in the Game View to see your flythrough! Exit Play Mode once you have an idea of how it looks.
+* Appuyez sur 'Lecture' dans la Vue de Jeu pour voir votre vue aérienne ! Quittez le Mode Lecture une fois que vous avez une idée de son apparence.
 
-# Modifying the Path
+# Modification du Chemin
 
-By default, the path will be generated 0.5 units above each checkpoint's origin. If this is too high or low for your particular scene, you can modify the "Record Path Y Offset" in the **Recording** section of the VRC Obstacle Window to change the height of every checkpoint at the same time. You can click and drag left and right on the label to easily dial in the right spot.
+Par défaut, le chemin sera généré 0.5 unités au-dessus de l'origine de chaque point de contrôle. Si c'est trop haut ou trop bas pour votre scène en particulier, vous pouvez modifier le "Record Path Y Offset" dans la section **Enregistrement** de la fenêtre VRC Obstacle pour changer la hauteur de chaque point de contrôle en même temps. Vous pouvez cliquer et glisser à gauche et à droite sur l'étiquette pour facilement trouver le bon endroit.
 
-If you want to add / remove / reposition the waypoints in the path, turn off 'Auto Update Checkpoints' in the Recording section, then select the **RecordCamPath** in the hierarchy. Here, you can change the numbers directly, or press the number of the waypoint on the left side of the inspector to select the waypoint in the scene view and move it using the standard transform tool.
+Si vous souhaitez ajouter / supprimer / repositionner les points de passage dans le chemin, désactivez 'Auto Update Checkpoints' dans la section Enregistrement, puis sélectionnez le **RecordCamPath** dans la hiérarchie. Ici, vous pouvez changer les numéros directement, ou appuyer sur le numéro du point de passage sur le côté gauche de l'inspecteur pour sélectionner le point de passage dans la vue scène et le déplacer à l'aide de l'outil de transformation standard.
 
-You can change the speed of the flythrough by selecting the *RecordCamTarget* object in the hierarchy and changing the _Speed_ parameter on the **Cinemachine Dolly Cart* component. The default setting uses Normalized Position Units with a Speed of .03 to make it through the course in about 30 seconds.
+Vous pouvez changer la vitesse de la vue aérienne en sélectionnant l'objet *RecordCamTarget* dans la hiérarchie et en modifiant le paramètre _Speed_ sur le composant **Cinemachine Dolly Cart*. Le réglage par défaut utilise des Unités de Position Normalisées avec une Vitesse de .03 pour parcourir le cours en environ 30 secondes.
 ![uoc-flythrough-5f34a79-waypoints.png](/img/worlds/uoc-flythrough-5f34a79-waypoints.png)
 
-# Recording the Output
-You can use a screen recorder to directly record your Game View in the Editor, or use the Unity Recorder Package to generate a higher-quality output. You can add this from the Package Manager. It has been tested and works with this setup. If you want full instructions on using the Recorder, you can find the official Unity Manual here: [Unity Recorder 1.0 User Manual.](https://unitytech.github.io/unity-recorder/manual/index.html) and a tutorial here: [Working with Unity Recorder](https://learn.unity.com/tutorial/working-with-unity-recorder).
+# Enregistrer la Sortie
+Vous pouvez utiliser un enregistreur d'écran pour enregistrer directement votre Vue de Jeu dans l'Éditeur, ou utiliser le Paquet Enregistreur Unity pour générer une sortie de meilleure qualité. Vous pouvez l'ajouter depuis le Gestionnaire de Paquets. Il a été testé et fonctionne avec cette configuration. Si vous voulez des instructions complètes sur l'utilisation de l'Enregistreur, vous pouvez trouver le manuel officiel Unity ici : [Manuel de l'Utilisateur Unity Recorder 1.0.](https://unitytech.github.io/unity-recorder/manual/index.html) et un tutoriel ici : [Travailler avec Unity Recorder](https://learn.unity.com/tutorial/working-with-unity-recorder).
 
-# Cleaning Up
-Make sure to remove the recorder from your scene before you publish! If you customized a path, you can make a copy of the prefab with your new path to use it again later.
+# Nettoyage
+Assurez-vous de retirer l'enregistreur de votre scène avant de publier ! Si vous avez personnalisé un chemin, vous pouvez faire une copie du préfabriqué avec votre nouveau chemin pour l'utiliser à nouveau plus tard.
 
-# Extra Credit
-You could integrate this flythrough camera with the existing Cinemachine system in the scene (which renders to the Minimap and in-game jumbotrons), or create a separate system for high-quality in-game recording!
+# Bonus
+Vous pourriez intégrer cette caméra vue aérienne avec le système Cinemachine existant dans la scène (qui rend sur la Minimap et les jumbotrons en jeu), ou créer un système séparé pour un enregistrement de haute qualité en jeu !

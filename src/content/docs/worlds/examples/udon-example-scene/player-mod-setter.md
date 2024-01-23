@@ -1,20 +1,15 @@
 ---
-title: Player Mod Setter
-sidebar:
-    order: 2
-    badge: 
-        text: à traduire !
-        variant: danger
+title: Paramètres de Modification du Joueur
 ---
-This UdonBehaviour example script allows you configure the movement of players in your world.
+Ce script d'exemple UdonBehaviour vous permet de configurer le mouvement des joueurs dans votre monde.
 
-This script sets these values once when a player joins your world. You may use other scripts to change these values later.
+Ce script définit ces valeurs une seule fois lorsqu'un joueur rejoint votre monde. Vous pouvez utiliser d'autres scripts pour modifier ces valeurs plus tard.
 ## Variables
-| Name                  | Type  | Default | Description |
-| -                     | -     | -       | - |
-| Jump Height           | float | 3       | The jump strength of players. Affected by gravity.
-| Run Speed             | float | 4       | The movement speed when moving forward or backward. (If the player is using a keyboard, they must hold `Shift`.) 
-| Walk Speed            | float | 2       | (Keyboard only) The movement speed without holding the `Shift` key.
-| Strafe Speed          | float | 2       | The movement speed when moving left or right.
-| Gravity               | float | 1       | The amount that [gravity](https://docs.unity3d.com/ScriptReference/Physics-gravity.html) affects players.
-| Use Legacy Locomotion | bool  | false   | Enables VRChat's deprecated legacy locomotion system. Cannot be disabled by Udon later.
+| Nom                   | Type  | Défaut | Description |
+| -                     | -     | -      | - |
+| **Jump Height**       | float | 3      | La force de saut des joueurs. Affectée par la gravité.
+| **Run Speed**         | float | 4      | La vitesse de déplacement en avant ou en arrière. (Si le joueur utilise un clavier, il doit maintenir la touche `Shift`.) 
+| **Walk Speed**        | float | 2      | (Clavier uniquement) La vitesse de déplacement sans maintenir la touche `Shift`.
+| **Strafe Speed**      | float | 2      | La vitesse de déplacement de gauche à droite.
+| **Gravity**           | float | 1      | La mesure dans laquelle la [gravité](https://docs.unity3d.com/ScriptReference/Physics-gravity.html) affecte les joueurs.
+| **Use Legacy Locomotion** | bool  | false   | Active le système de locomotion légendaire et déprécié de VRChat. Ne peut pas être désactivé par Udon plus tard.

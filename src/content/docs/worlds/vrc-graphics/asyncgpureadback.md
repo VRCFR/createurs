@@ -1,43 +1,39 @@
 ---
-title: "ASyncGPUReadback"
-sidebar:
-    order: 2
-    badge: 
-        text: à traduire !
-        variant: danger
+title : "ASyncGPUReadback"
 ---
-AsyncGPUReadback in Unity is a feature that allows developers to copy data, such as a specific pixel's color, from textures on the GPU to code on the CPU. This function is similar to `Texture2D.GetPixels`except it does not block tasks on the main thread as it runs asynchronously.
 
-By performing the data transfer asynchronously, Unity ensures that the process does not negatively affect the application's frame rate and overall performance. AsyncGPUReadback helps developers avoid stalling the rendering pipeline, as the data transfer occurs in the background, parallel to the main thread.
+AsyncGPUReadback dans Unity est une fonctionnalité qui permet aux développeurs de copier des données, telles que la couleur d'un pixel spécifique, des textures sur le GPU vers du code sur le CPU. Cette fonction est similaire à `Texture2D.GetPixels` sauf qu'elle ne bloque pas les tâches sur le fil principal car elle s'exécute de manière asynchrone.
 
-Common use cases for AsyncGPUReadback include generating CPU-side data based on the rendered output, such as creating a texture mipmap chain, implementing custom post-processing effects, or analyzing rendered frames for AI and computer vision purposes.
+En effectuant le transfert de données de manière asynchrone, Unity assure que le processus n'affecte pas négativement la fréquence d'images et la performance globale de l'application. AsyncGPUReadback aide les développeurs à éviter de ralentir la pipeline de rendu, car le transfert de données se produit en arrière-plan, parallèlement au fil principal.
 
-## Differences between Unity AsyncGpuReadback and VRCAsyncGpuReadback
+Les cas d'utilisation courants pour AsyncGPUReadback incluent la génération de données côté CPU basée sur la sortie rendue, tels que la création d'une chaîne de mipmaps de texture, la mise en œuvre d'effets de post-traitement personnalisés, ou l'analyse de cadres rendus à des fins d'IA et de vision par ordinateur.
 
-VRChat's implementation of AsyncGpuReadback employs a wrapper that calls the Unity functions. This wrapper uses a different interface. The differences are as follows:
+## Différences entre Unity AsyncGpuReadback et VRCAsyncGpuReadback
 
-- Rather than calling AsyncGpuReadback, you need to use VRCAsyncGpuReadback.
-- Rather than providing `Action<AsyncGPUReadbackRequest> callback`, you provide an UdonBehaviour, and then that UdonBehaviour will receive `OnAsyncGpuReadbackComplete` when the readback is complete.
-- Rather than using `GetData` on the completed readback, you need to use `TryGetData`.
+L'implémentation de AsyncGpuReadback par VRChat utilise un wrapper qui appelle les fonctions Unity. Ce wrapper utilise une interface différente. Les différences sont les suivantes :
 
-See Unity's documentation on this feature for other shared details:  
-[Making a readback request](https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Rendering.AsyncGPUReadback.Request.html)  
-[Getting data from a readback](https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Rendering.AsyncGPUReadbackRequest.html)
+- Plutôt que d'appeler AsyncGpuReadback, vous devez utiliser VRCAsyncGpuReadback.
+- Plutôt que de fournir `Action<AsyncGPUReadbackRequest> callback`, vous fournissez un UdonBehaviour, et ensuite cet UdonBehaviour recevra `OnAsyncGpuReadbackComplete` lorsque le readback est terminé.
+- Plutôt que d'utiliser `GetData` sur le readback terminé, vous devez utiliser `TryGetData`.
 
-## Using VRCAsyncGpuReadback
+Voir la documentation d'Unity sur cette fonctionnalité pour d'autres détails partagés :  
+[Faire une demande de readback](https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Rendering.AsyncGPUReadback.Request.html)  
+[Obtenir des données d'un readback](https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Rendering.AsyncGPUReadbackRequest.html)
 
-When using VRCAsyncGpuReadback, there are 3 main steps that you need to follow:
+## Utilisation de VRCAsyncGpuReadback
 
-1. Set up an array of data to be used.
-2. Make the AsyncGpuReadback request
-3. Receive the message when the request is complete
-4. Get the data out of the request
+Lorsque vous utilisez VRCAsyncGpuReadback, il y a 3 étapes principales à suivre :
 
-## Udon Node Graph Example
+1. Configurer un tableau de données à utiliser.
+2. Faire la demande de AsyncGpuReadback
+3. Recevoir le message lorsque la demande est terminée
+4. Extraire les données de la demande
+
+## Exemple de Graphique de Nœuds Udon
 
 ![asyncgpureadback-mu8QGGS.png](/img/worlds/asyncgpureadback-mu8QGGS.png)
 
-## UdonSharp Example
+## Exemple UdonSharp
 
 ```csharp
 
@@ -59,14 +55,14 @@ public class AGPURB : UdonSharpBehaviour
     {
         if (request.hasError)
         {
-            Debug.LogError("GPU readback error!");
+            Debug.LogError("Erreur de readback GPU !");
             return;
         }
         else
         {
             var px = new Color[texture.width * texture.height];
-            Debug.Log("GPU readback success: " + request.TryGetData(px));
-            Debug.Log("GPU readback data: " + px[0]);
+            Debug.Log("Succès de readback GPU : " + request.TryGetData(px));
+            Debug.Log("Données de readback GPU : " + px[0]);
         }
     }
 }

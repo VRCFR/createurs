@@ -1,68 +1,63 @@
 ---
 title: "VRCGraphics"
-sidebar:
-    order: 2
-    badge: 
-        text: à traduire !
-        variant: danger
 ---
 # Types
 
 ## VRCShader
 
-Overarching class for global shader setters. See [functions documented below](#vrcshaderpropertytoid) for more.
+Classe principale pour les paramètres globaux des shaders. Voir les [fonctions documentées ci-dessous](#vrcshaderpropertytoid) pour plus d'informations.
 
 ## VRCGraphics
 
-Exposes a subset of Unity’s built-in \`Graphics\` class. See documented functions for more.
+Expose un sous-ensemble de la classe `Graphics` intégrée d'Unity. Voir les fonctions documentées pour plus de détails.
 
-# Exposed Functions
+# Fonctions exposées
 
 ## VRCGraphics.Blit()
 
-Copies source texture into destination RenderTexture with a shader. Note that we do not allow you to supply a null destination.
+Copie la texture source dans la RenderTexture de destination avec un shader. Notez que nous ne vous permettons pas de fournir une destination nulle.
 
-See: https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Graphics.Blit.html
+Voir : https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Graphics.Blit.html
 
-### Minimap Example
-The version of the SDK installed by [the Creator Companion](https://vcc.docs.vrchat.com) includes an example scene that provides a performant Minimap as an example use of Graphics.Blit. You can open it from the Unity Menu Bar under VRChat SDK > Samples > Minimap. This example uses the Udon Graph, it's also available as [an UdonSharp example](https://assets.vrchat.com/sdkExamples/com.vrchat-examples.minimap-1.0.0.unitypackage).
+### Exemple de Minimap
+La version du SDK installée par [le Creator Companion](https://vcc.docs.vrchat.com) comprend une scène d'exemple qui fournit une Minimap performante comme exemple d'utilisation de Graphics.Blit. Vous pouvez l'ouvrir depuis la barre de menu Unity sous VRChat SDK > Samples > Minimap. Cet exemple utilise le Graphique Udon, il est également disponible en tant qu'[exemple UdonSharp](https://assets.vrchat.com/sdkExamples/com.vrchat-examples.minimap-1.0.0.unitypackage).
 
 ![index-aecb84d-minimap-example.png](/img/worlds/index-aecb84d-minimap-example.png)
 
-### Meta Quest Exceptions
+### Exceptions pour Meta Quest
 
-VRCGraphics.Blit will not work on the Quest GPU unless you:
+VRCGraphics.Blit ne fonctionnera pas sur le GPU Quest à moins que vous :
 
-Add ZTest Always to the shader
-OR
-Turn off the depth on the target RenderTexture.
+Ajoutiez ZTest Always au shader
+OU
+Désactiviez la profondeur sur la RenderTexture cible.
 
-Failing to do so will cause the operation to fail.
+Le non-respect de ces conditions entraînera l'échec de l'opération.
 
 ## VRCGraphics.DrawMeshInstanced()
 
-Draw the same mesh multiple times using GPU instancing.
+Dessine le même maillage plusieurs fois en utilisant l'instanciation GPU.
 
-See: https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Graphics.DrawMeshInstanced.html
+Voir : https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Graphics.DrawMeshInstanced.html
 
 ## VRCShader.PropertyToID()
 
-Use PropertyToID to get an ID based on a shader property name. Call this function only once during initialization, the ID can be reused and will not change, even between different materials and shaders.
+Utilisez PropertyToID pour obtenir un ID basé sur un nom de propriété de shader. Appelez cette fonction une seule fois pendant l'initialisation, l'ID peut être réutilisé et ne changera pas, même entre différents matériaux et shaders.
 
-Note that the property name must be prefixed with “\_Udon”, or be the literal string “\_AudioTexture” in order to be used with VRCShader.SetGlobal, however, will still return the ID regardless of this.
+Notez que le nom de la propriété doit être préfixé par “\_Udon”, ou être la chaîne littérale “\_AudioTexture” pour être utilisé avec VRCShader.SetGlobal, cependant, il retournera toujours l'ID indépendamment de cela.
 
-See: https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Shader.PropertyToID.html
+Voir : https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Shader.PropertyToID.html
 
 ## VRCShader.SetGlobal()
 
-Use the ID acquired with PropertyToID as a key and specify a value of the correct type. The value will be available in _all_ shaders in the world (including ones on avatars!) under the name passed into PropertyToID.
+Utilisez l'ID acquis avec PropertyToID comme clé et spécifiez une valeur du type correct. La valeur sera disponible dans _tous_ les shaders du monde (y compris ceux sur les avatars !) sous le nom passé à PropertyToID.
 
-Available variants:
+Variantes disponibles :
 
   * VRCShader.SetGlobalColor()
   * VRCShader.SetGlobalFloat()
   * VRCShader.SetGlobalFloatArray()
-  * VRCShader.SetGlobalInteger() still sets the value as `float` for now, due to a Unity bug
+  * VRCShader.SetGlobalInteger() définit toujours la valeur en `float` pour le moment, en raison d'un bug d'Unity
   * VRCShader.SetGlobalMatrix()
   * VRCShader.SetGlobalMatrixArray()
   * VRCShader.SetGlobalTexture()

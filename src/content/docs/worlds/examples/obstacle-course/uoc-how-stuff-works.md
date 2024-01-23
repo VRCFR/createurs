@@ -1,188 +1,189 @@
 ---
-title: "Obstacle Course: How Stuff Works"
-sidebar:
-    order: 2
-    badge: 
-        text: à traduire !
-        variant: danger
+title: "Parcours d'Obstacles : Comment Ça Fonctionne"
 ---
-Each system was designed to have a specific set of responsibilities, and to know about other systems as little as necessary. 
+Chaque système a été conçu pour avoir un ensemble spécifique de responsabilités, et pour en savoir le moins possible sur les autres systèmes.
 
-# Overview
-* The **PlayerDataManager** assigns **PlayerData** objects to each player who enters the world.
-* When a **PlayerData** object enters the Start Gate **Checkpoint**, the **Course** they just entered starts tracking their time, and activates the next **Checkpoint**.
-* When the **PlayerData** object passes through the last **Checkpoint**, their time is added to the Scoreboard.
-* If the **PlayerData** object enters a **PowerUp** trigger, the **PlayerModsManager** temporarily changes their speed and/or jump abilities, resetting them to default after a set duration
-* If the **PlayerData** object enters a **Respawn** trigger, the **Course** will respawn them at the last **Checkpoint** through which they passed.
+# Vue d'ensemble
+* Le **PlayerDataManager** attribue des objets **PlayerData** à chaque joueur qui entre dans le monde.
+* Lorsqu'un objet **PlayerData** entre dans la porte de départ **Checkpoint**, le **Course** qu'ils viennent d'entrer commence à suivre leur temps et active le prochain **Checkpoint**.
+* Lorsque l'objet **PlayerData** passe à travers le dernier **Checkpoint**, leur temps est ajouté au tableau des scores.
+* Si l'objet **PlayerData** entre dans un déclencheur **PowerUp**, le **PlayerModsManager** change temporairement leur vitesse et/ou capacités de saut, les réinitialisant par défaut après une durée définie.
+* Si l'objet **PlayerData** entre dans un déclencheur **Respawn**, le **Course** les fera réapparaître au dernier **Checkpoint** par lequel ils sont passés.
 
-The following sections describe the programs and scripts that combine to make the whole experience.
+Les sections suivantes décrivent les programmes et scripts qui se combinent pour créer l'expérience complète.
 
-# Players
-Each player who joins the world gets a 'PlayerData' object to manage their state and progress through a course. The **PlayerDataManager** assigns **PlayerData** objects, which can trigger **OnPlayerDataEnter** programs.
+# Joueurs
+Chaque joueur qui rejoint le monde obtient un objet 'PlayerData' pour gérer son état et sa progression à travers un parcours. Le **PlayerDataManager** attribue des objets **PlayerData**, qui peuvent déclencher des programmes **OnPlayerDataEnter**.
 
 ## PlayerDataManager
-You can find this program on the "PlayerDataManager" GameObject under the "Udon" object in the scene. It has two important public variables:
-**dataPool**: Reference to the VRC Object Pool component on the same object as this Manager. When a Player Joins the world, this manager will TryToSpawn a PlayerData object for them, and give them ownership.
-**followCam**: Reference to the camera that will follow above a Player as they run through the course. Set here so the PlayerDataManager can assign the reference to each PlayerData object when they are refreshed.
+Vous pouvez trouver ce programme sur l'objet "PlayerDataManager" sous l'objet "Udon" dans la scène. Il a deux variables publiques importantes :
+**dataPool** : Référence au composant VRC Object Pool sur le même objet que ce gestionnaire. Lorsqu'un joueur rejoint le monde, ce gestionnaire essaiera de générer un objet PlayerData pour eux et leur donnera la propriété.
+**followCam** : Référence à la caméra qui suivra au-dessus d'un joueur lorsqu'ils traversent le parcours. Défini ici pour que le PlayerDataManager puisse attribuer la référence à chaque objet PlayerData lorsqu'ils sont actualisés.
 
-When you change the 'Number of Players' option in the Toolkit Window, all the existing PlayerData objects will be removed from the scene, then new copies of them will be added as children of the PlayerDataManager. Each one will have its public variables set up properly, and the Object Pool will be updated to hold all the new PlayerData objects.
+Lorsque vous changez l'option 'Nombre de joueurs' dans la fenêtre Toolkit, tous les objets PlayerData existants seront supprimés de la scène, puis de nouvelles copies seront ajoutées en tant qu'enfants du PlayerDataManager. Chacun aura ses variables publiques correctement configurées, et l'Object Pool sera mis à jour pour contenir tous les nouveaux objets PlayerData.
 
 ## PlayerObject
-The PlayerObject prefab has a Rigidbody and Capsule Collider component, which are needed to trigger PowerUps, Hazards, etc. It's on a custom layer **CoursePlayer** which only collides with **CourseTrigger** to interact with Hazards and PowerUps. It also has an UdonBehaviour with an important program on it:
+Le préfabriqué PlayerObject a un composant Rigidbody et Capsule Collider, nécessaires pour déclencher les PowerUps, les dangers, etc. Il est sur une couche personnalisée **CoursePlayer** qui ne collisionne qu'avec **CourseTrigger** pour interagir avec les dangers et les PowerUps. Il a également un UdonBehaviour avec un programme important sur celui-ci :
 
 ## PlayerData
-This program is the main connector between the player running the course and all the other systems. Its variables are:
-**timeElapsed**: Synced Float which is updated by the **Course** program when they cross the Finish Gate. When it changes, the owner of the PlayerData object will show this time on the scoreboard so they can see their latest time locally. The owner of the ScoreManager object will see this change and add the new time and displayName of the Player to the scoreboard.
+Ce programme est le principal connecteur entre le joueur parcourant le parcours et tous les autres systèmes. Ses variables sont :
+**timeElapsed** : Float synchronisé qui est mis à jour par le programme **Course** lorsqu'ils franchissent la porte d'arrivée. Lorsqu'il change, le propriétaire de l'objet PlayerData affichera ce temps sur le tableau des scores afin qu'ils puissent voir leur dernier temps localement. Le propriétaire de l'objet ScoreManager verra ce changement et ajoutera le nouveau temps et le nom d'affichage du joueur au tableau des scores.
 
-**isRacing**: Boolean which is set true by the **Course** when the player has entered a start gate. It's set to false when the player enters a finish gate, manually respawns using their menu, or **Reset** is called on the **Course**. Used by the **Course**, see that program for more info.
+**isRacing** : Booléen qui est défini sur vrai par le **Course** lorsque le joueur a franchi une porte de départ. Il est réglé sur faux lorsque le joueur entre dans une porte d'arrivée, réapparaît manuellement à l'aide de son menu, ou lorsque **Reset** est appelé sur le **Course**. Utilisé par le **Course**, voir ce programme pour plus d'informations.
 
-**rigidbody**: Cached on Start by the program, it doesn't need to be set in the inspector. It's moved to the position and rotation of the player during every Update.
+**rigidbody** : Mis en cache au démarrage par le programme, il n'est pas nécessaire de le définir dans l'inspecteur. Il est déplacé à la position et à la rotation du joueur pendant chaque mise à jour.
 
-**player**: Reference to the actual VRCPlayerApi object of the local player. Cached when the synced _playerId_ on this program is changed. Used to retrieve the _displayName_ of the player.
+**player** : Référence à l'objet VRCPlayerApi réel du joueur local. Mis en cache lorsque l'_playerId_ synchronisé sur ce programme change. Utilisé pour récupérer le _displayName_ du joueur.
 
-**timeDisplay**: Reference to the UdonBehaviour which displays the latest time for the local player.
+**timeDisplay** : Référence à l'UdonBehaviour qui affiche le dernier temps pour le joueur local.
 
-**scoreManager**: Reference to the **ScoreManager** UdonBehaviour. When the owner of that object receives a _timeElapsed_ change from a **PlayerData** object which just finished the course, it sets the public variable _scoreToProcess_ on the **ScoreManager** object to a string which combines the _displayName_ and _elapsedTime_ into a single string to be processed.
+**scoreManager** : Référence à l'UdonBehaviour **ScoreManager**. Lorsque le propriétaire de cet objet reçoit un changement de _timeElapsed_ d'un objet **PlayerData** qui vient de terminer le parcours, il définit la variable publique _scoreToProcess_ sur l'objet **ScoreManager** à une chaîne qui combine le _displayName_ et _elapsedTime_ en une seule chaîne à traiter.
 
-**scoreManagerObject**: Reference to the GameObject which holds the UdonBehaviour with the **ScoreManager** program. Needed to ensure we only run the Score Processing logic on the owner of the **ScoreManager** object. We can't get this GameObject from an UdonBehaviour reference, so we include it here.
+**scoreManagerObject** : Référence à l'objet GameObject qui détient l'UdonBehaviour avec le programme **ScoreManager**. Nécessaire pour garantir que nous exécutons uniquement la logique de traitement des scores sur le propriétaire de l'objet **ScoreManager**. Nous ne pouvons pas obtenir cet objet GameObject à partir d'une référence UdonBehaviour, donc nous l'incluons ici.
 
-**followCam**: Reference to the CinemachineVirtualCamera which follows the player around the course. The program sets its own Transform as both the _follow_ and _lookAt_ targets for the camera, and changes the priority on this camera when _isRacing_ changes.
+**followCam** : Référence à la CinemachineVirtualCamera qui suit le joueur autour du parcours. Le programme définit sa propre transformation comme les cibles _follow_ et _lookAt_ pour la caméra, et change la priorité de cette caméra lorsque _isRacing_ change.
 
 ## OnPlayerDataEnter
-This program is used on objects which should detect the **PlayerData** object entering its Trigger Collider. We use the custom layers **CoursePlayer** and **CourseTrigger** ensure that only certain objects will trigger this collider. When they do, it fires the internal event **OnPlayerDataEnter** to do a multitude of things. This program has the following variables:
+Ce programme est utilisé sur des objets qui doivent détecter l'entrée de l'objet **PlayerData** dans son Trigger Collider. Nous utilisons les couches personnalisées **CoursePlayer** et **CourseTrigger** pour garantir que seuls certains objets déclencheront ce collisionneur. Lorsqu'ils le font, il déclenche l'événement interne **OnPlayerDataEnter** pour faire une multitude de choses. Ce programme a les variables suivantes :
 
-**fxPrefab**: A GameObject to spawn when on **Trigger**, meant to play a sound, show some particles, etc so the Player knows that something has happened.
+**fxPrefab** : Un GameObject à générer lors du **Trigger**, destiné à jouer un son, montrer des particules, etc. pour que le joueur sache que quelque chose s'est passé.
 
-**program**: A target UdonBehaviour with an event we want to run on **Trigger**. This _program_ contains the specific logic for a **Checkpoint**, **PowerUp**, **Hazard**, etc.
+**program** : Un UdonBehaviour cible avec un événement que nous voulons exécuter sur **Trigger**. Ce _program_ contient la logique spécifique pour un **
 
-**eventName**: The event name to run on the target _program_.
+Checkpoint**, **PowerUp**, **Hazard**, etc.
 
-**deactivateOnTrigger**: Whether this object should deactivate itself after a single **Trigger**. This is useful for **Checkpoints** and other items that should only activate once per run.
+**eventName** : Le nom de l'événement à exécuter sur le programme cible.
 
-**lastCollider**: Collider which started the Trigger logic, which is temporarily cached before **Trigger** is called and used to find the **PlayerData** UdonBehaviour if needed.
+**deactivateOnTrigger** : Si cet objet doit se désactiver après un seul **Trigger**. Cela est utile pour les **Checkpoints** et autres éléments qui ne doivent s'activer qu'une seule fois par course.
 
-**fxSpawn**: A Transform we use to set the position of the FX we will spawn. Defaults to the Transform of the object with the collider if not set, useful if you want to trigger Fireworks in another location when running through a collider, like we do for the Finish Gate.
+**lastCollider** : Collider qui a déclenché la logique de Trigger, temporairement mis en cache avant **Trigger** est appelé et utilisé pour trouver l'UdonBehaviour **PlayerData** si nécessaire.
 
-**sendPlayerData**: A Boolean that decides whether or not to try to pass along the **PlayerData** program that Triggered the logic. Used when entering a Start Gate, could be useful for other things as well.
+**fxSpawn** : Une Transform que nous utilisons pour définir la position du FX que nous allons générer. Par défaut sur la transformation de l'objet avec le collisionneur si non défini, utile si vous souhaitez déclencher des feux d'artifice dans un autre endroit lors du passage à travers un collisionneur, comme nous le faisons pour la porte d'arrivée.
 
-When a **PlayerData** collider trigger entry is detected, this program does the following:
-* If we have set an _eventName_ variable, then we will check whether _sendPlayerData_ is true. If it is, we will try to set the _playerData_ variable on the target UdonBehaviour program to the UdonBehaviour with which we just collided.
-* We will then run the event _eventName_ on the target program.
-* If the _fxPrefab_ GameObject on this program was set (not left at default of 'self'), then we will **Instantiate** a copy of the prefab and set its position and rotation from the _fxSpawn_ variable.
-* If _deactivateOnTrigger_ is true, then we will set **this** GameObject to inactive.
+**sendPlayerData** : Un booléen qui décide s'il faut ou non essayer de transmettre le programme **PlayerData** qui a déclenché la logique. Utilisé lors de l'entrée dans une porte de départ, pourrait être utile pour d'autres choses également.
 
-# Course & Checkpoints
-This is the heart of the project, the gates and checkpoints that you need to move through to complete the time trial.
+Lorsqu'une entrée de déclencheur de collisionneur **PlayerData** est détectée, ce programme fait ce qui suit :
+* Si nous avons défini une variable _eventName_, nous vérifierons si _sendPlayerData_ est vrai. Si c'est le cas, nous essaierons de définir la variable _playerData_ sur le programme UdonBehaviour cible sur l'UdonBehaviour avec lequel nous venons de collisionner.
+* Nous exécuterons ensuite l'événement _eventName_ sur le programme cible.
+* Si le GameObject _fxPrefab_ sur ce programme a été défini (pas laissé par défaut à 'self'), nous **Instancierons** une copie du préfabriqué et définirons sa position et sa rotation à partir de la variable _fxSpawn_.
+* Si _deactivateOnTrigger_ est vrai, nous définirons **ce** GameObject sur inactif.
 
-# Course
-This program lives on the CourseManager object and manages the state of the time trial for the local player. It doesn't have any synced variables - it only knows about the Local Player who is running through it.
+# Parcours & Points de Contrôle
+C'est le cœur du projet, les portes et les points de contrôle que vous devez franchir pour terminer le contre-la-montre.
 
-On **Start**, it calls **Reset** to set itself up properly.
-If the player Respawns themselves, the Course will **Reset**.
+# Parcours
+Ce programme se trouve sur l'objet CourseManager et gère l'état du contre-la-montre pour le joueur local. Il n'a pas de variables synchronisées - il ne connaît que le joueur local qui le parcourt.
 
-On **Reset**, we turn off all of the **Checkpoint** triggers except for the Start Gate, which we turn on. We do this by looping through each GameObject in the _checkpoints_ array, finding every Trigger Collider, and calling **SetActive** on that collider's GameObject to true for index 0 and false for all the others.
-We also set _nextIndex_ to -1 and set _isRacing_ to false.
+Au **démarrage**, il appelle **Reset** pour se configurer correctement.
+Si le joueur se réapparaît lui-même, le parcours sera **Réinitialisé**.
 
-On **StartRace**, we:
-* set _startTime_ from the current time
-* set _isRacing_ to true
-* set _nextIndex_ to 1 (since the race is started by passing through Checkpoint 0)
+Sur **Reset**, nous éteignons tous les déclencheurs **Checkpoint** sauf pour la porte de départ, que nous activons. Nous faisons cela en parcourant chaque GameObject dans le tableau _checkpoints_, en trouvant chaque Trigger Collider, et en appelant **SetActive** sur le GameObject de ce collisionneur à vrai pour l'index 0 et faux pour tous les autres.
+Nous définissons également _nextIndex_ sur -1 et réglons _isRacing_ sur faux.
 
-When a **Checkpoint** is triggered, it sets the _nextIndex_ on the Course to its own index + 1. This triggers the **nextIndexChange** event on the Course program, which will then activate the GameObject for the next Checkpoint.
+Sur **StartRace**, nous :
+* définissons _startTime_ à partir de l'heure actuelle
+* réglons _isRacing_ sur vrai
+* définissons _nextIndex_ sur 1 (car la course est lancée en passant par le Checkpoint 0)
 
-During **Update**, we check whether a player _isRacing_, and if so we get the elapsed time of the run and set it on the _timeDisplay_ Text object.
+Lorsqu'un **Checkpoint** est déclenché, il définit l'_nextIndex_ sur le parcours à son propre index + 1. Cela déclenche l'événement **nextIndexChange** sur le programme du parcours, qui activera ensuite le GameObject pour le prochain Checkpoint.
 
-On **FinishRace**, we:
-* set _isRacing_ to false
-* set _timeElapsed_ on the target **PlayerData** program to the current time minus _startTime_.
-* set _playerData_ to null since we no longer have a player running the course.
-* wait for _resetDelay_ seconds and then **Reset** the course.
+Pendant **Update**, nous vérifions si un joueur _isRacing_, et si c'est le cas, nous obtenons le temps écoulé de la course et le définissons sur l'objet Text _timeDisplay_.
 
-On **Respawn**, we check whether the player _isRacing_. If so, we send them back to the transform position of the last checkpoint. If not, we teleport them down low enough that they will be respawned by the world, back at one of the original spawn points.
+Sur **FinishRace**, nous :
+* réglons _isRacing_ sur faux
+* définissons _timeElapsed_ sur le programme **PlayerData** cible au temps actuel moins _startTime_.
+* définissons _playerData_ sur null puisque nous n'avons plus de joueur parcourant le parcours.
+* attendons _resetDelay_ secondes puis **Réinitialisons** le parcours.
+
+Sur **Respawn**, nous vérifions si le joueur _isRacing_. Si c'est le cas, nous les renvoyons à la position de transformation du dernier checkpoint. Sinon, nous les téléportons suffisamment bas pour qu'ils soient réapparus par le monde, de retour à l'un des points de spawn originaux.
 
 ## ObstacleCourseData
-This custom script just holds a reference to the **ObstacleCourseAsset** with all the info about your course like which prefabs to use, the number of players, the default speeds, etc. It's loaded by the Utility Window so you should have one in your scene. You should create your own so it's not overwritten if you update your project with a newer version of this package. Do this by duplicating an existing asset, which will ensure the default values are correct.
+Ce script personnalisé contient simplement une référence à l'**ObstacleCourseAsset** avec toutes les informations sur votre parcours comme les préfabriqués à utiliser, le nombre de joueurs, les vitesses par défaut, etc. Il est chargé par la fenêtre Utility, vous devriez donc en avoir un dans votre scène. Vous devriez créer le vôtre pour qu'il ne soit pas écrasé si vous mettez à jour votre projet avec une version plus récente de ce package. Pour ce faire, dupliquez un asset existant, ce qui garantira que les valeurs par défaut sont correctes.
 
 ## Checkpoint
-The Checkpoint objects each have an index which represents their order in the time trial, this is automatically set when placing Checkpoints through the Utility Window or modifying their order. 
-They have a Trigger Collider with an **OnPlayerDataEnter** program which call into a **Checkpoint** program that we have on an object called "UdonProgram" in our example prefabs. The program is simple, with three possible events that can be triggered on it:
+Les objets Checkpoint ont chacun un index qui représente leur ordre dans le contre-la-montre, cela est automatiquement défini lors du placement des Checkpoints via la fenêtre Utility ou en modifiant leur ordre.
+Ils ont un Trigger Collider avec un programme **OnPlayerDataEnter** qui appelle un programme **Checkpoint** que nous avons sur un objet appelé "UdonProgram" dans nos préfabriqués d'exemple. Le programme est simple, avec trois événements possibles qui peuvent être déclenchés dessus :
 
-**StartRace** will set the _playerData_ variable on the **Course** program to the UdonBehaviour that just entered this checkpoint. The Course will start the race when that happens.
+**StartRace** définira la variable _playerData_ sur le programme **Course** sur l'UdonBehaviour qui vient d'entrer dans ce checkpoint. Le parcours lancera la course lorsque cela se produira.
 
-**Trigger** will set the _nextIndex_ variable on the **Course** program to the _index_ + 1.
+**Trigger** définira la variable _nextIndex_ sur le programme **Course** à l'_index_ + 1.
 
-**FinishRace** will simply call **FinishRace** on the **Course** program.
+**FinishRace** appellera simplement **FinishRace** sur le programme **Course**.
 
 # Score
-What's a time trial without some friendly competition? The Score system syncs the names and times of the latest runs, as well as the best run so far in the instance.
+Qu'est-ce qu'un contre-la-montre sans un peu de compétition amicale ? Le système de score synchronise les noms et les temps des dernières courses, ainsi que le meilleur temps jusqu'à présent dans l'instance.
+
+Voici la traduction en français :
 
 ## ScoreManager
-This program sits on an Object called "ScoreManager" under the "Udon" GameObject. It uses a queue system to process incoming scores and sync them. It doesn't actually have _any synced variables_ itself, relying on the *ScoreFields* to sync the values instead. These fields are automatically populated by the Utility Window when you change the Number of Scores to Show.
+Ce programme se trouve sur un objet appelé "ScoreManager" sous l'objet "Udon". Il utilise un système de file d'attente pour traiter et synchroniser les scores entrants. Il n'a pas de variables synchronisées lui-même, il s'appuie plutôt sur les *ScoreFields* pour synchroniser les valeurs. Ces champs sont automatiquement remplis par la fenêtre Utilitaire lorsque vous changez le Nombre de Scores à Afficher.
 
-On **Start**, this program calls its own **Render** event once.
+Au **démarrage**, ce programme appelle une fois son propre événement **Render**.
 
-On **Render**, the program calls **Render** on the _scoreCam_, which will render its current view to a RenderTexture used all over the course to show the current score.
+Sur **Render**, le programme appelle **Render** sur le _scoreCam_, qui va rendre sa vue actuelle sur une RenderTexture utilisée partout dans le parcours pour afficher le score actuel.
 
-When _scoretoProcess_ is changed on the Owner of this Object, we call **MakeRoom** and then **ProcessNextScore**. This works because every player in your instance will receive an update to _timeElapsed_ when someone finishes a run, and that program will update _scoreToProcess_ on this object if they are the owner.
+Lorsque _scoretoProcess_ est modifié sur le propriétaire de cet objet, nous appelons **MakeRoom** puis **ProcessNextScore**. Cela fonctionne car chaque joueur de votre instance recevra une mise à jour de _timeElapsed_ lorsqu'un joueur termine un parcours, et ce programme mettra à jour _scoreToProcess_ sur cet objet s'il en est le propriétaire.
 
-On **MakeRoom**, we check if our scoreFields are all full already, and if so we'll copy the values down iteratively to make room at the top.
+Sur **MakeRoom**, nous vérifions si nos scoreFields sont déjà tous pleins, et si c'est le cas, nous copierons les valeurs itérativement vers le bas pour faire de la place en haut.
 
-On **ProcessNextScore**:
-* Pull apart the score into displayName and time again in order to format them nicely, and then set the _targetVarName_ value on the corresponding **ScoreField** to this. This target variable is synced, so we set it this way to update it for everyone. 
-* Compare the time of this score against the time of our High Score and update the **HighScoreField** if necessary. 
-* Set the value of _scoreToProcess_ to an empty string so its ready to process the next score that comes in. 
-* Send the **Render** event to everyone to update their score texture.
+Sur **ProcessNextScore** :
+* Démontez le score en nom d'affichage et en temps pour les formater joliment, puis définissez la valeur _targetVarName_ sur le **ScoreField** correspondant à cela. Cette variable cible est synchronisée, donc nous la réglons de cette manière pour la mettre à jour pour tout le monde.
+* Comparez le temps de ce score au temps de notre meilleur score et mettez à jour le **HighScoreField** si nécessaire.
+* Définissez la valeur de _scoreToProcess_ sur une chaîne vide pour qu'elle soit prête à traiter le prochain score qui arrive.
+* Envoyez l'événement **Render** à tout le monde pour mettre à jour leur texture de score.
 
 ## ScoreField
-This program uses a simple and effective pattern - it has a public synced variable called _log_. When log changes, it updates the text in the field to the new value. In this way, the values are synced and updated for everyone when the owner of the object updates it, which can be done easily from another program. In our case, we update this value from the **ScoreManager**.
+Ce programme utilise un modèle simple et efficace - il a une variable synchronisée publique appelée _log_. Lorsque log change, il met à jour le texte dans le champ avec la nouvelle valeur. De cette manière, les valeurs sont synchronisées et mises à jour pour tout le monde lorsque le propriétaire de l'objet les met à jour, ce qui peut être facilement fait à partir d'un autre programme. Dans notre cas, nous mettons à jour cette valeur à partir du **ScoreManager**.
 
 ## HighScoreField
-This program uses the same pattern as the score field above, but also has a synced _score_ float that can be used to compare scores and update only if the new score is better. It also has a "prefix" which is a string injected before any changes. In this case, the string "High Score:" is prepended to the incoming string.
+Ce programme utilise le même modèle que le champ de score ci-dessus, mais a également un _score_ flottant synchronisé qui peut être utilisé pour comparer les scores et mettre à jour uniquement si le nouveau score est meilleur. Il a également un "préfixe" qui est une chaîne injectée avant tout changement. Dans ce cas, la chaîne "Meilleur Score :" est préfixée à la chaîne entrante.
 
 # PowerUps
-It's fun to offer speed and jump boosts for players looking to maximize their scores, You can also use speed and jump penalties as part of obstacles and hazards to give your players some choice in strategy. PowerUps are all placed as children of the "PlayerModsManager" object when you create them with the Utility Window. They also have the *PlayerModsManager* UdonBehaviour set on them automatically so they can apply their effects.
+Il est amusant d'offrir des boosts de vitesse et de saut pour les joueurs cherchant à maximiser leurs scores. Vous pouvez également utiliser des pénalités de vitesse et de saut comme partie des obstacles et des dangers pour donner aux joueurs un choix de stratégie. Les PowerUps sont tous placés en tant qu'enfants de l'objet "PlayerModsManager" lorsque vous les créez avec la fenêtre Utilitaire. Ils ont également le comportement Udon *PlayerModsManager* défini automatiquement sur eux pour qu'ils puissent appliquer leurs effets.
 
-They have a very simple program. It's called from an **OnPlayerDataEnter** program of course, and has a single **Trigger** event. Its variables are:
+Ils ont un programme très simple. Il est appelé à partir d'un programme **OnPlayerDataEnter**, bien sûr, et a un seul événement **Trigger**. Ses variables sont :
 
-**playerModsManager**: Automatically set when creating PowerUps through the Utility window. Used to actually apply the effects.
+**playerModsManager** : Défini automatiquement lors de la création de PowerUps via la fenêtre Utilitaire. Utilisé pour appliquer réellement les effets.
 
-**speedChange**: Effect to apply to the Player's speed when triggered. 0 will skip, positive will increase speed, negative will decrease it.
+**speedChange** : Effet à appliquer à la vitesse du joueur lorsqu'il est déclenché. 0 passera, un nombre positif augmentera la vitesse, un nombre négatif la diminuera.
 
-**jumpChange**: Same as speedChange, but for Jump Impulse.
+**jumpChange** : Identique à speedChange, mais pour l'Impulsion de Saut.
 
-**effectDuration**: How long until the effect wears off.
+**effectDuration** : Combien de temps avant que l'effet se dissipe.
 
-On **Trigger**, the program will set _speedToProcess_ on the **PlayerModsManager** if it's not 0, and it will set _jumpToProcess_ if it's not 0. In order to simplify the logic, we bundle the _amount_ and _duration_ values into a single Vector2, where the _x_ is amount and _y_ is duration.
+Sur **Trigger**, le programme définira _speedToProcess_ sur le **PlayerModsManager** s'il n'est pas 0, et il définira _jumpToProcess_ s'il n'est pas 0. Afin de simplifier la logique, nous regroupons les valeurs _amount_ et _duration_ dans un seul Vector2, où le _x_ est le montant et le _y_ la durée.
 
 ## PlayerModsManager
-It's useful to have a central place to manage changes to a Player's abilities, especially when you consider that someone could run through a "Speed + 3" with a 2 second duration, and then a "Speed - 1" with a 3 second duration. In our program, speed mods cancel each other out, and jump mods cancel each other out. So in the example above, as soon as the Player triggered the "Speed- 1" PowerUp, they would reset to their default speed - 1, with a new 3 second timer running.
+Il est utile d'avoir un endroit central pour gérer les changements des capacités d'un joueur, surtout lorsque vous considérez que quelqu'un pourrait passer par un "Speed + 3" avec une durée de 2 secondes, puis un "Speed - 1" avec une durée de 3 secondes. Dans notre programme, les mods de vitesse s'annulent mutuellement, et il en va de même pour les mods de saut. Donc, dans l'exemple ci-dessus, dès que le joueur déclenche le PowerUp "Speed - 1", il reviendrait à sa vitesse par défaut - 1, avec un nouveau chronomètre de 3 secondes en cours.
 
-The program works with a queue, like the **ScoreManager**. When _speedToProcess_ is changed, it will figure out the new speed to use, apply that to the VRCPlayerApi of the Local Player, and start a countdown based on the _effectDuration_ of the PowerUp. The program displays the mod on the user's HUD and fades it out along with the timing so they Player can intuitively understand how much time is left. When the timer runs out, it resets the target property on the VRCPlayerApi to the default value, which is why we store and set those here instead of in the "VRCWorldSettings" program.
+Le programme fonctionne avec une file d'attente, comme le **ScoreManager**. Lorsque _speedToProcess_ est modifié, il déterminera la nouvelle vitesse à utiliser, l'appliquera à l'API VRCPlayerApi du joueur local et lancera un compte à rebours basé sur la _effectDuration_ du PowerUp. Le programme affiche le mod sur le HUD de l'utilisateur et le fait disparaître progressivement avec le temps pour que le joueur comprenne intuitivement combien de temps il reste. Lorsque le minuteur expire, il réinitialise la propriété cible sur l'API VRCPlayerApi à la valeur par défaut, c'est pourquoi nous stockons et définissons ces valeurs ici plutôt que dans le programme "VRCWorldSettings".
 
 ## DestroyAfterXSeconds
-This simple program is useful for locally-instantiated objects, like the FX Prefabs created by **OnPlayerDataEnter** programs. It will ensure that the object destroys itself so you don't wind up with hundreds of old sound effects and particle systems sitting around.
+Ce programme simple est utile pour les objets instantiés localement, comme les préfabriqués FX créés par les programmes **OnPlayerDataEnter**. Il garantira que l'objet se détruira lui-même pour que vous ne vous retrouviez pas avec des centaines de vieux effets sonores et systèmes de particules qui traînent.
 
 ## PlayClipFromArray
-This program is useful for introducing some variety in your sounds, for use on FX Prefabs for example. Instead of a single AudioClip, you can set a group of them on this program and it will randomly choose one when it is created and play that one. Could also be useful for a Footsteps program.
+Ce programme est utile pour introduire une certain
+
+e variété dans vos sons, par exemple pour une utilisation sur des préfabriqués FX. Au lieu d'un seul AudioClip, vous pouvez en définir un groupe sur ce programme et il en choisira un au hasard lorsqu'il sera créé et jouera celui-là. Cela pourrait également être utile pour un programme de bruits de pas.
 
 # Hazards
-If you want to challenge your players, you can add a variety of hazards. We included a couple example programs, feel free to make your own!
+Si vous voulez défier vos joueurs, vous pouvez ajouter une variété de dangers. Nous avons inclus quelques programmes d'exemple, n'hésitez pas à créer les vôtres !
 
 ## Autorotate
-This program simply rotates the Transform on which it lives. You can adjust the _amount_ for each axis, which will be multiplied by Time.deltaTime to ensure it rotates smoothly. An animator would have better performance, but this works when you're experimenting.
+Ce programme fait simplement tourner le Transform sur lequel il se trouve. Vous pouvez ajuster le _amount_ pour chaque axe, qui sera multiplié par Time.deltaTime pour garantir qu'il tourne en douceur. Un animateur aurait de meilleures performances, mais cela fonctionne lorsque vous expérimentez.
 
 ## SpawnedHazard
-This hazard will reduce the speed of the Player who comes into contact with it. You can set _speedChange_ like you would on a PowerUp - the x is the amount to add to the Players' speed, and the y is the duration of the effect. To reduce a player's speed by 3 for 1 second, you would set _speedChange_ to (-3,1). They find the "PlayerModsManager" GameObject and UdonBehaviour by name when they are created - not very performant but it works.
+Ce danger réduira la vitesse du joueur qui entre en contact avec lui. Vous pouvez définir _speedChange_ comme vous le feriez sur un PowerUp - le x est le montant à ajouter à la vitesse du joueur, et le y est la durée de l'effet. Pour réduire la vitesse d'un joueur de 3 pendant 1 seconde, vous définiriez _speedChange_ à (-3,1). Ils trouvent l'objet "PlayerModsManager" et le comportement Udon par nom lorsqu'ils sont créés - pas très performant mais cela fonctionne.
 
 ## HazardSpawner
-This program uses **SendCustomEventDelayedSeconds** to spawn hazards every _delay_ seconds. In our example project, we use slightly different delays to make a tricky hill of barrels for our players to dodge.
+Ce programme utilise **SendCustomEventDelayedSeconds** pour générer des dangers toutes les _delay_ secondes. Dans notre projet d'exemple, nous utilisons des délais légèrement différents pour créer une colline difficile de barils pour nos joueurs à esquiver.
 
 ## FallingBlock
-This program is the only one we include that interacts with a player and doesn't use **OnPlayerDataEnter**. This is because we want to know when a Player Enters _and_ when they Exit, which isn't accounted for in that program. When a player enters, we use **SendCustomEventDelayedSeconds** to run **CheckForDrop** after _triggerTime_ seconds.
+Ce programme est le seul que nous incluons qui interagit avec un joueur et n'utilise pas **OnPlayerDataEnter**. C'est parce que nous voulons savoir quand un joueur entre _et_ quand il sort, ce qui n'est pas pris en compte dans ce programme. Lorsqu'un joueur entre, nous utilisons **SendCustomEventDelayedSeconds** pour exécuter **CheckForDrop** après _triggerTime_ secondes.
 
-On **CheckForDrop**, if the player has not yet exited the collider, it will set its Rigidbody to non-kinematic, causing it to fall (and the player along with it). It will then call **Reset** after _resetTime_ seconds.
+Sur **CheckForDrop**, si le joueur n'est pas encore sorti du collider, il réglera son Rigidbody sur non cinématique, le faisant tomber (ainsi que le joueur avec lui). Il appellera ensuite **Reset** après _resetTime_ secondes.
 
-# Misc
+# Divers
 
 ## Injection
-This project has a system to inject references to certain components. It is described [here](/worlds/examples/obstacle-course/build-from-custom-parts#advanced-stuff).
+Ce projet dispose d'un système pour injecter des références à certains composants. Il est décrit [ici](/worlds/examples/obstacle-course/build-from-custom-parts#advanced-stuff).

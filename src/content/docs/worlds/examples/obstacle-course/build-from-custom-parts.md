@@ -1,5 +1,5 @@
 ---
-title: "Course d'obstacle: construisez avec des parties customisée"
+title: "Parcours d'Obstacles : Construisez avec des Pièces Personnalisées"
 ---
 
 :::note[Commencez par créer un parcours simple]
@@ -8,15 +8,15 @@ Il est fortement recommandé de travailler avec les préfabriqués de démonstra
 :::
 
 # Personnalisations
-D'accord, vous avez créé un remix simple de nos pièces de démonstration, et vous êtes maintenant prêt à ajouter vos propres bonus, dangers et plus encore. Lisez la suite pour apprendre comment créer de nouveaux préfabriqués qui interagissent avec les systèmes existants.
+D'accord, vous avez créé un remix simple de nos pièces de démonstration, et vous êtes maintenant prêt à ajouter vos propres éléments bonus, dangers et plus encore. Lisez la suite pour apprendre comment créer de nouveaux préfabriqués qui interagissent avec les systèmes existants.
 
-# Création de points de contrôle personnalisés
+# Création de Points de Contrôle Personnalisés
 
 Voici la hiérarchie du préfabriqué de point de contrôle que nous incluons :
 
 ![build-from-custom-parts-692d375-checkpoint-hierarchy.png](/img/worlds/build-from-custom-parts-692d375-checkpoint-hierarchy.png)
 
-## Exigences du déclencheur
+## Exigences du Déclencheur
 ![build-from-custom-parts-f72c567-checkpoint-inspector.png](/img/worlds/build-from-custom-parts-f72c567-checkpoint-inspector.png)
 
 :::note[C'est un motif !]
@@ -29,8 +29,8 @@ Votre point de contrôle doit avoir un **Collider** sur le calque **CourseTrigge
 ![build-from-custom-parts-f896bef-checkpoint-inspector.png](/img/worlds/build-from-custom-parts-f896bef-checkpoint-inspector.png)
 
 Cet UdonBehaviour doit avoir les variables suivantes définies :
-1. _fxPrefab_ devrait faire référence à un préfabriqué qui comporte des effets amusants, et soit le programme Udon **DestroyAfterXSeconds** ou d'une autre manière pour qu'il se détruise après un certain temps.
-2. _program_ devrait faire référence à un UdonBehaviour sur un autre objet sous ce préfabriqué, qui comporte un programme **Checkpoint**.
+1. _fxPrefab_ doit faire référence à un préfabriqué qui comporte des effets amusants, et soit le programme Udon **DestroyAfterXSeconds** ou d'une autre manière pour qu'il se détruise après un certain temps.
+2. _program_ doit faire référence à un UdonBehaviour sur un autre objet sous ce préfabriqué, qui comporte un programme **Checkpoint**.
 3. _eventName_ doit être défini sur un événement existant sur l'UdonBehaviour référencé ci-dessus.
 4. _deactivateOnTrigger_ devrait être activé pour les points de contrôle afin qu'ils ne puissent être activés qu'une seule fois par course jusqu'à ce qu'un joueur termine le parcours.
 5. _sendPlayerData_ n'est nécessaire que pour un point de contrôle utilisé comme porte de départ.
@@ -39,19 +39,19 @@ Cet UdonBehaviour doit avoir les variables suivantes définies :
 
 Si vous souhaitez en savoir plus sur ce qui se passe dans ce programme, vous pouvez trouver la documentation complète ici : [OnPlayerDataEnter](/worlds/examples/obstacle-course/uoc-how-stuff-works#onplayerdataenter)
 :::
-## Exigences du programme de point de contrôle
+## Exigences du Programme de Point de Contrôle
 Toute la configuration ci-dessus se contente de détecter le joueur, de créer un objet FX, puis de déclencher un événement sur le programme _réel_. Dans ce cas, il s'agit d'un programme appelé **Checkpoint** sur un objet appelé "UdonProgram". Le programme sur le déclencheur essaiera d'exécuter un programme appelé "Trigger" sur cet UdonBehaviour.
 
 Tout ce que vous avez à faire, c'est d'avoir un objet avec un UdonBehaviour, avec le programme **Checkpoint** dessus. Toutes les variables de ce programme seront automatiquement définies lorsque vous le placerez, ou en temps réel lorsque quelqu'un le déclenchera dans votre monde.
 
-## Exigences du programme de départ / d'arrivée
+## Exigences du Programme de Départ / d'Arrivée
 Si vous créez un point de contrôle à utiliser comme porte de départ ou d'arrivée, vous configurerez votre programme légèrement différemment. Le déclencheur de collision sera le même, et vous utiliserez le même programme **Checkpoint**, mais vous devrez apporter les modifications suivantes :
 
-### Pour une **porte de départ** :
+### Pour une **Porte de Départ** :
 * Définissez l'_eventName_ sur "StartRace"
 * Assurez-vous que _sendPlayerData_ est activé.
 
-### Pour une **porte de fin** :
+### Pour une **Porte de Fin** :
 * Définissez l'_eventName_ sur "FinishRace"
 
 ## Personnalisez-le !
@@ -59,32 +59,34 @@ Tant que vous avez le **déclencheur de collision** et le **programme de point d
 
 Lorsque quelqu'un termine le parcours ou se réapparait à travers son menu, le parcours est **réinitialisé**. Lorsque cette méthode est appelée, le programme du parcours recherchera chaque point de contrôle pour les déclencheurs de collision. Il définira tous les GameObjects avec des déclencheurs de collision sur inactif, sauf le premier, qu'il définira sur actif (votre **porte de départ**). Gardez cela à l'esprit si vous avez des déclencheurs de collision supplémentaires sur vos préfabriqués - leurs GameObjects seront définis sur inactif si les déclencheurs ont _isTrigger_ activé.
 
-## Ajoutez-le à votre liste de préfabriqués de points de contrôle
+## Ajoutez-le à votre Liste de Préfabriqués de Points de Contrôle
 
-La fenêtre Utilitaire répertorie vos "Préfabriqués de points de contrôle" pour les ajouter facilement à votre scène. Vous pouvez faire glisser et déposer vos nouveaux préfabriqués personnalisés dans cette liste pour les remplacer, ou changez la "Taille" de la liste d'abord pour ajouter de nouveaux emplacements vides auxquels vous pouvez ajouter vos nouveaux préfabriqués.
+La fenêtre Utilitaire répertorie vos "Préfabriqués de Points de Contrôle" pour les ajouter facilement à votre scène. Vous pouvez faire glisser et déposer vos nouveaux préfabriqués personnalisés dans cette liste pour les remplacer, ou changer la "Taille" de la liste d'abord pour ajouter de nouveaux emplacements vides auxquels vous pouvez ajouter vos nouveaux préfab
 
-# Création de bonus personnalisés
-Lisez d'abord "Création de points de contrôle personnalisés" ci-dessus pour comprendre comment fonctionne le système de déclenchement de collision, car il est le même pour les bonus. Une fois que vous avez configuré votre déclencheur de collision, vous pouvez travailler sur le programme **PowerUp**.
+riqués.
 
-## Exigences du programme PowerUp
+# Création de Bonus Personnalisés
+Lisez d'abord "Création de Points de Contrôle Personnalisés" ci-dessus pour comprendre comment fonctionne le système de déclenchement de collision, car il est le même pour les bonus. Une fois que vous avez configuré votre déclencheur de collision, vous pouvez travailler sur le programme **PowerUp**.
+
+## Exigences du Programme PowerUp
 ![build-from-custom-parts-c3ecfa0-speed-up-program.png](/img/worlds/build-from-custom-parts-c3ecfa0-speed-up-program.png)
 
 * Tout d'abord, assurez-vous d'avoir configuré un déclencheur de collision qui appelle "Trigger" sur cet UdonBehaviour.
 * _playerModsManager_ peut rester inchangé, il sera injecté lorsque vous créerez le PowerUp via la fenêtre Utilitaire ou lorsque vous appuierez sur "Actualiser".
-* Soit _speedChange_ soit _jumpChange_ doit être défini sur quelque chose de différent de 0. Les valeurs positives seront ajoutées à la **Vitesse de déplacement** ou à l'**Impulsion de saut** par défaut que vous avez définies dans la section **Bonus** de votre fenêtre Utilitaire. Les valeurs négatives seront soustraites. Vous pouvez les combiner - un bonus qui vous fait sauter haut mais vous déplacer très lentement est tout à fait valable.
+* Soit _speedChange_ soit _jumpChange_ doit être défini sur quelque chose de différent de 0. Les valeurs positives seront ajoutées à la **Vitesse de Déplacement** ou à l'**Impulsion de Saut** par défaut que vous avez définies dans la section **Bonus** de votre fenêtre Utilitaire. Les valeurs négatives seront soustraites. Vous pouvez les combiner - un bonus qui vous fait sauter haut mais vous déplacer très lentement est tout à fait valable.
 * La _effectDuration_ doit être supérieure à 0 (pas de nombres négatifs). C'est la durée pendant laquelle le bonus durera. Le joueur recevra un message sur son HUD qui affiche le changement, qui disparaîtra à la vitesse que vous avez définie ici.
 
-## Ajoutez-le à votre liste de préfabriqués de bonus
+## Ajoutez-le à votre Liste de Préfabriqués de Bonus
 
-La fenêtre Utilitaire répertorie vos "Préfabriqués de bonus" pour les ajouter facilement à votre scène. Vous pouvez faire glisser et déposer vos nouveaux préfabriqués personnalisés dans cette liste pour les remplacer, ou changez la "Taille" de la liste d'abord pour ajouter de nouveaux emplacements vides auxquels vous pouvez ajouter vos nouveaux préfabriqués.
+La fenêtre Utilitaire répertorie vos "Préfabriqués de Bonus" pour les ajouter facilement à votre scène. Vous pouvez faire glisser et déposer vos nouveaux préfabriqués personnalisés dans cette liste pour les remplacer, ou changer la "Taille" de la liste d'abord pour ajouter de nouveaux emplacements vides auxquels vous pouvez ajouter vos nouveaux préfabriqués.
 
-# Création de dangers personnalisés
+# Création de Dangers Personnalisés
 
-Les dangers utilisent la configuration de déclenchement de collision que nous avons documentée sous **Points de contrôle** ci-dessus, alors assurez-vous de l'avoir lue en premier.
+Les dangers utilisent la configuration de déclenchement de collision que nous avons documentée sous **Points de Contrôle** ci-dessus, alors assurez-vous de l'avoir lue en premier.
 
 Nous avons créé deux types de dangers que vous pouvez utiliser : les dangers de **Réapparition** et les dangers de **Spawner**.
 
-## Dangers de réapparition
+## Dangers de Réapparition
 Il s'agit du danger le plus courant dans notre parcours de démonstration. Il utilise un déclencheur de collision pour réapparaître le joueur au dernier point de contrôle. Vous avez besoin d'un déclencheur de collision configuré pour exécuter l'événement "Trigger" sur un autre objet qui comporte le programme **RespawnOnCourse**.
 
 ![build-from-custom-parts-752dc13-moving-wall-hazard.png](/img/worlds/build-from-custom-parts-752dc13-moving-wall-hazard.png)
@@ -112,13 +114,13 @@ Ce préfabriqué comporte un TriggerCollider sur l'objet enfant "Trigger" qui ex
 
 Étant donné que ces préfabriqués ne sont pas créés et gérés via la fenêtre Utilitaire, il est important de les désactiver après les avoir placés dans votre scène. Sinon, l'injection automatique pourrait ne pas fonctionner.
 :::
-# Autres personnalisations
+# Autres Personnalisations
 Voici quelques autres choses que vous pouvez explorer :
 
-## Champs de score
+## Champs de Score
 ![build-from-custom-parts-60cfc05-ScoreManager.png](/img/worlds/build-from-custom-parts-60cfc05-ScoreManager.png)
 
-Si vous souhaitez changer l'apparence des champs de score ou le nombre de scores affichés, vous pouvez dupliquer le préfabriqué "ScoreField", déposez votre nouvelle version dans l'emplacement "Score Object Prefab" dans la section "Score Manager" de la fenêtre Utilitaire, et définissez le "Nombre de scores à afficher" pour régénérer l'interface utilisateur qui affiche les scores.
+Si vous souhaitez changer l'apparence des champs de score ou le nombre de scores affichés, vous pouvez dupliquer le préfabriqué "ScoreField", déposez votre nouvelle version dans l'emplacement "Score Object Prefab" dans la section "Score Manager" de la fenêtre Utilitaire, et définissez le "Nombre de Scores à Afficher" pour régénérer l'interface utilisateur qui affiche les scores.
 
 ## HUD
 Vous pouvez changer l'apparence et la disposition des éléments de l'HUD - il suffit de parcourir la hiérarchie de l'objet "HUD".

@@ -1,164 +1,139 @@
 ---
-title: "Udon Example Scene"
-sidebar:
-    order: 2
-    badge: 
-        text: à traduire !
-        variant: danger
+title: "Scène d'exemple Udon"
 ---
-This scene is ready to [Build & Test](/worlds/udon/using-build-test) or Publish, and it demonstrates many common interactive items.
+Cette scène est prête pour [Construire et Tester](/worlds/udon/using-build-test) ou Publier, et elle démontre de nombreux éléments interactifs courants.
 
 ## Prefabs
-These objects show off some of the Prefabs included with the SDK which demonstrate default interactions with the VRChat components for Avatar Pedestals, Stations and Mirrors.
+Ces objets présentent certains des Prefabs inclus avec le SDK qui démontrent des interactions par défaut avec les composants VRChat pour les socles d'avatar, les stations et les miroirs.
  ![](/img/worlds/udon-example-scene-prefab-scene.png)
 ### VRCWorld
-This prefab makes it easy to upload your Unity scene to VRChat. It has four components:
-- The [VRC Scene Descriptor](/worlds/components/vrc_scenedescriptor/) script, which defines basic properties of your world. It is required for every VRChat world.
-- The [VRC Pipeline Manager](/sdk/vrcpipelinemanager/) script, which contains the world ID. It is added automatically with the VRC Scene Descriptor.
-- The [VRCWorldSettings](/worlds/examples/udon-example-scene/player-mod-setter) Udon Graph program, which allows you to change the movement speed of players in your world.
-- The [Avatar Scaling Settings](/worlds/examples/udon-example-scene/avatar-scaling-settings) Udon Graph program, which allows you to limit the avatar scale of players in your world.
+Ce prefab facilite le téléversement de votre scène Unity sur VRChat. Il comporte quatre composants :
+- Le script [VRC Scene Descriptor](/worlds/components/vrc_scenedescriptor/), qui définit les propriétés de base de votre monde. Il est requis pour chaque monde VRChat.
+- Le script [VRC Pipeline Manager](/sdk/vrcpipelinemanager/), qui contient l'ID du monde. Il est ajouté automatiquement avec le VRC Scene Descriptor.
+- Le programme Udon Graph [VRCWorldSettings](/worlds/examples/udon-example-scene/player-mod-setter), qui vous permet de changer la vitesse de déplacement des joueurs dans votre monde.
+- Le programme Udon Graph [Avatar Scaling Settings](/worlds/examples/udon-example-scene/avatar-scaling-settings), qui vous permet de limiter l'échelle d'avatar des joueurs dans votre monde.
 
-If you'd like to use the VRCWorld prefab in your own Unity scene, you can find it in `\Packages\com.vrchat.worlds\Samples\UdonExampleScene\Prefabs\VRCWorld.prefab`.
+Si vous souhaitez utiliser le prefab VRCWorld dans votre propre scène Unity, vous pouvez le trouver dans `\Packages\com.vrchat.worlds\Samples\UdonExampleScene\Prefabs\VRCWorld.prefab`.
 
 ### AvatarPedestal
-This is available as a prefab, and has a program to switch a user into an avatar when they Interact with the pedestal, which is the default behavior of the prefab.
+Ceci est disponible en tant que prefab, et possède un programme pour changer l'avatar d'un utilisateur lorsqu'il interagit avec le socle, ce qui est le comportement par défaut du prefab.
 
 ### VRCChair3
-This is available as a prefab, and has a program to sit a player in a station when they Interact with it, and logs their displayName when they enter or exit.
+Ceci est disponible en tant que prefab, et possède un programme pour asseoir un joueur dans une station lorsqu'il interagit avec celle-ci, et enregistre son displayName lorsqu'il entre ou sort.
 
 ### MirrorSystem
-This object has a **ToggleGameObject** program on it which uses the Interact event to flip a target object between Active/Inactive. In this case, it controls a VRCMirror object which is a child of this one.
+Cet objet a un programme **ToggleGameObject** qui utilise l'événement Interact pour activer/désactiver un objet cible. Dans ce cas, il contrôle un objet VRCMirror qui est un enfant de celui-ci.
 
 ### Cubes
-These objects demonstrate some simple things you can do with Cubes, mostly reusing a **ChangeMaterialOnEvent** program to show how you can trigger custom events from other objects.
+Ces objets démontrent quelques choses simples que vous pouvez faire avec des cubes, en réutilisant principalement un programme **ChangeMaterialOnEvent** pour montrer comment vous pouvez déclencher des événements personnalisés à partir d'autres objets.
 ![](/img/worlds/udon-example-scene-7038b64-cubes-scene.png)
 
 ### ClickableCube
-This object has a **SendEventOnMouseDown** program on it - which responds to mouse clicks to send an event to another object. In this case, it sends a custom event called "changeMaterial" to a **ChangeMaterialOnEvent** program on a child object, which changes out materials from an array whenever it receives this event. Both of these programs are reusable - you can change the eventName sent from the **SendEventOnMouseDown** program in the inspector on the UdonBehaviour component. Note that using the MouseDown event isn't as useful as the Interact event, but it does work in the editor, which is why it's used here.
+Cet objet a un programme **SendEventOnMouseDown** - qui répond aux clics de souris pour envoyer un événement à un autre objet. Dans ce cas, il envoie un événement personnalisé appelé "changeMaterial" à un programme **ChangeMaterialOnEvent** sur un objet enfant, qui change les matériaux à partir d'un tableau chaque fois qu'il reçoit cet événement. Ces deux programmes sont réutilisables - vous pouvez changer le nom de l'événement envoyé depuis le programme **SendEventOnMouseDown** dans l'inspecteur sur le composant UdonBehaviour. Notez qu'utiliser l'événement MouseDown n'est pas aussi utile que l'événement Interact, mais cela fonctionne dans l'éditeur, c'est pourquoi il est utilisé ici.
 
 ### TimerCube
-This object has a **SendEventOnTimer** program on it - which runs a timer for a given *duration* and then sends the specified event. In this case, it sends a custom event called "changeMaterial" to a **ChangeMaterialOnEvent** program on a child object, which changes out materials from an array whenever it receives this event. Both of these programs are reusable - you can change the eventName sent from the **SendEventOnTimer** program in the inspector on the UdonBehaviour component, and change its *duration* in seconds to change how often it triggers.
+Cet objet a un programme **SendEventOnTimer** - qui exécute un minuteur pendant une durée donnée, puis envoie l'événement spécifié. Dans ce cas, il envoie un événement personnalisé appelé "changeMaterial" à un programme **ChangeMaterialOnEvent** sur un objet enfant, qui change les matériaux à partir d'un tableau chaque fois qu'il reçoit cet événement. Ces deux programmes sont réutilisables - vous pouvez changer le nom de l'événement envoyé depuis le programme **SendEventOnTimer** dans l'inspecteur sur le composant UdonBehaviour, et changer sa durée en secondes pour changer la fréquence à laquelle il se déclenche.
 
 ### InteractCube
-This object has a **SendEventOnInteract** program on it - which listens for the Interact event, triggered when a player points at an object and presses their 'use' button. In this case, it sends a custom event called "changeMaterial" to a **ChangeMaterialOnEvent** program on a child object, which changes out materials from an array whenever it receives this event. Both of these programs are reusable - you can change the eventName sent from the **SendEventOnInteract** program in the inspector on the UdonBehaviour component.
+Cet objet a un programme **SendEventOnInteract** - qui écoute l'événement Interact, déclenché lorsqu'un joueur pointe sur un objet et appuie sur son bouton 'utiliser'. Dans ce cas, il envoie un événement personnalisé appelé "changeMaterial" à un programme **ChangeMaterialOnEvent** sur un objet enfant, qui change les matériaux à partir d'un tableau chaque fois qu'il reçoit cet événement. Ces deux programmes sont réutilisables - vous pouvez changer le nom de l'événement envoyé depuis le programme **SendEventOnInteract** dans l'inspecteur sur le composant UdonBehaviour.
 
 ### PickupCube
-This object has two important components on it - and UdonBehaviour with a **PickupAndUse** program and a VRCObjectSync component. The Object Sync component will sync the movement of this object to other users, and the **PickupAndUse** program changes the color of the cube's material when the "Use" button is pressed, by listening for **OnPickupUseDown** and **OnPickupUseUp** events.
+Cet objet a deux composants importants - un comportement Udon avec un programme **PickupAndUse** et un composant VRCObjectSync. Le composant Object Sync synchronisera le mouvement de cet objet avec d'autres utilisateurs, et le programme **PickupAndUse** change la couleur du matériau du cube lorsque le bouton "Utiliser" est pressé, en écoutant les événements **OnPickupUseDown** et **OnPickupUseUp**.
 
 ### ClickableCubeForLoop
-This object uses the **SendEventOnMouseDown** program from the ClickableCube, and uses it to run a custom event called "runLoop" which is on a child Text field. This field has a **SimpleForLoop** program which demonstrate the basic usage of a For loop - in this case, just creating a string and adding the current *index* of the loop to the string for every loop, then updating the text field with that final string.
+Cet objet utilise le programme **SendEventOnMouseDown** du ClickableCube, et l'utilise pour exécuter un événement personnalisé appelé "runLoop" qui est sur un champ Texte enfant. Ce champ a un programme **SimpleForLoop** qui démontre l'utilisation basique d'une boucle For - dans ce cas, juste en créant une chaîne et en ajoutant l'index actuel de la boucle à la cha
+
+îne à chaque boucle, puis en mettant à jour le champ texte avec cette chaîne finale.
 
 ## Udon Variable Sync
-These objects demonstrate different ways to sync variable values from the owner of an object to everyone else in the instance. 
+Ces objets démontrent différentes manières de synchroniser les valeurs des variables du propriétaire d'un objet avec tous les autres dans l'instance.
 ![](/img/worlds/udon-example-scene-01fa074-variable-sync-scene.png)
 
-The "Canvas" item has many UI items with synced variables:
+L'élément "Canvas" a de nombreux éléments d'interface utilisateur avec des variables synchronisées :
 
 ### ButtonSyncOwner
-This is the first program described here which uses the [Manual Sync](/worlds/udon/networking#2-manual-variable) method. In the image below, you can see it has an OnClick() handler which calls UdonBehaviour.SendCustomEvent with a value of "OnClick". It's targeting the UdonBehaviour just below it, where it will run the custom event "OnClick". This is how UI Elements can run events on UdonBehaviours.
-![Triggering Custom Events from Unity UI controls](/img/worlds/index-2c98f4e-onclick-manual-sync.png)
-In the Graph Program, the OnClick event checks whether the player who clicked is the Owner of the object. If they are, it increases the "clickCount" variable by 1 and then calls **RequestSerialization**, which signals Udon to update the data on this Manual-synced UdonBehaviour.
-![OnClick ▸ If Owner ▸ Set clickCount to clickCount + 1 ▸ Serialize.](/img/worlds/index-f0a3ff2-bso-gaph.png)
-Notice that the 'Set clickCount' node has the 'sendChange' toggle turned on. this will trigger an event for everyone when they receive the new clickCount value.
-![Variable Change events are very powerful! You can use them to run the same logic on the owner and others whenever a synced variable is changed.](/img/worlds/index-4590d3e-clickCount-change.png)
-When clickCount is updated, this Change event triggers, which will then set the text of the button to the new value no matter who is the 'owner' of this program.
+C'est le premier programme décrit ici qui utilise la méthode de synchronisation [Manuelle](/worlds/udon/networking#2-manual-variable). Dans l'image ci-dessous, vous pouvez voir qu'il a un gestionnaire OnClick() qui appelle UdonBehaviour.SendCustomEvent avec une valeur de "OnClick". Il cible le UdonBehaviour juste en dessous, où il exécutera l'événement personnalisé "OnClick". C'est ainsi que les éléments d'interface utilisateur Unity peuvent exécuter des événements sur les UdonBehaviours.
+![Déclencher des événements personnalisés à partir de contrôles d'interface utilisateur Unity](/img/worlds/index-2c98f4e-onclick-manual-sync.png)
+Dans le programme de graphique, l'événement OnClick vérifie si le joueur qui a cliqué est le propriétaire de l'objet. S'il l'est, il augmente la variable "clickCount" de 1, puis appelle **RequestSerialization**, qui signale à Udon de mettre à jour les données sur ce UdonBehaviour synchronisé manuellement.
+![OnClick ▸ Si Propriétaire ▸ Définir clickCount à clickCount + 1 ▸ Sériealiser.](/img/worlds/index-f0a3ff2-bso-gaph.png)
+Notez que le nœud 'Set clickCount' a le bouton bascule 'sendChange' activé. Cela déclenchera un événement pour tout le monde lorsqu'ils recevront la nouvelle valeur de clickCount.
+![Les événements de changement de variable sont très puissants ! Vous pouvez les utiliser pour exécuter la même logique sur le propriétaire et les autres chaque fois qu'une variable synchronisée est modifiée.](/img/worlds/index-4590d3e-clickCount-change.png)
+Lorsque clickCount est mis à jour, cet événement de changement se déclenche, qui définira ensuite le texte du bouton à la nouvelle valeur, peu importe qui est le 'propriétaire' de ce programme.
 
 ### ButtonSyncAnyone
-This object uses a program very similar to **ButtonSyncOwner** above, but adds logic for users who click the button and are *not* the Owner of the object. In that case, they send the Custom Event "OnClick" to the Owner of the object. That's it! The owner will receive this event and process it as if they'd just clicked the button themselves.
-![Non-Owners will send an event to the Owner to easily update the number.](/img/worlds/index-2b1a9c3-ButtonSyncAnyone.png)
+Cet objet utilise un programme très similaire à **ButtonSyncOwner** ci-dessus, mais ajoute une logique pour les utilisateurs qui cliquent sur le bouton et qui ne sont *pas* le propriétaire de l'objet. Dans ce cas, ils envoient l'événement personnalisé "OnClick" au propriétaire de l'objet. C'est tout ! Le propriétaire recevra cet événement et le traitera comme s'il venait de cliquer lui-même sur le bouton.
+![Les non-propriétaires enverront un événement au propriétaire pour mettre à jour facilement le nombre.](/img/worlds/index-2b1a9c3-ButtonSyncAnyone.png)
 ### ButtonSyncBecomeOwner
-This object builds on the now-familiar ButtonSync program to demonstrate how to easily change ownership of an Object. When a non-owner clicks on the button, it will assign them ownership, and then update the variable. This is useful when you want to change multiple variables, or do logic more complicated than simply incrementing a value.
+Cet objet s'appuie sur le programme ButtonSync maintenant familier pour démontrer comment changer facilement la propriété d'un objet. Lorsqu'un non-propriétaire clique sur le bouton, il lui assigne la propriété, puis met à jour la variable. C'est utile lorsque vous souhaitez changer plusieurs variables ou effectuer une logique plus compliquée que simplement incrémenter une valeur.
 ![](/img/worlds/udon-example-scene-1372141-button-sync-become-owner.png)
 
-When changing ownership of an object, some logic is run to decide whether or not the transfer is allowed. You can learn more about that here: [Networking](/worlds/udon/networking#object-ownership). If you don't add any custom logic, all Requests for Ownership will be approved. The nodes below show a simple setup checks a boolean variable called 'someSpecialLogic' to decide whether the Transfer will be approved. You could build your own logic based on the 'requester', the 'newOwner', or both.
-![Does someone want to be the new owner? Check 'someSpecialLogic' that you've updated elsewhere.](/img/worlds/index-91b3564-onOwnershipRequest.png)
+Lors du changement de propriété d'un objet, une logique est exécutée pour décider si le transfert est autorisé ou non. Vous pouvez en savoir plus à ce sujet ici : [Réseau](/worlds/udon/networking#object-ownership). Si vous n'ajoutez aucune logique personnalisée, toutes les demandes de propriété seront approuvées. Les nœuds ci-dessous montrent une configuration simple qui vérifie une variable booléenne appelée 'someSpecialLogic' pour décider si le transfert sera approuvé. Vous pourriez construire votre propre logique basée sur le 'demandeur', le 'nouveau propriétaire', ou les deux.
+![Quelqu'un veut-il être le nouveau propriétaire ? Vérifiez 'someSpecialLogic' que vous avez mis à jour ailleurs.](/img/worlds/index-91b3564-onOwnershipRequest.png)
+
 ### SliderSync
-![](/img/worlds/udon-example-scene-080c991-syncSlider.png)
+Cet objet possède un programme appelé **SliderSync** qui fonctionne de manière similaire à **ButtonSyncBecomeOwner**. Lorsque quelqu'un déplace le curseur, il devient le propriétaire et envoie la nouvelle valeur à tout le monde. Une différence est que lorsque l'événement "OnValueChanged" est déclenché depuis l'interface utilisateur, il vérifiera si cette nouvelle valeur est différente de la valeur actuelle du curseur. C'est parce que la mise à jour de la valeur du curseur depuis Udon déclenchera également cet événement, ce qui pourrait causer une boucle infinie. Donc, à la place, nous avons une logique qui s'assure que la variable 'sliderValue' est différente de la valeur du curseur avant d'exécuter le reste de notre logique.
 
-This object has a program called **SliderSync** that works similar to **ButtonSyncBecomeOwner**. When someone moves the slider, they become the owner, and send the new value to everyone else. One difference is that when the "OnValueChanged" event is triggered from the UI, it will check whether this new value is different from the current value of the slider. This is because updating the value of the slider from Udon will also trigger this event, which would cause an infinite loop. So instead, we have some logic that makes sure the 'sliderValue' variable is different than the Slider's value before we run the rest of our logic. 
-
-It also uses the Variable Change event to update a text field with the value of the slider whenever anyone becomes the owner and updates it.
+Il utilise également l'événement de changement de variable pour mettre à jour un champ de texte avec la valeur du curseur chaque fois que quelqu'un devient le propriétaire et la met à jour.
 
 ### Toggle
 
-This object has a program called **ToggleSync** which works the same as the Slider above. When someone changes the value to something Inequal to the current value, they become the owner, and send the new value to everyone else, 
-![](/img/worlds/udon-example-scene-f8def0e-syncToggle.png)
+Cet objet possède un programme appelé **ToggleSync** qui fonctionne de la même manière que le curseur ci-dessus. Lorsque quelqu'un change la valeur pour quelque chose d'inégal à la valeur actuelle, il devient le propriétaire et envoie la nouvelle valeur à tout le monde.
 
 ### Dropdown
  
-![](/img/worlds/udon-example-scene-502661a-dropdown-onvaluechanged.png)
-
-This object has a program called **DropdownSync** which works the same as the Toggle and Slider above. When someone changes the value, they make sure it's different than the current value, then become the owner and send the new value to everyone else.
+Cet objet possède un programme appelé **DropdownSync** qui fonctionne de la même manière que le Toggle et le Slider ci-dessus. Lorsque quelqu'un change la valeur, il s'assure qu'elle est différente de la valeur actuelle, puis devient le propriétaire et envoie la nouvelle valeur à tout le monde.
 
 ### InputField
  
-![](/img/worlds/udon-example-scene-5d240b9-inputfield-object.png)
-
-This object has a program called **InputFieldSync** which works similar to the Dropdown above. When someone changes the value, they check that it's different, become the owner, and send the new value to everyone else.
+Cet objet possède un programme appelé **InputFieldSync** qui fonctionne de manière similaire au Dropdown ci-dessus. Lorsque quelqu'un change la valeur, il vérifie qu'elle est différente, devient le propriétaire et envoie la nouvelle valeur à tout le monde.
 
 ### PickupCube
  
-![](/img/worlds/udon-example-scene-3ae6dab-pickup-cube.png)
+Cet objet possède des composants VRC Pickup et VRC Object Sync qui lui permettent d'être ramassé et déplacé, synchronisant automatiquement avec d'autres utilisateurs. Le comportement Udon est réglé sur "Continuous" au lieu de "Manual" comme les programmes de synchronisation ci-dessus, car il a besoin de se mettre à jour plus souvent pour maintenir son Transform à jour. Ce comportement Udon a un programme **SyncPickupColor** qui change doucement la couleur pendant qu'il est tenu. Il le fait en vérifiant pendant l'événement Update pour voir si le joueur local est le propriétaire de l'objet ET si VRCPickup.get isHeld est vrai. Notez qu'il n'utilise pas RequestSerialization puisqu'il est réglé sur Continuous - il mettra simplement à jour les valeurs aussi souvent que possible.
 
-This object has VRC Pickup and VRC Object Sync components which enable it to be picked up and moved around, automatically syncing it to other users. The UdonBehaviour is set to "Continuous" instead of "Manual" like the sync programs above, since it needs to update more often to keep its Transform up-to-date. This UdonBehaviour has a **SyncPickupColor** program on it which smoothly changes the color while it's being held. It does this by checking during the Update event to see if the local player is the Owner of the object AND VRCPickup.get isHeld is true. Notice that it doesn't use RequestSerialization since it's set to Continuous - it will simply update the values as often as it can.
-![This is run every frame, and when it's true the program will use some fun math to slowly change between two colors specified in the inspector.](/img/worlds/index-03b983d-pickup-isheld.png)
 ### PickupSphere
-This object doesn't actually have any Udon on it! It simply uses VRC Pickup and VRC Object Sync components to let users pick it up and move it around in a synced manner.
-![](/img/worlds/udon-example-scene-ea9afda-pickup-sphere.png)
+Cet objet n'a en fait pas d'Udon ! Il utilise simplement les composants VRC Pickup et VRC Object Sync pour permettre aux utilisateurs de le ramasser et de le déplacer de manière synchronisée.
 
-## PlayerDetection
-It can be very useful to respond to a player moving into a certain area, or colliding with a physics object. These example programs illustrate a few ways that can be done.
+## Détection des joueurs
+Il peut être très utile de répondre à un joueur entrant dans une certaine zone ou entrant en collision avec un objet physique. Ces programmes d'exemple illustrent quelques façons de le faire.
 
 ### PlayerTrigger
-![](/img/worlds/udon-example-scene-c3a6c06-OnPlayerTriggerScene.png)
+C'est le moyen le plus couramment utilisé pour détecter un joueur entrant ou sortant d'une zone. L'objet "TriggerArea" a un matériau bleu translucide, un Box Collider avec *IsTrigger* coché, et un comportement Udon avec une source de programme **PlayerTrigger**.
 
-This is the most commonly used way to detect a player entering or leaving an area. The "TriggerArea" object has a see-through blue material on it, a Box Collider with *IsTrigger* checked, and an UdonBehaviour with a **PlayerTrigger** program source. 
-
-In this program, the **OnPlayerTriggerEnter** and **OnPlayerTriggerExit** events are triggered whenever any player enters or exists the collider. The program then gets the **displayName** of that player and updates the text on the target canvas.
-![](/img/worlds/udon-example-scene-b7cd2a0-onplayertriggerenter-program.png)
+Dans ce programme, les événements **OnPlayerTriggerEnter** et **OnPlayerTriggerExit** sont déclenchés chaque fois qu'un joueur entre ou sort du collider. Le programme obtient ensuite le **displayName** de ce joueur et met à jour le texte sur le canevas cible.
 
 ### PlayerCollision
-This setup demonstrates how to trigger and respond to the **OnPlayerCollisionEnter/Exit** events, which are triggered when a Physics object moves into a player's collider.
-![](/img/worlds/udon-example-scene-bec891f-playercollision-scene.png)
+Cette configuration montre comment déclencher et répondre aux événements **OnPlayerCollisionEnter/Exit**, qui sont déclenchés lorsqu'un objet physique entre en collision avec le collider d'un joueur.
 
-The *TriggerArea* object has a **FireOnTrigger** Udon Program which detects a player entering its trigger area, just like in the **PlayerTrigger** program above. In this case, this event is used to send the custom event "Fire" to the *Projectile* object. This will cause the Projecticle cube to add a force to itself which will move it towards the player. When it collides with the player, it will write that player's displayName into a target Text field.
+L'objet *TriggerArea* a un programme Udon **FireOnTrigger** qui détecte un joueur entrant dans sa zone de déclenchement, tout comme dans le programme **PlayerTrigger** ci-dessus. Dans ce cas, cet événement est utilisé pour envoyer l'événement personnalisé "Fire" à l'objet *Projectile*. Cela fera ajouter une force au cube Projecticle qui le déplacera vers le joueur. Lorsqu'il entre en collision avec le joueur, il écrira le displayName de ce joueur dans un champ de texte cible.
 
-Note that the PlayerCollision events here will only fire locally for the player that experienced them. If you want to inform other players of these events, you will need to add that functionality yourself through Synced Variables or Custom Network Events.
+Notez que les événements PlayerCollision ne se déclencheront localement que pour le joueur qui les a vécus. Si vous souhaitez informer les autres joueurs de ces événements, vous devrez ajouter cette fonctionnalité vous-même via des variables synchronisées ou des événements réseau personnalisés.
 
 ### PlayerParticleCollision
-![](/img/worlds/udon-example-scene-01bddee-particle-collision-scene.png)
-
- This demo has a setup similar to PlayerCollision above, where it uses a Trigger Area to start other events. In this case, when a player enters the Trigger Area, the **SetActiveFromPlayerTrigger** program will turn on the *CollisionParticles* object. This object has a ParticleSystem which fires at the player with World Collision and Send Collision Messages turned on. The Udon Program **PlayerCollisionParticles** attached to this object will fire the **OnPlayerParticleCollision* events in the graph, which write the displayName of the affected player into the target text field.
-![](/img/worlds/udon-example-scene-3266c29-onplayerparticlecollision.png)
+Cette démonstration a une configuration similaire à PlayerCollision ci-dessus, où elle utilise une zone de déclenchement pour démarrer d'autres événements. Dans ce cas, lorsqu'un joueur entre dans la zone de déclenchement, le programme **SetActiveFromPlayerTrigger** allumera l'objet *CollisionParticles*. Cet objet a un ParticleSystem qui tire sur le joueur avec World Collision et Send Collision Messages activés. Le programme Udon **PlayerCollisionParticles** attaché à cet objet déclenchera les événements **OnPlayerParticleCollision* dans le graphique, qui écrivent le displayName du joueur affecté dans le champ de texte cible.
 
 ## [Udon Sync Player](/worlds/examples/udon-example-scene/udon-video-sync-player)
-![](/img/worlds/udon-example-scene-344ca0e-udonsyncplayer-scene.png)
-
-This setup demonstrates one way to use the Unity / AVPro video players to load and sync video playback. It's a big program, so we've separated it out to its own page.
+Cette configuration montre une manière d'utiliser les lecteurs vidéo Unity / AVPro pour charger et synchroniser la lecture vidéo. C'est un grand programme, donc nous l'avons séparé sur sa propre page.
 
 ## CubeArraySync
-![](/img/worlds/udon-example-scene-fe7260d-cubearraysync-scene.png)
+Ce programme simple crée une grille de cubes qui s'allument et s'éteignent aléatoirement lorsque quelqu'un clique dessus tout en utilisant très peu de données, démontrant la puissance de la synchronisation des tableaux. Le programme **CubeArraySync** a une variable appelée *data* qui est un tableau de Booléens avec 25 valeurs. Cela signifie qu'il a 25 valeurs oui/non simples qui sont synchronisées avec chaque utilisateur. Il a également un tableau d'objets GameObject appelé *cubes* avec 25 cubes.
 
-This simple program makes a grid of cubes that randomly flip on and off when anyone clicks on them while using very little data, demonstrating the power of syncing arrays. The **CubeArraySync** program has a variable called *data* which is a Boolean Array with 25 values. This means it has 25 simple yes/no values which are synced to every user. It also has a GameObject array called *cubes* with 25 cubes.
+Lorsque quelqu'un clique sur l'objet contenant tous les cubes, un événement réseau personnalisé appelé "Randomize" est envoyé au propriétaire de l
 
-When anyone clicks on the object containing all the cubes, a Custom Network Event called "Randomize" is sent to the owner of the CubeArraySync object. The owner then uses a **For** loop to randomly set each value to on or off, by generating a number between 0 and 1 and checking if that value is greater than 0.5. Once it updates the array variable, it calls **RequestSerialization** and then calls the custom event **UpdateCubes**. 
-![Each user will turn on/off each cube based on the random value from Boolean array.](/img/worlds/index-735f048-update-cubes-from-data.png)
-The **UpdateCubes** event uses another **For** loop to step through each yes/no variable in the array and set its corresponding Cube to on or off. This event is triggered by the owner after updating the array, or by **OnDeserialization** after VRChat has updated the array variable for all the other users. We use OnDeserialization here instead of OnVariableChange because Array Variables don't currently fire Variable Change events, so we wait until we have new data in OnDeserialization and update our scene then.
+'objet CubeArraySync. Le propriétaire utilise ensuite une boucle **For** pour définir aléatoirement chaque valeur sur on ou off, en générant un nombre entre 0 et 1 et en vérifiant si cette valeur est supérieure à 0,5. Une fois qu'il met à jour la variable du tableau, il appelle **RequestSerialization** puis appelle l'événement personnalisé **UpdateCubes**.
+
+L'événement **UpdateCubes** utilise une autre boucle **For** pour parcourir chaque variable oui/non dans le tableau et définir son cube correspondant sur on ou off. Cet événement est déclenché par le propriétaire après la mise à jour du tableau, ou par **OnDeserialization** après que VRChat a mis à jour la variable du tableau pour tous les autres utilisateurs. Nous utilisons OnDeserialization ici au lieu de OnVariableChange parce que les variables de tableau ne déclenchent actuellement pas d'événements de changement de variable, donc nous attendons d'avoir de nouvelles données dans OnDeserialization et mettons à jour notre scène ensuite.
 
 ## ObjectPool
-![These cubes will never be this neat again once they start dropping and bouncing around.](/img/worlds/index-474fac9-object-pool.png)
-The [Object Pool](/worlds/udon/networking/network-components#vrc-object-pool) is a component that helps you manage a collection of objects. It will automatically sync its objects' Active state. This example program will drop boxes from the sky one at a time into a stacked grid, and when you click on a box, it is removed and respawned from the sky.
+Le [Object Pool](/worlds/udon/networking/network-components#vrc-object-pool) est un composant qui vous aide à gérer une collection d'objets. Il synchronisera automatiquement l'état Actif de ses objets. Ce programme d'exemple fera tomber des boîtes du ciel une à une dans une grille empilée, et lorsque vous cliquez sur une boîte, elle est retirée et réapparue du ciel.
 
-To do this, the **ObjectPool** program runs a simple timer and tries to **Spawn** an object at a regular interval. Each *Pooled Box* in its Pool has a simple **Pooled Box** program which saves its initial position on Start, restores that position whenever it is Enabled (which happens when it is spawned by the pool), and returns each object when you click on it.
+Pour ce faire, le programme **ObjectPool** exécute un simple minuteur et essaie de **Spawn** un objet à intervalles réguliers. Chaque *Pooled Box* dans son Pool a un simple programme **Pooled Box** qui enregistre sa position initiale au démarrage, restaure cette position chaque fois qu'elle est activée (ce qui se produit lorsqu'elle est générée par le pool), et renvoie chaque objet lorsque vous cliquez dessus.
 
 ## [Simple Pen System](/worlds/examples/udon-example-scene/simple-pen-system)
-Even a basic pen takes quite a bit of work, so this example gets its own page.
+Même un stylo basique demande beaucoup de travail, donc cet exemple a sa propre page.
 
 ## ChooserContainer
-![](/img/worlds/udon-example-scene-b58f65b-chooser-container.png)
-
-### ChooserContainer
-A canvas that follows the local player around the world. Uses a 'FollowPlayer' program which can be easily reused for other objects.
+Un canevas qui suit le joueur local autour du monde. Utilise un programme 'FollowPlayer' qui peut être facilement réutilisé pour d'autres objets.
 
 ### Chooser
-Toggles on/off all the prefabs which contain the examples for this world. Shows how to manage sync for an array of objects in a way that anyone can control
+Bascule on/off tous les préfabriqués qui contiennent les exemples pour ce monde. Montre comment gérer la synchronisation pour un tableau d'objets de manière à ce que tout le monde puisse le contrôler.
