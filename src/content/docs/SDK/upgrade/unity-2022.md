@@ -1,9 +1,5 @@
 ---
 title: "Mise à niveau vers Unity 2022"
-sidebar:
-    badge: 
-        text: Nouveau
-        variant: caution
 ---
 
 Cette page explique comment mettre à niveau votre projet VRChat de la version 2019.4.31f1 à Unity 2022.3.6f1.
@@ -35,6 +31,12 @@ Les mises à niveau peuvent échouer. Si c'est le cas, votre sauvegarde peut êt
 	- *Certains* avertissements peuvent être ignorés en toute sécurité, mais vous devriez essayer de comprendre pourquoi ils sont présents.
 
 Maintenant, vous êtes prêt à mettre à niveau !
+
+:::danger[Testez votre contenu avant de le télécharger]
+
+Après avoir téléchargé avec succès un monde ou un avatar avec Unity 2022, vous ne pourrez plus le télécharger à nouveau avec Unity 2019.
+
+:::
 
 ## Utiliser le Creator Companion 
 
