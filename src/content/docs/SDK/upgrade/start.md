@@ -1,9 +1,5 @@
 ---
 title: Gérer Unity
-sidebar:
-    badge: 
-        text: Nouveau
-        variant: caution
 ---
 Si vous avez travaillé avec le SDK VRChat par le passé, votre projet utilise peut-être une ancienne version de Unity et du SDK VRChat. Pour utiliser la dernière version du SDK VRChat, vous devrez d'abord mettre à jour Unity.
 

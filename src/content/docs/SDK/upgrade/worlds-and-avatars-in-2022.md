@@ -1,9 +1,5 @@
 ---
 title: "World et Avatars"
-sidebar:
-    badge: 
-        text: Nouveau
-        variant: caution
 ---
 
 Vous cherchez à créer un nouveau projet dans Unity 2022 ? Heureusement, c'est assez facile : le Creator Companion s'occupera de la plupart du travail pour vous !
