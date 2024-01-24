@@ -1,9 +1,5 @@
 ---
 title: "Version Actuelle de Unity"
-sidebar:
-    badge: 
-        text: Mis à jour
-        variant: tip
 ---
 
 La version actuelle de Unity utilisée par VRChat est [**2022.3.6f1**](https://unity.com/releases/editor/whats-new/2022.3.6).
