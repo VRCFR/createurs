@@ -1,13 +1,12 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import starlightBlog from 'starlight-blog';
 import sitemap from "@astrojs/sitemap";
 
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://createur.vrchatfrance.fr',
-  integrations: [sitemap(), starlightBlog(), starlight({
+  integrations: [sitemap(), starlight({
     title: 'VRChat France',
     favicon: '/favicon.ico',
     customCss: process.env.NO_GRADIENTS ? [] : ['./src/assets/landing.css'],
@@ -19,11 +18,6 @@ export default defineConfig({
     },
     social: {
       discord: 'https://discord.gg/vrchatfrance'
-    },
-    components: {
-      MarkdownContent: 'starlight-blog/overrides/MarkdownContent.astro',
-      Sidebar: 'starlight-blog/overrides/Sidebar.astro',
-      ThemeSelect: 'starlight-blog/overrides/ThemeSelect.astro'
     },
     sidebar: [{
       label: 'Guides',
