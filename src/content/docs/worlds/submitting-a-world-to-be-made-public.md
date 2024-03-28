@@ -1,6 +1,10 @@
 ---
 title: "Conseils pour créer, optimiser et soumettre des mondes à la communauté"
 description: "Apprenez comment faire pour rendre votre monde public en le soumettant aux Community Labs. Découvrez également des conseils d'optimisation et des astuces pour créer des mondes avatars et des mondes de jeu."
+sidebar:
+    badge: 
+        text: Mis à jour
+        variant: tip
 ---
 
 Vous voulez rendre votre monde public ? Vous êtes au bon endroit ! Vous devez soumettre votre monde aux **Community Labs**.
@@ -31,15 +35,16 @@ La publication de votre monde le rendra immédiatement disponible pour tous les 
 
 ## Conseils de performance
 
-- **Visez au moins 45 FPS avec un seul utilisateur VR au point de spawn.** Si vous n'avez pas de casque VR, demandez à un ami de tester le monde pour vous. Un monde qui fonctionne mal signifie que les gens ne passeront pas de temps dans votre monde, et il sera difficile de sortir des Labs.
-- **N'utilisez pas de shaders qui ne sont pas compatibles avec la VR.** Les shaders doivent prendre en charge le rendu stéréo à passage unique. Si vous recherchez un bon shader d'eau, [consultez le shader d'eau claire de Silent](https://gitlab.com/s-ilent/clear-water).
-- **Utilisez des shaders mobiles sur Android.** La plupart des shaders fonctionneront sur Android, mais ils nécessitent généralement plus de puissance de traitement pour être rendus. Utilisez des shaders mobiles si possible.
-- **Faites très attention aux effets de post-traitement.** Certains effets de post-traitement basés sur l'espace de l'écran peuvent causer des problèmes majeurs pour les utilisateurs de la VR. Soyez particulièrement prudent avec l'aberration chromatique, la réflexion basée sur l'espace de l'écran et l'occlusion ambiante basée sur l'espace de l'écran.
-- **Des problèmes surviennent lorsque vous placez plus de 2 lecteurs vidéo dans une pièce.** Cela a généralement un impact négatif sur les performances.
-- **Des problèmes surviennent également lorsque vous placez plus d'un miroir dans votre pièce.** Les miroirs affectent gravement les performances d'un monde. Si vous avez un miroir dans la pièce, assurez-vous de le mettre en activé/désactivé.
-- **Nous vous RECOMMANDONS FORTEMENT de ne pas activer les miroirs par défaut.** Ajoutez un commutateur qui peut être activé par les joueurs ou activé automatiquement lorsque les joueurs entrent dans une certaine zone.
-- **N'utilisez PAS trop de lumières en temps réel.** Elles sont **très** coûteuses et peuvent nuire aux performances de votre monde si elles sont mal utilisées.
-- **Le Baking de votre éclairage est extrêmement important et peut vous procurer d'énormes gains de performances.**
+- **Visez au moins 45 images par seconde avec un seul utilisateur VR au spawn.** Si vous n'avez pas de VR, faites tester le monde par un ami. Un monde avec des performances médiocres signifie que les gens ne passeront pas de temps dans votre monde, et vous ne sortirez probablement pas très facilement des Labs.
+- **N'utilisez pas de shaders qui ne sont pas compatibles VR.** Les shaders doivent prendre en charge le rendu stéréo en un seul passage. Si vous recherchez un bon shader d'eau, [consultez le Silent's Water Shader](https://gitlab.com/s-ilent/clear-water).
+- **Utilisez des shaders mobiles sur Android.** La plupart des shaders fonctionneront sur Android mais demandent généralement plus de puissance de traitement pour être rendus. Stick aux shaders mobiles si vous le pouvez.
+- **Utilisez un shader sur-échantillonné pour l'UI dans le monde.** C'est une manière conviviale pour les performances d'obtenir un texte net en VR. Le SDK suggérera de basculer si des matériaux d'UI utilisent le shader d'UI intégré à Unity.
+- **Soyez très prudent avec les effets de post-traitement.** Certains effets de post-traitement en espace d'écran posent de gros problèmes aux utilisateurs VR. En particulier, faites attention à l'aberration chromatique, aux réflexions en espace d'écran et à l'occlusion ambiante en espace d'écran.
+- **De mauvaises choses se produisent lorsque vous mettez plus de 2 lecteurs vidéo dans une pièce.** Cela a généralement un impact négatif sur les performances.
+- **De mauvaises choses se produisent également lorsque vous mettez plus de 1 miroir dans votre pièce.** Les miroirs affectent gravement les performances d'un monde. Si vous avez 1 miroir dans la pièce, assurez-vous de le configurer pour qu'il bascule.
+- **Nous vous** **_DÉCONSEILLONS FORTEMENT_** **d'activer les miroirs par défaut.** Ajoutez un interrupteur qui peut être activé par les joueurs ou activé automatiquement lorsque les joueurs entrent dans une certaine zone.
+- **N'utilisez PAS excessivement de lumières en temps réel.** Elles sont **très** coûteuses et peuvent ruiner les performances de votre monde si elles sont utilisées incorrectement.
+- **Cuire votre éclairage est extrêmement important et peut vous donner d'énormes gains de performances.** Vous pouvez en apprendre davantage sur la cuisson de l'éclairage dans la [documentation Unity](https://docs.unity3d.com/Manual/progressive-lightmapper.html) ou dans le [guide de développement Android](https://developer.android.com/games/optimize/lighting-for-mobile-games-with-unity#lightmap-baking).
 
 ## Conseils généraux
 

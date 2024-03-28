@@ -1,6 +1,10 @@
 ---
 title: "Spécifications et conseils réseau"
 description: "Ce document présente des conseils et des spécifications pour la gestion du réseau."
+sidebar:
+    badge: 
+        text: Mis à jour
+        variant: tip
 ---
 
 # Conseils
@@ -23,7 +27,7 @@ Vous pouvez voir des informations spécifiques sur les données utilisées par o
 
 La synchronisation continue est limitée à environ **200 octets** par sérialisation.
 
-La synchronisation manuelle est limitée à environ **49 kilo-octets** par sérialisation.
+La synchronisation manuelle est limitée à environ **280,496 octets** par sérialisation.
 
 Chaque objet synchronisé manuellement est limité en fonction de la taille des données. Plus il envoie de données, plus son taux d'envoi est limité. Vous pouvez appeler RequestSerialization autant de fois que vous le souhaitez, mais cela attendra suffisamment de temps avant d'appeler OnPreSerialization, d'envoyer les données et d'appeler OnPostSerialization avec le résultat.
 
