@@ -1,10 +1,6 @@
 ---
 title: "Avatars"
 description: "Apprenez-en plus sur le SDK Avatars 3.0 de VRChat"
-sidebar:
-    badge: 
-        text: Mis à jour
-        variant: tip
 ---
 
 VRChat vous permet de créer et de télécharger des avatars personnalisés !

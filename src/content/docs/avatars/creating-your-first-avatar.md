@@ -1,9 +1,5 @@
 ---
 title: "Créer Votre Premier Avatar"
-sidebar:
-    badge: 
-        text: Mis à jour
-        variant: tip
 ---
 
 ## Prérequis : Configurer le SDK d'abord !
