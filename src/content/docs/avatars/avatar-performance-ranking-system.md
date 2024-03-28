@@ -1,10 +1,6 @@
 ---
 title: "Performance d'avatars"
 description: "Quel sont les performances d'avatars sur VRChat"
-sidebar:
-    badge: 
-        text: Mis à jour
-        variant: tip
 ---
 
 :::note[Vidéo de Tupper]

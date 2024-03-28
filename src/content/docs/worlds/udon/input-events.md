@@ -1,6 +1,10 @@
 ---
 title: "Événements d'entrée"
 description: "Vous pouvez lire l'entrée du contrôleur d'un joueur de manière unifiée sur toutes les plateformes en utilisant les événements d'entrée Udon. Ces événements fonctionneront correctement même lorsque le joueur a remappé ses contrôles."
+sidebar:
+    badge: 
+        text: Mis à jour
+        variant: tip
 ---
 
 Vous pouvez lire l'entrée du contrôleur d'un joueur de manière unifiée sur toutes les plateformes en utilisant les événements d'entrée Udon. Ces événements fonctionneront correctement même lorsque le joueur a remappé ses contrôles.
@@ -39,11 +43,14 @@ Déplacement de la souris de haut en bas sur ordinateur de bureau, généralemen
 ### InputLookHorizontal
 Déplacement de la souris de gauche à droite sur ordinateur de bureau, rotation vers la gauche et vers la droite à l'aide du stick/gauche sans rotation confort sur les contrôleurs de réalité virtuelle, généralement le stick droit de gauche à droite sur les manettes de jeu.
 
-# UdonInputEventArgs
+## UdonInputEventArgs
 
-Cet objet est inclus dans chaque événement d'entrée et contient des données supplémentaires pour l'événement qui peuvent être utiles. Nous pourrions ajouter plus de données dans cet objet à l'avenir, faites-nous savoir si vous pensez à quelque chose de pratique que vous aimeriez référencer ici. Pour l'instant, il inclut :
+Cet objet est inclus dans chaque événement d'entrée et contient des données supplémentaires pour l'événement qui peuvent être utiles. Nous pouvons ajouter plus de données dans cet objet à l'avenir, faites-nous savoir si vous pensez à quelque chose d'utile que vous aimeriez référencer ici. Pour l'instant, il comprend :
 
-**UdonInputEventType**: BOUTON ou AXE
-**boolValue**: Vrai/Faux s'il s'agit d'un événement de bouton, faux s'il s'agit d'un événement d'axe (valeur par défaut)
-**floatValue**: Nombre entre -1 et 1 pour un événement d'axe, 0 s'il s'agit d'un événement de bouton (valeur par défaut)
-**handType**: GAUCHE ou DROITE. Inclus pour les utilisateurs de clavier et de souris également (la souris est DROITE, le clavier est GAUCHE).
+- **UdonInputEventType**: BUTTON ou AXIS
+- **boolValue**: Vrai/Faux si c'est un événement de bouton, Faux si c'est un événement d'axe (valeur par défaut)
+- **floatValue**: Nombre entre -1 et 1 pour un événement d'axe, 0 s'il s'agit d'un événement de bouton (valeur par défaut)
+- **handType**: LEFT ou RIGHT. Inclus pour les utilisateurs de clavier et de souris également (la souris est RIGHT, le clavier est LEFT).
+
+## OnInputMethodChanged
+Cet événement se déclenche chaque fois qu'un utilisateur change de méthode d'entrée, comme passer du clavier à la souris, au contrôleur ou à l'écran tactile. Il inclut une énumération [VRCInputMethod](/worlds/udon/graph/type-nodes/#vrcsdkbasevrcinputmethod) en tant que paramètre.

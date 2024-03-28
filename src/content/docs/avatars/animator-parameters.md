@@ -1,10 +1,6 @@
 ---
 title: "Paramètres de l'animateur"
 description: "Utilisation des paramètres d'animateur sur Unity"
-sidebar:
-    badge: 
-        text: Mis à jour
-        variant: tip
 ---
 :::caution[Connaissances en Unity Requises]
 
