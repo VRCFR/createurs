@@ -1,10 +1,7 @@
 ---
 title: "Conseils pour créer, optimiser et soumettre des mondes à la communauté"
 description: "Apprenez comment faire pour rendre votre monde public en le soumettant aux Community Labs. Découvrez également des conseils d'optimisation et des astuces pour créer des mondes avatars et des mondes de jeu."
-sidebar:
-    badge: 
-        text: Mis à jour
-        variant: tip
+
 ---
 
 Vous voulez rendre votre monde public ? Vous êtes au bon endroit ! Vous devez soumettre votre monde aux **Community Labs**.
