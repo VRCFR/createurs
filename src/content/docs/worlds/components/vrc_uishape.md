@@ -1,7 +1,18 @@
 ---
 title: "VRC Ui Shape"
+sidebar:
+    order: 2
+    badge: 
+        text: Mis à jour
+        variant: tip
 ---
 Rendez l'interface utilisateur d'Unity interactive dans VRChat. Nécessite un élément [UICanvas](https://docs.unity3d.com/Manual/UICanvas.html) Unity sur le même GameObject.
+
+il n'a que 1 paramètre: 
+
+| Parameter        | Description                                                                                         |
+| ---------------- | --------------------------------------------------------------------------------------------------- |
+| Allow Focus View | Indique si ce canevas doit permettre aux utilisateurs d'activer la Vue Focalisée lorsqu'ils utilisent un téléphone ou une tablette. |
 
 ## Étapes pour créer une interface utilisateur interactive avec VRC_UiShape
 

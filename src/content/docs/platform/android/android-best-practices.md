@@ -1,15 +1,19 @@
 ---
 title: "Meilleures pratiques pour les appareils mobiles"
 description: "Découvrez comment rendre votre monde VRChat plus agréable et confortable pour les joueurs sur appareils mobiles. Suivez ces conseils pour optimiser votre monde VRChat sur Android et offrir une expérience de jeu optimale."
+sidebar:
+    order: 2
+    badge: 
+        text: Mis à jour
+        variant: tip
 ---
 
 Rendre vos mondes VRChat compatibles avec plusieurs plateformes est un excellent moyen de permettre à un plus grand nombre de joueurs d'en profiter. La plupart des joueurs de VRChat utilisent Android, il est donc intéressant de créer une version Android de votre monde VRChat.
 
 Cependant, les joueurs sur smartphone et les joueurs en réalité virtuelle vivront votre monde de manière assez différente ! Dans ce guide, nous vous expliquerons quelques astuces pour rendre votre monde VRChat sur appareils mobiles plus confortable et plus agréable.
-:::info
+:::tip
 
-VRChat n'est pas encore disponible sur Android.
-Sa sortie est prévue plus tard cette année.
+VRChat est disponible sur Android en [open bêta](https://play.google.com/store/apps/details?id=com.vrchat.mobile.playstore)
 
 :::
 ## 1. Publiez votre monde VRChat sur Android
