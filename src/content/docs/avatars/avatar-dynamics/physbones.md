@@ -148,17 +148,17 @@ N'utilisez pas trop souvent les limites polaires, car elles ont un coût de perf
 
 `Paramètre` - Préfixe utilisé pour fournir plusieurs paramètres au contrôleur de l'avatar. Dans les éléments suivants, en définissant le paramètre sur `Queue`, cela remplacerait `{parameter}` par `Queue`.
 
-`{parameter}_EstSaisi`  
- [Bool] Les os sont-ils actuellement saisis ?
+`{parameter}_IsGrabbed`  
+[Bool] Indique si les os sont actuellement saisis.
 
-`{parameter}_EstPosé`  
- [Bool] Les os sont-ils en pose ?
+`{parameter}_IsPosed`  
+[Bool] Indique si les os ont été posés après avoir été saisis.
 
 `{parameter}_Angle`  
  [Float] Plage de 0,0 à 1,0. Angle normalisé de 180 degrés formé entre l'os d'extrémité et sa position de repos d'origine. En d'autres termes, si vous torsadez un os complètement dans la direction opposée à sa direction de départ, ce paramètre aura une valeur de 1,0.
 
-`{parameter}_Étirement`  
- [Float] Plage de 0,0 à 1,0. Proximité des os par rapport à leur longueur maximale d'étirement.
+`{parameter}_Squish`  
+[Float] Plage de 0.0-1.0. Indique à quel point les os sont proches de leur longueur maximale de compression.
 
 `Est animé` - Permet aux transformations osseuses d'être animées. À chaque image, la position de repos de l'os sera mise à jour en fonction de l'animation appliquée. Cette option doit être activée pour que tous les os de la chaîne PhysBone (y compris l'os racine !) respectent les animations qui leur sont appliquées.
 
@@ -205,3 +205,4 @@ Les PhysBones sont plus coûteux en termes de performances que les Dynamic Bones
 La meilleure façon de comprendre et de maîtriser l'utilisation des PhysBones est de les expérimenter et d'ajuster les paramètres en fonction de vos besoins spécifiques. Essayez différentes configurations, testez les interactions avec d'autres composants de votre avatar et observez les résultats dans la vue de la scène. Avec un peu de pratique, vous pourrez créer des mouvements secondaires réalistes et fluides pour votre avatar.
 
 N'oubliez pas de consulter les ressources de la communauté, les tutoriels et les exemples pour obtenir des conseils supplémentaires sur l'utilisation des PhysBones dans VRChat.
+À un moment ultérieur, nous donnerons une date de dépréciation avec _beaucoup_ de temps pour permettre aux créateurs d'avatars de convertir ce qu'ils souhaitent convertir.
