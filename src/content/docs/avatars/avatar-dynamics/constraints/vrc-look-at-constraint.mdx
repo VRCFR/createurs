@@ -1,0 +1,40 @@
+---
+title: Contrainte de Regard (Look At Constraint)
+sidebar:
+    badge: 
+        text: Nouveau
+        variant: tip
+---
+
+import ConstraintMainSettings from './_partial-constraint-mainsettings.mdx'
+import ConstraintActivation from './_partial-constraint-activation.mdx'
+import ConstraintSources from './_partial-constraint-sources.mdx'
+import ConstraintAdvanced from './_partial-constraint-advanced.mdx'
+
+
+Le composant `VRCLookAtConstraint` est une version simplifiée de la [Contrainte de Visée](/avatars/avatar-dynamics/constraints/vrc-aim-constraint). Il fait pivoter le transform cible pour que son axe Z positif soit orienté vers les sources.
+
+![](/img/avatars/constraints/look-at.png)
+
+<ConstraintMainSettings />
+- **Use Up Object** - Contrôle s'il faut ou non utiliser un transform séparé pour déterminer le roulis.
+- **Roll** - Contrôle l'angle (en degrés) autour de l'axe Z du transform cible qui doit être utilisé pour déterminer sa direction vers le haut. Disponible uniquement lorsque `Use Up Object` est désactivé.
+- **World Up Object** - Lorsqu'il est défini, la contrainte fera un roulis pour essayer d'orienter son axe Y positif vers ce transform. Disponible uniquement lorsque `Use Up Object` est activé.
+
+<ConstraintActivation />
+
+## Paramètres de Contrainte *Pas partiel car look-at n'expose pas les axes de gel*
+
+- **Rotation At Rest** - Définit la rotation du transform lorsque le poids global de la contrainte est de 0.
+- **Rotation Offset** - Définit le décalage appliqué au résultat de cette contrainte.
+- **Lock** - Lorsqu'il est activé, verrouille les valeurs `At Rest` et `Offset` en place, empêchant leur modification.
+  - Si vous activez la contrainte et laissez ces valeurs déverrouillées, elles seront recalculées au fur et à mesure que la rotation du transform cible change.
+  - Si vous verrouillez ces valeurs et activez la contrainte, la contrainte commencera à prendre le contrôle du transform.
+
+## Sources
+
+<ConstraintSources />
+
+## Avancé
+
+<ConstraintAdvanced affectedTrs="Rotation" />
